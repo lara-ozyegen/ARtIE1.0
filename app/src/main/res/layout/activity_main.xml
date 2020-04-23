@@ -6,22 +6,76 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <Button
-        android:id="@+id/freeSession"
-        android:layout_width="198dp"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:id="@+id/MainScreen"
+        android:layout_width="match_parent"
+        android:layout_height="236dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:background="@color/colorMainTheme"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="WELCOME TO ARtIE"
+            android:textColor="@color/colorWhite"
+            android:textSize="36sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/freeSession"
+        android:layout_width="282dp"
+        android:layout_height="45dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="86dp"
+        android:layout_marginLeft="86dp"
+        android:layout_marginTop="372dp"
+        android:layout_marginEnd="115dp"
+        android:layout_marginRight="115dp"
+        android:background="@color/colorMainTheme"
+        android:text="Free Mode"
+        android:textAllCaps="true"
+        android:textColor="@color/colorWhite"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/sessionMode"
+        android:layout_width="285dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="112dp"
-        android:layout_marginLeft="112dp"
-        android:layout_marginTop="363dp"
-        android:layout_marginEnd="101dp"
-        android:layout_marginRight="101dp"
-        android:layout_marginBottom="294dp"
-        android:text="Free Session" />
+        android:layout_marginStart="85dp"
+        android:layout_marginLeft="85dp"
+        android:layout_marginEnd="113dp"
+        android:layout_marginRight="113dp"
+        android:layout_marginBottom="211dp"
+        android:background="@color/colorMainTheme"
+        android:text="Sessıon Mode"
+        android:textAllCaps="true"
+        android:textColor="@color/colorWhite"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:visibility="visible" />
+
 </RelativeLayout>
