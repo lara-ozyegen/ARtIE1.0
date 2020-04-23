@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private Button button;
 
     @Override
@@ -27,5 +30,28 @@ public class MainActivity extends AppCompatActivity {
     public void openActivity2(){
         Intent intent = new Intent(this, SecondScreen.class);
         startActivity(intent);
+    }
+
+    public void showPopup( View v) {
+        PopupMenu popup = new PopupMenu(this,v);
+        popup.setOnMenuItemClickListener(this);
+        popup.inflate(R.menu.popup_menu);
+        popup.show();
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.newSession:
+                Toast.makeText(this,"New session Clicked", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.joinSession:
+                Toast.makeText(this,"join session Clicked", Toast.LENGTH_SHORT).show();
+                return true;
+
+            default:
+                return false;
+        }
     }
 }
