@@ -26,6 +26,26 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             }
         });
     }
+    public void showPopup(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
+        popup.setOnMenuItemClickListener(this);
+        popup.inflate(R.menu.popup_menu);
+        popup.show();
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.newSession:
+                Toast.makeText(this, "Item 1 clicked", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.joinSession:
+                Toast.makeText(this, "Item 2 clicked", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return false;
+        }
+    }
 
     public void openActivity2(){
         Intent intent = new Intent(this, SecondScreen.class);
