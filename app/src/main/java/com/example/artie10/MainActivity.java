@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         switch (item.getItemId()) {
             case R.id.newSession:
                 Toast.makeText(this, "Item 1 clicked", Toast.LENGTH_SHORT).show();
+                openCategories();
                 return true;
             case R.id.joinSession:
                 Toast.makeText(this, "Item 2 clicked", Toast.LENGTH_SHORT).show();
@@ -49,6 +50,11 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     public void openActivity2(){
         Intent intent = new Intent(this, SecondScreen.class);
+        startActivity(intent);
+    }
+
+    public void openCategories(){
+        Intent intent = new Intent(this, Categories.class);
         startActivity(intent);
     }
 }
