@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openActivity2();
+                openCategories();
             }
         });
     }
@@ -49,11 +49,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             default:
                 return false;
         }
-    }
-
-    public void openActivity2(){
-        Intent intent = new Intent(this, SecondScreen.class);
-        startActivity(intent);
     }
 
     public void openCategories(){
