@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.example.artie10.ui.login.JoinPopup;
+
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private Button button;
 
@@ -41,7 +43,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 openCategories();
                 return true;
             case R.id.joinSession:
-                Toast.makeText(this, "Item 2 clicked", Toast.LENGTH_SHORT).show();
+                openLogin();
+                //Toast.makeText(this, "Item 2 clicked", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return false;
@@ -57,4 +60,9 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         Intent intent = new Intent(this, Categories.class);
         startActivity(intent);
     }
+    public void openLogin() {
+        Intent intent = new Intent(this, JoinPopup.class);
+        startActivity(intent);
+    }
+
 }
