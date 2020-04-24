@@ -41,7 +41,7 @@ public class JoinPopup extends AppCompatActivity {
 
         int width = dm. widthPixels;
         int height = dm.heightPixels;
-        getWindow().setLayout((int) (width*.8), (int) (height*.6));
+        getWindow().setLayout((int) (width*.8), (int) (height*.6)); //Pop-up view
 
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);

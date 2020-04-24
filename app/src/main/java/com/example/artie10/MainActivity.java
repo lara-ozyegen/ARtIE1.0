@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.PopupMenu;
-import android.widget.Toast;
 
 import com.example.artie10.ui.login.JoinPopup;
 
@@ -39,12 +38,10 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.newSession:
-                Toast.makeText(this, "Item 1 clicked", Toast.LENGTH_SHORT).show();
                 openCategories();
                 return true;
             case R.id.joinSession:
                 openLogin();
-                //Toast.makeText(this, "Item 2 clicked", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return false;
