@@ -7,17 +7,29 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.PopupMenu;
 
 import com.example.artie10.ui.login.JoinPopup;
 
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+
+
     private Button button;
+    private ImageButton imageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        imageButton = (ImageButton)findViewById(R.id.help);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openHelp();
+            }
+        });
 
         button = (Button)findViewById(R.id.freeSession);
         button.setOnClickListener(new View.OnClickListener() {
@@ -25,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             public void onClick(View v) {
                 openCategories();
             }
+
         });
     }
     public void showPopup(View v) {
@@ -48,6 +61,10 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         }
     }
 
+    public void openHelp(){
+        Intent intent = new Intent(this, HelpScreen.class);
+        startActivity(intent);
+    }
     public void openCategories(){
         Intent intent = new Intent(this, Categories.class);
         startActivity(intent);
@@ -56,5 +73,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         Intent intent = new Intent(this, JoinPopup.class);
         startActivity(intent);
     }
+
 
 }

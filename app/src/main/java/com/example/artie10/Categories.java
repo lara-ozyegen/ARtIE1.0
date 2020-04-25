@@ -27,7 +27,7 @@ public class Categories extends AppCompatActivity {
                 //opens downloads page --- how ?
             }
         });
-
+/**
         ImageView myModels = (ImageView) findViewById(R.id.myModels);
         myModels.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -77,6 +77,6 @@ public class Categories extends AppCompatActivity {
         }
         public void openChemistry(){
 
-        }
+        }*/
     }
 }
