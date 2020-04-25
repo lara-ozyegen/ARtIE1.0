@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class Categories extends AppCompatActivity {
+    private ImageView bio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,7 @@ public class Categories extends AppCompatActivity {
                 new ColorDrawable(Color.parseColor("#BE40FF")));
 
         //Adding onClickListeners for all of the categories
-        ImageView bio = (ImageView) findViewById(R.id.bio);
+        bio = (ImageView) findViewById(R.id.bio);
         bio.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 openBiology();

@@ -8,10 +8,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
-        <activity android:name=".HelpScreen"></activity>
+        <activity android:name=".HelpScreen" />
+
         <activity
             android:name=".Categories"
-            android:theme="@style/AppTheme2"></activity>
+            android:theme="@style/AppTheme2" />
+
+        <activity android:name=".Biology" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme">
@@ -23,7 +26,7 @@
         </activity>
         <activity
             android:name=".ui.login.JoinPopup"
-            android:theme="@style/AppTheme.CustomTheme"></activity>
+            android:theme="@style/AppTheme.CustomTheme" />
     </application>
 
 </manifest>
