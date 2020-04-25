@@ -92,7 +92,7 @@
         android:textColor="#FBFBFB" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/bio"
         android:layout_width="156dp"
         android:layout_height="147dp"
         android:layout_above="@+id/button4"
@@ -104,7 +104,7 @@
         app:srcCompat="@drawable/bio_icon" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/myModels"
         android:layout_width="148dp"
         android:layout_height="92dp"
         android:layout_above="@+id/button2"
@@ -116,7 +116,7 @@
         app:srcCompat="@drawable/mymodels_icon" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/chemistry"
         android:layout_width="153dp"
         android:layout_height="101dp"
         android:layout_above="@+id/button6"
@@ -128,7 +128,7 @@
         app:srcCompat="@drawable/chem_icon" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/maths"
         android:layout_width="96dp"
         android:layout_height="102dp"
         android:layout_above="@+id/button3"
@@ -140,7 +140,7 @@
         app:srcCompat="@drawable/math_icon" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/space"
         android:layout_width="99dp"
         android:layout_height="98dp"
         android:layout_above="@+id/button5"
@@ -152,7 +152,7 @@
         app:srcCompat="@drawable/space_icon" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/addModel"
         android:layout_width="101dp"
         android:layout_height="97dp"
         android:layout_above="@+id/button"
