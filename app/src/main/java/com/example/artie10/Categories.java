@@ -3,6 +3,7 @@ package com.example.artie10;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.drm.DrmStore;
 import android.graphics.Color;
@@ -31,7 +32,7 @@ public class Categories extends AppCompatActivity {
         });
     }
     public void openBiology(){
-        Intent intent = new Intent(this, Biology.class);
+        Intent intent = new Intent(Categories.this, Biology.class);
         startActivity(intent);
     }
 }
