@@ -32,6 +32,13 @@
             android:text="WELCOME TO ARtIE"
             android:textColor="@color/colorWhite"
             android:textSize="36sp" />
+
+        <ImageView
+            android:id="@+id/help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_menu_help" />
+
     </LinearLayout>
 
     <Button
