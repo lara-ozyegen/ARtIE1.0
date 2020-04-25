@@ -15,7 +15,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="200dp"
         android:layout_marginRight="200dp"
-        android:layout_marginBottom="422dp"
+        android:layout_marginBottom="370dp"
         android:background="@color/colorMainTheme"
         android:text="Add Models"
         android:textColor="#FFFFFF"
@@ -30,7 +30,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginBottom="422dp"
+        android:layout_marginBottom="370dp"
         android:background="@color/colorMainTheme"
         android:text="MY MODELS"
         android:textColor="#FFFFFF" />
@@ -44,7 +44,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="200dp"
         android:layout_marginRight="200dp"
-        android:layout_marginBottom="232dp"
+        android:layout_marginBottom="200dp"
         android:background="@color/colorMainTheme"
         android:text="Mathematics"
         android:textColor="#FFFFFF" />
@@ -58,7 +58,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginBottom="232dp"
+        android:layout_marginBottom="200dp"
         android:background="@color/colorMainTheme"
         android:text="Biology"
         android:textColor="#FFFFFF" />
@@ -72,7 +72,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="200dp"
         android:layout_marginRight="200dp"
-        android:layout_marginBottom="33dp"
+        android:layout_marginBottom="25dp"
         android:background="@color/colorMainTheme"
         android:text="SPACE"
         android:textColor="#F8F8F8" />
@@ -86,7 +86,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginBottom="33dp"
+        android:layout_marginBottom="25dp"
         android:background="@color/colorMainTheme"
         android:text="Chemistry"
         android:textColor="#FBFBFB" />
