@@ -21,7 +21,7 @@ public class Preview extends Activity {
 
         int width = dm. widthPixels;
         int height = dm.heightPixels;
-        getWindow().setLayout((int) (width*.8), (int) (height*.6));
+        getWindow().setLayout((int) (width*.9), (int) (height*.9));
 
         Button b = (Button) findViewById( R.id.ar_button);
         b.setOnClickListener(v -> openAR());
