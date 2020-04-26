@@ -26,5 +26,6 @@ public class Biology extends Activity {
     }
     public void openPreview(){
         Intent intent = new Intent(this , Preview.class );
+        startActivity(intent);
     }
 }
