@@ -1,7 +1,5 @@
 package com.example.artie10;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,7 +26,7 @@ public class Preview extends Activity {
     }
     public void openAR(){
         Intent intent = new Intent(this, ARScreen.class);
-        startActivity(intent);
+        startActivity( intent);
     }
 
 
