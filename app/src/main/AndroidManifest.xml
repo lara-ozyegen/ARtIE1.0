@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.artie10">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera.ar" android:required="true"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -26,6 +29,7 @@
         <activity
             android:name=".ui.login.JoinPopup"
             android:theme="@style/AppTheme.CustomTheme" />
+        <meta-data android:name="com.google.ar.core" android:value="required"/>
     </application>
 
 </manifest>
