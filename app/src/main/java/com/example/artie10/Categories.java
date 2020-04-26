@@ -10,10 +10,11 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class Categories extends AppCompatActivity {
-    private ImageView bio;
+    private Button bio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,7 @@ public class Categories extends AppCompatActivity {
                 new ColorDrawable(Color.parseColor("#BE40FF")));
 
         //Adding onClickListeners for all of the categories
-        bio = (ImageView) findViewById(R.id.bio);
+        bio = (Button) findViewById(R.id.biologyButton);
         bio.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 openBiology();
