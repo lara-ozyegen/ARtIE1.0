@@ -24,12 +24,7 @@ public class Preview extends Activity {
         getWindow().setLayout((int) (width*.8), (int) (height*.6));
 
         Button b = (Button) findViewById( R.id.ar_button);
-        b.setOnClickListener( new View.OnClickListener(){
-            @Override
-            public void onClick( View v) {
-                openAR();
-            }
-        } );
+        b.setOnClickListener(v -> openAR());
     }
     public void openAR(){
         Intent intent = new Intent(this, ARScreen.class);

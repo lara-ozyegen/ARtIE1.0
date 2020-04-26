@@ -14,7 +14,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
-        <activity android:name=".ARScreen"></activity>
+        <activity android:name=".ARScreen"
+            android:theme="@style/AppTheme.CustomTheme"/>
         <activity
             android:name=".Preview"
             android:theme="@style/AppTheme.CustomTheme" />

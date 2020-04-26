@@ -19,7 +19,7 @@ public class ARScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_a_r_screen);
         arFragment = (ArFragment)getSupportFragmentManager().findFragmentById(R.id.arFragment);
         arFragment.setOnTapArPlaneListener((hitResult,plane,motionEvent) -> {
             Anchor anchor = hitResult.createAnchor();
