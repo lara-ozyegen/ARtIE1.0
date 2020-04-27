@@ -21,9 +21,11 @@ _Include a concise description of your project here. Be sure to include the prop
 #### Group Members
 - [Lara Özyeğen](group/member1_log.md)    _(full name & link to personal log file)_
 - [Sarper Turan](group/member2_log.md)
-- Öykü Erhan
-- Berk Saltuk Yılmaz
-- Onur Asım İlhan
+- [Öykü Erhan](group/member3_log.md)
+- [Berk Saltuk Yılmaz](group/member4_log.md)
+- [Onur Asım İlhan](group/member5_log.md)
+- [Enis Özer](group/member6_log.md)
+- [Yaren Durgun](group/member6_log.md)
 
 ****
 **Instructor:** _(David Davenport)_   **TA:**  _(İrem Hergüner)_
