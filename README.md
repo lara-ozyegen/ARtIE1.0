@@ -14,12 +14,12 @@ _Include a concise description of your project here. Be sure to include the prop
 + **Requirements:** completed (date)
 + **UI Design:** completed (date)
 + **Detailed Design:** in progress
-+ **Implementation:** not started!
++ **Implementation:** in progress
 + **Reflections:** not yet!
 
 [Group Meetings Log](group/meetingslog.md)
 #### Group Members
-- [Lara Özyeğen](group/member1_log.md)    _(full name & link to personal log file)_
+- [Lara Özyeğen](group/member1_log.md)    
 - [Sarper Turan](group/member2_log.md)
 - [Öykü Erhan](group/member3_log.md)
 - [Berk Saltuk Yılmaz](group/member4_log.md)

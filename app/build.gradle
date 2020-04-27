@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.ar.sceneform.plugin'
+apply plugin: 'com.google.gms.google-services'
 
 
 android {
@@ -44,6 +45,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
 }
 
 apply plugin: 'com.google.ar.sceneform.plugin'
@@ -52,4 +54,9 @@ sceneform.asset('sampledata/ArcticFox_Posed.obj', // 'Source Asset Path' specifi
         'default',                    // 'Material Path' specified during import.
         'sampledata/ArcticFox_Posed.sfa', // '.sfa Output Path' specified during import.
         'src/main/assets/ArcticFox_Posed')      // '.sfb Output Path' specified during import
+
+sceneform.asset('sampledata/Heart_.obj', // 'Source Asset Path' specified during import.
+        'default',                    // 'Material Path' specified during import.
+        'sampledata/Heart_.sfa', // '.sfa Output Path' specified during import.
+        'src/main/assets/Heart_')      // '.sfb Output Path' specified during import
 
