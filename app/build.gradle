@@ -53,3 +53,8 @@ sceneform.asset('sampledata/ArcticFox_Posed.obj', // 'Source Asset Path' specifi
         'sampledata/ArcticFox_Posed.sfa', // '.sfa Output Path' specified during import.
         'src/main/assets/ArcticFox_Posed')      // '.sfb Output Path' specified during import
 
+sceneform.asset('sampledata/Heart_.obj', // 'Source Asset Path' specified during import.
+        'default',                    // 'Material Path' specified during import.
+        'sampledata/Heart_.sfa', // '.sfa Output Path' specified during import.
+        'src/main/assets/Heart_')      // '.sfb Output Path' specified during import
+
