@@ -10,7 +10,7 @@ Below is a record of our project group meetings. This page will be submitted tog
 **Discussion:** 
 We learned how to test our app via phone and using phone's camera and how to manage github. We have finished the main screen: new activity opens when free mode is pressed and, dropdown menu opens when session mode is pressed. We created our first AR app however it didnt work properly because of its version. We now know the necessary methods to create the AR screen in google ARCore library.
 
-Notes:
+**Notes:**
 https://www.youtube.com/watch?v=s1fW7CpiB9c – popupMenu
 https://www.youtube.com/watch?v=bgIUdb-7Rqo&t=71s – open new Activity with a button
 https://poly.google.com/view/dK08uQ8-Zm9 – free 3d models however we have a error regarding the version
