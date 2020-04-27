@@ -56,7 +56,6 @@ public class Categories extends AppCompatActivity {
         startActivityForResult(intent, REQUEST_CODE);
     }
 
-
     protected void onActivityResult( int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
         if( requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK){
