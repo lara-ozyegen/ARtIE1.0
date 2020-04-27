@@ -60,9 +60,11 @@ We have fininshed writing the code for free mode's AR screen. Preview popup scre
 2.What happens when AddModel is pressed ? And how ? --> Öykü, Enis, Yaren
 
 ****
-### Meeting ~ (27/04/2020, 12.00-14.30 &  16.00-)
+### Meeting ~ (27/04/2020, 12.00-14.30 &  16.00 - 20.00)
 ****
-
+**Present:** Everyone   **Absent:**
+**Discussion:** 
+We tried to create the add model activity, however we don't think it is possible to import our 3D model to 
 
 Notes:       
 https://www.youtube.com/watch?v=iPjT8-hpi_A - how to link android studio to firebase             
