@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "598333675695",
+    "firebase_url": "https://artie-638c3.firebaseio.com",
+    "project_id": "artie-638c3",
+    "storage_bucket": "artie-638c3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598333675695:android:b55e1040b1bd6c1df7dc5a",
+        "android_client_info": {
+          "package_name": "com.example.artie10"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "598333675695-95d3v5idmk0amfg37r98p3phi67qgjtp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8EUgebd4B_hNS7n7Sau9DV6tV0UAoOEs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "598333675695-95d3v5idmk0amfg37r98p3phi67qgjtp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
