@@ -1,167 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="200dp"
-        android:layout_marginRight="200dp"
-        android:layout_marginBottom="370dp"
+        android:layout_marginEnd="248dp"
+        android:layout_marginBottom="416dp"
         android:background="@color/colorMainTheme"
         android:text="Add Models"
         android:textColor="#FFFFFF"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/myModelsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="370dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginBottom="416dp"
         android:background="@color/colorMainTheme"
         android:text="MY MODELS"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/addButton" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/mathButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="200dp"
-        android:layout_marginRight="200dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginEnd="240dp"
+        android:layout_marginBottom="220dp"
         android:background="@color/colorMainTheme"
         android:text="Mathematics"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/biologyButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginBottom="220dp"
         android:background="@color/colorMainTheme"
         android:text="Biology"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/spaceButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="200dp"
-        android:layout_marginRight="200dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="28dp"
         android:background="@color/colorMainTheme"
         android:text="SPACE"
-        android:textColor="#F8F8F8" />
+        android:textColor="#F8F8F8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/chemButton"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/chemButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginBottom="28dp"
         android:background="@color/colorMainTheme"
         android:text="Chemistry"
-        android:textColor="#FBFBFB" />
-
-    <ImageView
-        android:id="@+id/bio"
-        android:layout_width="156dp"
-        android:layout_height="147dp"
-        android:layout_above="@+id/button4"
-        android:layout_alignEnd="@+id/button4"
-        android:layout_alignRight="@+id/button4"
-        android:layout_marginEnd="-30dp"
-        android:layout_marginRight="-30dp"
-        android:layout_marginBottom="-17dp"
-        app:srcCompat="@drawable/bio_icon"
-        android:clickable="true"/>
-
-    <ImageView
-        android:id="@+id/myModels"
-        android:layout_width="148dp"
-        android:layout_height="92dp"
-        android:layout_above="@+id/button2"
-        android:layout_alignEnd="@+id/button2"
-        android:layout_alignRight="@+id/button2"
-        android:layout_marginEnd="-27dp"
-        android:layout_marginRight="-27dp"
-        android:layout_marginBottom="5dp"
-        app:srcCompat="@drawable/mymodels_icon" />
+        android:textColor="#FBFBFB"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <ImageView
         android:id="@+id/chemistry"
         android:layout_width="153dp"
         android:layout_height="101dp"
-        android:layout_above="@+id/button6"
-        android:layout_alignEnd="@+id/button6"
-        android:layout_alignRight="@+id/button6"
-        android:layout_marginEnd="-31dp"
-        android:layout_marginRight="-31dp"
+        android:layout_marginEnd="48dp"
         android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/chemButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="@+id/chemButton"
         app:srcCompat="@drawable/chem_icon" />
-
-    <ImageView
-        android:id="@+id/maths"
-        android:layout_width="96dp"
-        android:layout_height="102dp"
-        android:layout_above="@+id/button3"
-        android:layout_alignEnd="@+id/button3"
-        android:layout_alignRight="@+id/button3"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="9dp"
-        app:srcCompat="@drawable/math_icon" />
 
     <ImageView
         android:id="@+id/space"
         android:layout_width="99dp"
         android:layout_height="98dp"
-        android:layout_above="@+id/button5"
-        android:layout_alignEnd="@+id/button5"
-        android:layout_alignRight="@+id/button5"
-        android:layout_marginEnd="-4dp"
-        android:layout_marginRight="-4dp"
-        android:layout_marginBottom="13dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/spaceButton"
+        app:layout_constraintEnd_toEndOf="@+id/spaceButton"
+        app:layout_constraintRight_toRightOf="@+id/spaceButton"
         app:srcCompat="@drawable/space_icon" />
 
     <ImageView
         android:id="@+id/addModel"
-        android:layout_width="101dp"
-        android:layout_height="97dp"
-        android:layout_above="@+id/button"
-        android:layout_alignEnd="@+id/button"
-        android:layout_alignRight="@+id/button"
-        android:layout_marginEnd="-5dp"
-        android:layout_marginRight="-5dp"
-        android:layout_marginBottom="0dp"
+        android:layout_width="119dp"
+        android:layout_height="119dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/addButton"
+        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintRight_toRightOf="@+id/addButton"
         app:srcCompat="@drawable/add_icon" />
 
-</RelativeLayout>
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="162dp"
+        android:layout_height="138dp"
+        android:layout_marginEnd="44dp"
+        app:layout_constraintBottom_toTopOf="@+id/biologyButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/bio" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="135dp"
+        android:layout_height="127dp"
+        app:layout_constraintBottom_toTopOf="@+id/myModelsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.826"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/mymodels" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="102dp"
+        android:layout_height="133dp"
+        app:layout_constraintBottom_toTopOf="@+id/mathButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.197"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/math" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

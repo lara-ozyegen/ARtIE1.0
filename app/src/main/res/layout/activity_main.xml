@@ -25,6 +25,14 @@
         android:orientation="vertical"
         android:visibility="visible">
 
+        <ImageButton
+            android:id="@+id/help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorMainTheme"
+            android:scaleType="fitStart"
+            app:srcCompat="@android:drawable/ic_menu_help" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,8 +43,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="258dp"
-            android:layout_height="108dp"
+            android:layout_width="293dp"
+            android:layout_height="106dp"
             app:srcCompat="@drawable/logo" />
 
     </LinearLayout>
@@ -85,12 +93,5 @@
         android:textSize="24dp"
         android:textStyle="bold"
         android:visibility="visible" />
-
-    <ImageButton
-        android:id="@+id/help"
-        android:layout_width="43dp"
-        android:layout_height="wrap_content"
-        android:background="@color/colorMainTheme"
-        app:srcCompat="@android:drawable/ic_menu_help" />
 
 </RelativeLayout>
