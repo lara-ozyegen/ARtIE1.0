@@ -82,7 +82,11 @@ We talked about what left to complete our application and shared tasks.
 
 **ToDo**
 Sarper --- Paint button in the AR screen
+
 Berk --- Scroll view in help screen
+
 Lara --- Screenshot in AR screen
+
 Öykü --- Toolbar
+
 Yaren --- Models
