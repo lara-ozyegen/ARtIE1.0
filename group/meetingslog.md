@@ -63,8 +63,9 @@ We have fininshed writing the code for free mode's AR screen. Preview popup scre
 ### Meeting ~ (27/04/2020, 12.00-14.30 &  16.00 - 20.00)
 ****
 **Present:** Everyone   **Absent:**
+
 **Discussion:** 
-We tried to create the add model activity, however we don't think it is possible to import our 3D model to 
+We tried to create the add model activity, however we don't think it is possible to import our 3D model to sceneform, it has to be done manually.
 
 Notes:       
 https://www.youtube.com/watch?v=iPjT8-hpi_A - how to link android studio to firebase             
@@ -72,4 +73,16 @@ https://www.youtube.com/watch?v=iPjT8-hpi_A - how to link android studio to fire
 **ToDo**
 
 ****
+### Meeting ~ (28/04/2020, 17.30 - 20.00)
 ****
+**Present:** Yaren, Sarper, Lara, Berk, Öykü          **Absent:**
+
+**Discussion:**
+We talked about what left to complete our application and shared tasks.
+
+**ToDo**
+Sarper --- Paint button in the AR screen
+Berk --- Scroll view in help screen
+Lara --- Screenshot in AR screen
+Öykü --- Toolbar
+Yaren --- Models
