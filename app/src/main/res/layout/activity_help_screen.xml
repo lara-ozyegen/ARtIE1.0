@@ -21,11 +21,11 @@
                 android:id="@+id/appbar"
 
                 android:layout_width="match_parent"
-                android:layout_height="192dp">
+                android:layout_height="105dp">
 
                 <com.google.android.material.appbar.CollapsingToolbarLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="429dp"
+                    android:layout_height="wrap_content"
                     app:contentScrim="?attr/colorPrimary"
                     app:layout_scrollFlags="scroll|exitUntilCollapsed"
                     app:layout_scrollInterpolator="@android:anim/decelerate_interpolator"
@@ -59,7 +59,7 @@
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="622dp"
-                android:text="evet buraya bir takım açıklamalar ve o tarz aşırı cool şeylerevet buraya bir takım açıklamalar ve o tarz aşırı cool şeylerevet buraya bir takım açıklamalar ve o tarz aşırı cool şeylerevet buraya bir takım açıklamalar ve o tarz aşırı cool şeyler"
+                android:text="evet buraya bir takım açıklamalar ve o tarz aşırı cool şeylerevet buraya bir takım açıklamalar ve o tarz aşırı cool şeylerevet buraya bir takım açıklamalar ve o tarz aşırı cool şeylerevet buraya bir takım açıklamalar ve o tarz aşırı cool şeylerevet buraya bir takım açıklamalar ve o tarz aşırı cool şeylerevet buraya bir takım açıklamalar ve o tarz aşırı cool şeylerevet buraya bir takım açıklamalar ve o tarz aşırı cool şeylerevet buraya bir takım açıklamalar ve o tarz aşırı cool şeyler"
                 android:textSize="36sp" />
 
         </LinearLayout>
