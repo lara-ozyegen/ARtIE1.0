@@ -7,6 +7,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <include
+        android:id="@+id/appbar"
+        layout="@layout/appbar"></include>
     <Button
         android:id="@+id/addButton"
         android:layout_width="wrap_content"

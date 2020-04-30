@@ -1,6 +1,7 @@
 package com.example.artie10;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -10,6 +11,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,14 +23,15 @@ public class Categories extends AppCompatActivity {
     private Button bio;
     private Button add;
     private static final int REQUEST_CODE = 45;
+    Toolbar appbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories3);
 
-        getSupportActionBar().setBackgroundDrawable(
-                new ColorDrawable(Color.parseColor("#BE40FF")));
+        //getSupportActionBar().setBackgroundDrawable(
+               // new ColorDrawable(Color.parseColor("#BE40FF")));
 
         //Adding onClickListeners for all of the categories
         bio = (Button) findViewById(R.id.biologyButton);
@@ -42,6 +47,8 @@ public class Categories extends AppCompatActivity {
                 addModel();
             }
         });
+        appbar = findViewById(R.id.appbar);
+        setSupportActionBar(appbar);
     }
     public void openBiology(){
         Intent intent = new Intent(Categories.this, Biology.class);
@@ -66,4 +73,26 @@ public class Categories extends AppCompatActivity {
             }
         }
     }
+    public void openHelp(){
+        Intent intent = new Intent(this, HelpScreen.class);
+        startActivity(intent);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.help2:
+                openHelp();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }

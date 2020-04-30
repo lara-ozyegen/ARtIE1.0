@@ -1,9 +1,13 @@
 package com.example.artie10;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -26,8 +30,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         imageButton = (ImageButton)findViewById(R.id.help);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                openHelp();
+           public void onClick(View v) {
+               openHelp();
             }
         });
 
@@ -39,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             }
 
         });
+
     }
     public void showPopup(View v) {
         PopupMenu popup = new PopupMenu(this, v);
