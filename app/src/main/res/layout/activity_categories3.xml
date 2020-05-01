@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativeLayout"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -10,13 +10,24 @@
     <include
         android:id="@+id/appbar"
         layout="@layout/appbar"></include>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="602dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar" />
+
     <Button
         android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="248dp"
         android:layout_marginBottom="416dp"
-        android:background="@color/colorMainTheme"
+        android:background="@drawable/custom_corners"
         android:text="Add Models"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
@@ -31,7 +42,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="76dp"
         android:layout_marginBottom="416dp"
-        android:background="@color/colorMainTheme"
+        android:background="@drawable/custom_corners"
         android:text="MY MODELS"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="240dp"
         android:layout_marginBottom="220dp"
-        android:background="@color/colorMainTheme"
+        android:background="@drawable/custom_corners"
         android:text="Mathematics"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -59,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="76dp"
         android:layout_marginBottom="220dp"
-        android:background="@color/colorMainTheme"
+        android:background="@drawable/custom_corners"
         android:text="Biology"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -72,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="92dp"
         android:layout_marginBottom="28dp"
-        android:background="@color/colorMainTheme"
+        android:background="@drawable/custom_corners"
         android:text="SPACE"
         android:textColor="#F8F8F8"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -85,7 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="76dp"
         android:layout_marginBottom="28dp"
-        android:background="@color/colorMainTheme"
+        android:background="@drawable/custom_corners"
         android:text="Chemistry"
         android:textColor="#FBFBFB"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -120,12 +131,12 @@
         android:layout_marginEnd="52dp"
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toTopOf="@+id/addButton"
-        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintEnd_toStartOf="@+id/myModels"
         app:layout_constraintRight_toRightOf="@+id/addButton"
         app:srcCompat="@drawable/add_icon" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/biology"
         android:layout_width="162dp"
         android:layout_height="138dp"
         android:layout_marginEnd="44dp"
@@ -136,7 +147,7 @@
         app:srcCompat="@drawable/bio" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/myModels"
         android:layout_width="135dp"
         android:layout_height="127dp"
         app:layout_constraintBottom_toTopOf="@+id/myModelsButton"
@@ -148,7 +159,7 @@
         app:srcCompat="@drawable/mymodels" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/mathematics"
         android:layout_width="102dp"
         android:layout_height="133dp"
         app:layout_constraintBottom_toTopOf="@+id/mathButton"

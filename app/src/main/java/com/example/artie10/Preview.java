@@ -21,10 +21,11 @@ public class Preview extends AppCompatActivity {
 
         int width = dm. widthPixels;
         int height = dm.heightPixels;
-        getWindow().setLayout((int) (width*.9), (int) (height*.9));
+        getWindow().setLayout((int) (width*.8), (int) (height*.8));
 
         Button b = (Button) findViewById( R.id.ar_button);
         b.setOnClickListener(v -> openAR());
+
     }
     public void openAR(){
         Intent intent = new Intent(this, ARScreen.class);

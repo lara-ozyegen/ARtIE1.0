@@ -45,7 +45,7 @@ public class ARScreen extends AppCompatActivity {
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
             Anchor anchor = hitResult.createAnchor();
             ModelRenderable.builder()
-                    .setSource(this, Uri.parse("1410 Heart.sfb"))
+                    .setSource(this, Uri.parse("Human Heart.sfb"))
                     .build()
                     .thenAccept(modelRenderable -> addModelToScene(anchor, modelRenderable))
                     .exceptionally(throwable -> {
@@ -55,8 +55,6 @@ public class ARScreen extends AppCompatActivity {
                         return null;
                     });
         });
-
-        paintView = findViewById(R.id.drawingView);
 
         ImageView pencil = findViewById(R.id.pencil);
         pencil.setOnClickListener(new View.OnClickListener() {

@@ -13,22 +13,21 @@
 
     <ImageView
         android:id="@+id/covid"
-        android:layout_width="114dp"
-        android:layout_height="110dp"
+        android:layout_width="111dp"
+        android:layout_height="119dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:src="@drawable/covid19_icon"
-        app:layout_constraintBottom_toTopOf="@+id/button12"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/heart"
-        app:layout_constraintHorizontal_bias="0.644"
+        app:layout_constraintHorizontal_bias="0.719"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.144" />
+        app:layout_constraintVertical_bias="0.133" />
 
     <ImageView
         android:id="@+id/heart"
         android:layout_width="117dp"
-        android:layout_height="121dp"
+        android:layout_height="120dp"
         android:layout_marginStart="60dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="470dp"
@@ -80,7 +79,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button9"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.054" />
 
     <ImageView
         android:id="@+id/lungs"
@@ -105,10 +104,10 @@
         android:id="@+id/button7"
         android:layout_width="73dp"
         android:layout_height="31dp"
-        android:layout_marginStart="96dp"
+        android:layout_marginStart="92dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="440dp"
-        android:background="@color/colorMainTheme"
+        android:layout_marginBottom="437dp"
+        android:background="@drawable/custom_corners"
         android:text="COVID-19"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -122,7 +121,7 @@
         android:layout_height="25dp"
         android:layout_marginStart="84dp"
         android:layout_marginBottom="437dp"
-        android:background="@color/colorMainTheme"
+        android:background="@drawable/custom_corners"
         android:text="HEART"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -137,7 +136,7 @@
         android:layout_marginStart="78dp"
         android:layout_marginEnd="225dp"
         android:layout_marginBottom="256dp"
-        android:background="@color/colorMainTheme"
+        android:background="@drawable/custom_corners"
         android:text="ANTIBODY"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -153,7 +152,7 @@
         android:layout_height="36dp"
         android:layout_marginEnd="68dp"
         android:layout_marginBottom="9dp"
-        android:background="@color/colorMainTheme"
+        android:background="@drawable/custom_corners"
         android:text="BRAIN"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -173,17 +172,17 @@
         android:layout_marginTop="152dp"
         android:layout_marginEnd="214dp"
         android:layout_marginBottom="26dp"
-        android:background="@color/colorMainTheme"
+        android:background="@drawable/custom_corners"
         android:text="SKULL"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintHorizontal_bias="0.641"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/skull"
-        app:layout_constraintVertical_bias="0.629" />
+        app:layout_constraintVertical_bias="0.571" />
 
     <Button
         android:id="@+id/button13"
@@ -193,7 +192,7 @@
         android:layout_marginTop="-219dp"
         android:layout_marginEnd="69dp"
         android:layout_marginBottom="23dp"
-        android:background="@color/colorMainTheme"
+        android:background="@drawable/custom_corners"
         android:text="LUNGS"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"

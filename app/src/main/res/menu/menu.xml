@@ -3,7 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:title="Help"
-        android:icon="@drawable/ic_help"
+        android:icon="@drawable/help_icon"
         android:id="@+id/help2"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:title="Home"
+        android:icon="@drawable/home_icon"
+        android:id="@+id/home"
         app:showAsAction="ifRoom"/>
+
+    <item
+        android:title="Search"
+        android:icon="@drawable/search_icon"
+        android:id="@+id/search"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"/>
 </menu>

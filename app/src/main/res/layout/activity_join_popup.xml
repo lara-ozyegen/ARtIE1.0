@@ -55,7 +55,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="48dp"
-        android:background="#9C27B0"
+        android:background="@drawable/custom_corners"
         android:enabled="false"
         android:text="Join"
         android:textColor="@color/colorWhite"

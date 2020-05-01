@@ -30,21 +30,31 @@ public class Biology extends AppCompatActivity {
 
         appbar = findViewById(R.id.appbar);
         setSupportActionBar(appbar);
+        getSupportActionBar().setTitle("Biology");
     }
+
     public void openPreview() {
         Intent intent = new Intent(this , Preview.class );
         startActivity(intent);
     }
+
     public void openHelp(){
         Intent intent = new Intent(this, HelpScreen.class);
         startActivity(intent);
     }
+
+    public void openHome(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -52,6 +62,10 @@ public class Biology extends AppCompatActivity {
             case R.id.help2:
                 openHelp();
                 return true;
+            case R.id.home:
+                openHome();
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

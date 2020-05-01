@@ -56,7 +56,7 @@
         android:layout_gravity="start"
         android:layout_marginStart="48dp"
         android:layout_marginEnd="48dp"
-        android:background="#9C27B0"
+        android:background="@drawable/custom_corners"
         android:enabled="true"
         android:text="Sıgn ın"
         android:textColor="@color/colorWhite"

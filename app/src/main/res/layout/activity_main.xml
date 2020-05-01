@@ -10,9 +10,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/MainScreen"
-        android:layout_width="413dp"
-        android:layout_height="232dp"
-        android:layout_marginStart="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
         android:background="@color/colorGreen"
         android:gravity="center"
         android:visibility="visible"
@@ -24,8 +23,9 @@
             android:id="@+id/imageView"
             android:layout_width="305dp"
             android:layout_height="102dp"
-            android:layout_marginStart="63dp"
-            android:layout_marginTop="90dp"
+            android:layout_marginTop="112dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.707"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/logo" />
@@ -35,7 +35,7 @@
             android:layout_width="43dp"
             android:layout_height="49dp"
             android:layout_marginEnd="2dp"
-            android:background="@color/colorMainTheme"
+            android:background="@drawable/custom_corners"
             android:scaleType="fitStart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -49,7 +49,9 @@
             android:id="@+id/imageView6"
             android:layout_width="43dp"
             android:layout_height="49dp"
-            android:background="@color/colorMainTheme"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/custom_corners"
             android:scaleType="fitStart"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -57,15 +59,16 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="92dp"
+            android:layout_width="331dp"
+            android:layout_height="113dp"
             android:layout_marginTop="60dp"
             android:gravity="center"
             android:text="WELCOME TO"
             android:textColor="@color/colorWhite"
             android:textSize="36sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
@@ -75,16 +78,18 @@
             android:layout_width="84dp"
             android:layout_height="49dp"
             android:layout_marginStart="284dp"
-            android:background="@color/colorMainTheme"
+            android:background="@drawable/custom_corners"
             android:text="About Us"
             android:textColor="@color/colorWhite"
             android:textColorHighlight="@color/colorWhite"
             android:textColorLink="@color/colorWhite"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
             app:layout_constraintEnd_toStartOf="@+id/help"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -93,8 +98,8 @@
         android:layout_width="218dp"
         android:layout_height="69dp"
         android:layout_marginStart="96dp"
-        android:layout_marginTop="352dp"
-        android:background="@color/colorMainTheme"
+        android:layout_marginTop="336dp"
+        android:background="@drawable/custom_corners"
         android:text="Free Mode"
         android:textAllCaps="true"
         android:textColor="@color/colorWhite"
@@ -109,8 +114,8 @@
         android:layout_width="221dp"
         android:layout_height="69dp"
         android:layout_marginStart="96dp"
-        android:layout_marginTop="460dp"
-        android:background="@color/colorMainTheme"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/custom_corners"
         android:onClick="showPopup"
         android:text="Sessıon Mode"
         android:textAllCaps="true"
@@ -119,6 +124,6 @@
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/freeSession" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
