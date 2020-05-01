@@ -15,14 +15,18 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 
 import com.example.artie10.ui.login.JoinPopup;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
 
     private Button button;
     private Button button2;
+    private Button sessionButton;
     private ImageButton imageButton;
     private ImageButton imageButton2;
+    private FirebaseAuth mFirebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +63,16 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 openAboutUs();
             }
         });
+
+        sessionButton = (Button)findViewById(R.id.sessionMode);
+        sessionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openLoginScreen();
+            }
+        });
+
+        mFirebaseAuth = FirebaseAuth.getInstance();
     }
     public void showPopup(View v) {
         PopupMenu popup = new PopupMenu(this, v);
@@ -71,10 +85,10 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.newSession:
-                openCategories();
+                openLoginScreen();
                 return true;
             case R.id.joinSession:
-                openLogin();
+                openLoginScreen();
                 return true;
             default:
                 return false;
@@ -91,6 +105,11 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     }
     public void openLogin() {
         Intent intent = new Intent(this, JoinPopup.class);
+        startActivity(intent);
+    }
+
+    public void openLoginScreen() {
+        Intent intent = new Intent(this, LoginScreen.class);
         startActivity(intent);
     }
 

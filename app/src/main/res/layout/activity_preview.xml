@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:text="The heart is a muscular in most animals which pumps blood trough veins."
+        android:text="The heart is a muscular organ in most animals which pumps blood trough veins."
         android:textSize="18sp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"

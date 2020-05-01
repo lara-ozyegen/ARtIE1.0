@@ -3,6 +3,8 @@ apply plugin: 'com.google.ar.sceneform.plugin'
 apply plugin: 'com.google.gms.google-services'
 
 
+
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -32,7 +34,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'com.google.android.material:material:1.0.0'
@@ -45,15 +46,23 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    implementation 'com.google.firebase:firebase-analytics:17.4.0'
+    implementation 'com.google.firebase:firebase-auth:19.3.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.gms:play-services-games:19.0.0'
+    implementation 'com.google.android.gms:play-services-auth:18.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }
 
 apply plugin: 'com.google.ar.sceneform.plugin'
 
-sceneform.asset('sampledata/1410 Heart.obj', // 'Source Asset Path' specified during import.
+sceneform.asset('sampledata/heartretop9.fbx', // 'Source Asset Path' specified during import.
         'default',                    // 'Material Path' specified during import.
         'sampledata/1410 Heart.sfa', // '.sfa Output Path' specified during import.
         'src/main/assets/1410 Heart')     // '.sfb Output Path' specified during import
+
+sceneform.asset('sampledata/heartretop9.fbx', // 'Source Asset Path' specified during import.
+        'default',                    // 'Material Path' specified during import.
+        'sampledata/heartretop9.sfa', // '.sfa Output Path' specified during import.
+        'src/main/assets/heartretop9')      // '.sfb Output Path' specified during import
 
