@@ -5,7 +5,8 @@
     android:id="@+id/relativeLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteY="25dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/MainScreen"
@@ -33,13 +34,15 @@
             android:id="@+id/help"
             android:layout_width="43dp"
             android:layout_height="49dp"
-            android:layout_marginStart="368dp"
-            android:layout_marginBottom="183dp"
+            android:layout_marginEnd="2dp"
             android:background="@color/colorMainTheme"
             android:scaleType="fitStart"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@android:drawable/ic_menu_help" />
 
         <ImageButton
@@ -78,6 +81,8 @@
             android:textColorHighlight="@color/colorWhite"
             android:textColorLink="@color/colorWhite"
             android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/help"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -88,7 +93,7 @@
         android:layout_width="218dp"
         android:layout_height="69dp"
         android:layout_marginStart="96dp"
-        android:layout_marginTop="408dp"
+        android:layout_marginTop="352dp"
         android:background="@color/colorMainTheme"
         android:text="Free Mode"
         android:textAllCaps="true"
@@ -104,7 +109,7 @@
         android:layout_width="221dp"
         android:layout_height="69dp"
         android:layout_marginStart="96dp"
-        android:layout_marginTop="308dp"
+        android:layout_marginTop="460dp"
         android:background="@color/colorMainTheme"
         android:onClick="showPopup"
         android:text="Sessıon Mode"
