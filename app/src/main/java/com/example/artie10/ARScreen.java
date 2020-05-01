@@ -84,12 +84,24 @@ public class ARScreen extends AppCompatActivity {
 
     public void ScreenshotButton( View view) {
         //take screenshot
-        View view1 = getWindow().getDecorView().getRootView();
-        //View view1 = findViewById(R.id.relativeLayout2);
+
+        //View rootView = getWindow().getDecorView().findViewById(android.R.id.content);
+        ////View screenView = findViewById(R.id.relativeLayout2).getRootView();
+        //View screenView = view.getRootView();
+        ////screenView.setDrawingCacheEnabled(true);
+
+        View view1 = view.getRootView();
         view1.setDrawingCacheEnabled(true);
 
+        int height = view1.getHeight();
+        int width = view1.getWidth();
+        view1.layout(0,0,width,height);
+        view1.buildDrawingCache(true);
+
         //create bitmap to draw the screenshot
-        Bitmap bitmap = Bitmap.createBitmap(view1.getDrawingCache());
+        ////Bitmap bitmap = Bitmap.createBitmap(screenView.getDrawingCache());
+        ////screenView.setDrawingCacheEnabled(false);
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         Drawable bgDrawable = view.getBackground();
         if (bgDrawable != null)
@@ -97,7 +109,6 @@ public class ARScreen extends AppCompatActivity {
         else
             canvas.drawColor(Color.WHITE);
         view.draw(canvas);
-        view1.setDrawingCacheEnabled(false);
 
         //create file
         String filePath = Environment.getExternalStorageDirectory()+"/Download/"+ Calendar.getInstance().getTime().toString() + ".jpg";
