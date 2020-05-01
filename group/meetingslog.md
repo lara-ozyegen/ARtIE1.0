@@ -75,7 +75,7 @@ https://www.youtube.com/watch?v=iPjT8-hpi_A - how to link android studio to fire
 ****
 ### Meeting ~ (28/04/2020, 17.30 - 20.00)
 ****
-**Present:** Yaren, Sarper, Lara, Berk, Öykü          **Absent:**
+**Present:** Yaren, Sarper, Lara, Berk, Öykü          **Absent:** Onur, Enis
 
 **Discussion:**
 We talked about what left to complete our application and shared tasks.
@@ -90,3 +90,41 @@ Lara --- Screenshot in AR screen
 Öykü --- Toolbar
 
 Yaren --- Models
+
+
+****
+### Meeting ~ (29/04/2020)
+****
+**Present:**        **Absent:** 
+
+**Discussion:**
+We talked about what left to complete our application and shared tasks.
+
+**ToDo**
+
+
+
+****
+### Meeting ~ (30/04/2020)
+****
+**Present:** Öykü, Lara, Sarper, Berk, Yaren      **Absent:** 
+
+**Discussion:**
+We kept going on with our tasks.
+
+**ToDo**
+
+
+
+****
+### Meeting ~ (01/05/2020, 11:00 - 17:00)
+****
+**Present:** Öykü, Lara, Sarper, Berk, Yaren, Onur -first one hour-       **Absent:** Onur, Enis
+
+**Discussion:**
+We discussed about the screen sharing feature of our application, did a little research.
+
+**What we did:**
+Lara and I swapped tasks because we were stuck. Yaren was working on the firebase login activity, she also got stuck at one part but we are planning to finish it tonight. Öykü added the toolbar, it works fine but we have to add the search and homepage buttons. Berk added some parts to the main screen and tried to change every page with scroll view. I guess he also faced some problems at that part so we will look at it together later on. Lara and I made some little changes but most of our time spent was on paint and screenshot features but we still couldn't fix it. Paint opens in a new activity, we tried to make it a fragment but we still couldn't fix it. Screenshot takes a blank white screenshot.
+
+**ToDo**
