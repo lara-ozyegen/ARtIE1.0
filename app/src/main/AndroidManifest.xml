@@ -28,6 +28,9 @@
             android:theme="@style/AppTheme.CustomTheme" />
         <activity android:name=".added_popup" />
         <activity
+            android:name=".Registeration"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity
             android:name=".ARScreen"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
@@ -53,6 +56,9 @@
         </activity>
         <activity
             android:name=".ui.login.JoinPopup"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity
+            android:name=".LoginScreen"
             android:theme="@style/AppTheme.CustomTheme" />
 
         <meta-data
