@@ -8,8 +8,9 @@
     android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="673dp"
+        android:layout_height="wrap_content"
         android:fillViewport="true">
 
         <LinearLayout
@@ -57,10 +58,14 @@
 
             <TextView
                 android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="622dp"
-                android:text="evet buraya bir takım açıklamalar ve o tarz aşırı cool şeylerevet buraya bir takım açıklamalar ve o tarz aşırı cool şeylerevet buraya bir takım açıklamalar ve o tarz aşırı cool şeylerevet buraya bir takım açıklamalar ve o tarz aşırı cool şeylerevet buraya bir takım açıklamalar ve o tarz aşırı cool şeylerevet buraya bir takım açıklamalar ve o tarz aşırı cool şeylerevet buraya bir takım açıklamalar ve o tarz aşırı cool şeylerevet buraya bir takım açıklamalar ve o tarz aşırı cool şeyler"
-                android:textSize="36sp" />
+                android:layout_width="384dp"
+                android:layout_height="900dp"
+                android:baselineAligned="false"
+                android:text="\n  Free Mode: Access the   models without internet connection. Choose your category and model.\n\nSession Mode: Join or create a session. Others can join your session with unique ID or you can join other sessions with ID.\n\nWhen you choose a mode, you can choose any categories you want and then models related the category.\n\nYou can display model real-time, resize or remove it.\n\nWith using the buttons below you can take screenshots or draw on the screen."
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
