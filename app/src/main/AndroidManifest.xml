@@ -24,6 +24,9 @@
             android:name=".ARScreen"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
+            android:name=".PaintActivity"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity
             android:name=".Preview"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
@@ -32,7 +35,8 @@
         <activity
             android:name=".Categories"
             android:theme="@style/AppTheme2" />
-        <activity android:name=".Biology" />
+        <activity android:name=".Biology"
+            android:theme="@style/AppTheme2"/>
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme">

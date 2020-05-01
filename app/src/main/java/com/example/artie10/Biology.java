@@ -9,11 +9,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 
-public class Biology extends Activity {
+public class Biology extends AppCompatActivity {
     Toolbar appbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +27,9 @@ public class Biology extends Activity {
                 openPreview();
             }
         } );
+
         appbar = findViewById(R.id.appbar);
-        //setActionBar(appbar);
+        setSupportActionBar(appbar);
     }
     public void openPreview() {
         Intent intent = new Intent(this , Preview.class );

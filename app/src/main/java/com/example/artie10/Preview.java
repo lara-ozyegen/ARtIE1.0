@@ -7,7 +7,9 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 
-public class Preview extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class Preview extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

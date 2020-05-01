@@ -3,8 +3,17 @@ package com.example.artie10;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Intent;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import com.google.ar.core.Anchor;
 import com.google.ar.sceneform.AnchorNode;
@@ -15,6 +24,7 @@ import com.google.ar.sceneform.ux.TransformableNode;
 public class ARScreen extends AppCompatActivity {
 
     private ArFragment arFragment;
+    private PaintView paintView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +44,15 @@ public class ARScreen extends AppCompatActivity {
                         return null;
                     });
         });
+
+        ImageView imageView = (ImageView) findViewById(R.id.pencil);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openPaint();
+            }
+        });
+
     }
 
     private void addModelToScene(Anchor anchor, ModelRenderable modelRenderable) {
@@ -44,4 +63,10 @@ public class ARScreen extends AppCompatActivity {
         arFragment.getArSceneView().getScene().addChild(anchorNode);
         transformableNode.select();
     }
+
+    public void openPaint(){
+        Intent intent = new Intent( this, PaintActivity.class);
+        startActivity(intent);
+    }
+
 }

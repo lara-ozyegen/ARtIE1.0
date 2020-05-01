@@ -7,6 +7,9 @@
     android:layout_height="match_parent"
     tools:context=".Biology">
 
+    <include
+        android:id="@+id/appbar"
+        layout="@layout/appbar"></include>
 
     <ImageView
         android:id="@+id/covid"
