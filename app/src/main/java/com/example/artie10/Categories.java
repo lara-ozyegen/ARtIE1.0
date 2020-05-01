@@ -77,6 +77,7 @@ public class Categories extends AppCompatActivity {
         Intent intent = new Intent(this, HelpScreen.class);
         startActivity(intent);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

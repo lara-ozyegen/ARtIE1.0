@@ -3,6 +3,9 @@ package com.example.artie10;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -87,6 +90,13 @@ public class ARScreen extends AppCompatActivity {
 
         //create bitmap to draw the screenshot
         Bitmap bitmap = Bitmap.createBitmap(view1.getDrawingCache());
+        Canvas canvas = new Canvas(bitmap);
+        Drawable bgDrawable = view.getBackground();
+        if (bgDrawable != null)
+            bgDrawable.draw(canvas);
+        else
+            canvas.drawColor(Color.WHITE);
+        view.draw(canvas);
         view1.setDrawingCacheEnabled(false);
 
         //create file
