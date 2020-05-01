@@ -31,9 +31,6 @@
             android:name=".ARScreen"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
-            android:name=".PaintActivity"
-            android:theme="@style/AppTheme.CustomTheme" />
-        <activity
             android:name=".Preview"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity

@@ -46,6 +46,11 @@
         app:layout_constraintTop_toTopOf="@+id/pencil"
         app:srcCompat="@android:drawable/ic_menu_camera" />
 
+    <com.swap.handdrawing.DrawingView
+        android:id="@+id/drawingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 
 
 

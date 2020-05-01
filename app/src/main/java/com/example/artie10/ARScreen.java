@@ -34,6 +34,7 @@ public class ARScreen extends AppCompatActivity {
 
     private ArFragment arFragment;
     private ImageView pencil;
+    private PaintView paintView;
 
 
     @Override
@@ -55,11 +56,12 @@ public class ARScreen extends AppCompatActivity {
                     });
         });
 
+        paintView = findViewById(R.id.drawingView);
+
         ImageView pencil = findViewById(R.id.pencil);
         pencil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openPaint();
             }
         });
 
@@ -133,10 +135,6 @@ public class ARScreen extends AppCompatActivity {
         this.startActivity(intent);
     }
 
-    public void openPaint(){
-        Intent intent = new Intent(this,PaintActivity.class);
-        startActivity(intent);
-    }
 
 
 }
