@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -29,6 +30,7 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 public class ARScreen extends AppCompatActivity {
 
     private ArFragment arFragment;
+    private ImageView pencil;
 
 
     @Override
@@ -49,6 +51,15 @@ public class ARScreen extends AppCompatActivity {
                         return null;
                     });
         });
+
+        ImageView pencil = findViewById(R.id.pencil);
+        pencil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openPaint();
+            }
+        });
+
 
         ActivityCompat.requestPermissions(this, new String[] {
             WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, PERMISSION_GRANTED);
@@ -99,6 +110,11 @@ public class ARScreen extends AppCompatActivity {
         intent.setDataAndType(uri,"image/.jpeg");
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         this.startActivity(intent);
+    }
+
+    public void openPaint(){
+        Intent intent = new Intent(this,PaintActivity.class);
+        startActivity(intent);
     }
 
 
