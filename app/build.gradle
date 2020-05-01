@@ -56,3 +56,4 @@ sceneform.asset('sampledata/1410 Heart.obj', // 'Source Asset Path' specified du
         'default',                    // 'Material Path' specified during import.
         'sampledata/1410 Heart.sfa', // '.sfa Output Path' specified during import.
         'src/main/assets/1410 Heart')     // '.sfb Output Path' specified during import
+

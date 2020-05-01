@@ -20,8 +20,9 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
 
     private Button button;
+    private Button button2;
     private ImageButton imageButton;
-
+    private ImageButton imageButton2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,14 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             }
         });
 
+        imageButton2 = (ImageButton)findViewById(R.id.imageView6);
+        imageButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openProfile();
+            }
+        });
+
         button = (Button)findViewById(R.id.freeSession);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +52,13 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             }
 
         });
-
+        button2 = (Button)findViewById(R.id.aboutUs);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAboutUs();
+            }
+        });
     }
     public void showPopup(View v) {
         PopupMenu popup = new PopupMenu(this, v);
@@ -79,5 +94,14 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         startActivity(intent);
     }
 
+    public void openAboutUs(){
 
+        Intent intent = new Intent(this, AboutUs.class);
+        startActivity(intent);
+    }
+
+    public void openProfile(){
+        Intent intent = new Intent(this, Profile.class);
+        startActivity(intent);
+    }
 }

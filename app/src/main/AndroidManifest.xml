@@ -3,8 +3,8 @@
     package="com.example.artie10">
 
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <uses-feature
         android:name="android.hardware.camera.ar"
@@ -22,8 +22,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
-        <activity android:name=".added_popup"></activity>
-
+        <activity android:name=".Profile"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity android:name=".AboutUs"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity android:name=".added_popup" />
         <activity
             android:name=".ARScreen"
             android:theme="@style/AppTheme.CustomTheme" />
@@ -39,8 +42,9 @@
         <activity
             android:name=".Categories"
             android:theme="@style/AppTheme2" />
-        <activity android:name=".Biology"
-            android:theme="@style/AppTheme2"/>
+        <activity
+            android:name=".Biology"
+            android:theme="@style/AppTheme2" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme">
