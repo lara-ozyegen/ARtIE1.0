@@ -95,10 +95,10 @@ Yaren --- Models
 ****
 ### Meeting ~ (29/04/2020)
 ****
-**Present:**        **Absent:** 
+**Present:** Everyone       **Absent:** 
 
 **Discussion:**
-We talked about what left to complete our application and shared tasks.
+Lara add the screenshot feature but it shows black screen. Sarper added drawing feature but it does not work as expected because he did this by opening a new activity. Öykü added toolbar to Categories and Biology. Yaren tried to add another heart model. Onur and Yaren searhed how to create account using firebase.
 
 **ToDo**
 
@@ -110,7 +110,7 @@ We talked about what left to complete our application and shared tasks.
 **Present:** Öykü, Lara, Sarper, Berk, Yaren      **Absent:** 
 
 **Discussion:**
-We kept going on with our tasks.
+We planned 
 
 **ToDo**
 
@@ -125,6 +125,6 @@ We kept going on with our tasks.
 We discussed about the screen sharing feature of our application, did a little research.
 
 **What we did:**
-Lara and I swapped tasks because we were stuck. Yaren was working on the firebase login activity, she also got stuck at one part but we are planning to finish it tonight. Öykü added the toolbar, it works fine but we have to add the search and homepage buttons. Berk added some parts to the main screen and tried to change every page with scroll view. I guess he also faced some problems at that part so we will look at it together later on. Lara and I made some little changes but most of our time spent was on paint and screenshot features but we still couldn't fix it. Paint opens in a new activity, we tried to make it a fragment but we still couldn't fix it. Screenshot takes a blank white screenshot.
+Lara and Sarper swapped tasks because they were stuck. Yaren worked on the firebase login activity, she also got stuck at one part but we are planning to finish it tonight. Öykü added the toolbar, it works fine but we have to add the search and homepage buttons. Berk added some parts to the main screen and tried to change every page with scroll view. We guess he also faced some problems at that part so we will look at it together later on. Lara and Sarper made some little changes but most of our time spent was on paint and screenshot features but we still couldn't fix it. Paint opens in a new activity, we tried to make it a fragment but we still couldn't fix it. Screenshot takes a blank white screenshot.
 
 **ToDo**
