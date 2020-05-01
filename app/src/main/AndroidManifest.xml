@@ -22,11 +22,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
-        <activity android:name=".Profile"
+        <activity
+            android:name=".Profile"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".AboutUs"
+        <activity
+            android:name=".AboutUs"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".added_popup" />
         <activity
             android:name=".Registeration"
             android:theme="@style/AppTheme.CustomTheme" />

@@ -44,7 +44,7 @@ public class ARScreen extends AppCompatActivity {
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
             Anchor anchor = hitResult.createAnchor();
             ModelRenderable.builder()
-                    .setSource(this, Uri.parse("heartretop9.fbx"))
+                    .setSource(this, Uri.parse("1410 Heart.sfb"))
                     .build()
                     .thenAccept(modelRenderable -> addModelToScene(anchor, modelRenderable))
                     .exceptionally(throwable -> {
@@ -102,13 +102,14 @@ public class ARScreen extends AppCompatActivity {
         ////Bitmap bitmap = Bitmap.createBitmap(screenView.getDrawingCache());
         ////screenView.setDrawingCacheEnabled(false);
         Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        Drawable bgDrawable = view.getBackground();
-        if (bgDrawable != null)
+        view1.buildDrawingCache(false);
+        Canvas canvas = new Canvas( bitmap);
+        Drawable bgDrawable = view1.getBackground();
+        //if (bgDrawable != null)
             bgDrawable.draw(canvas);
-        else
-            canvas.drawColor(Color.WHITE);
-        view.draw(canvas);
+        //else
+            canvas.drawColor(Color.TRANSPARENT);
+        view1.draw( canvas);
 
         //create file
         String filePath = Environment.getExternalStorageDirectory()+"/Download/"+ Calendar.getInstance().getTime().toString() + ".jpg";
