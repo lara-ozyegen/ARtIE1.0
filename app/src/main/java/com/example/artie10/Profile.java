@@ -43,13 +43,15 @@ public class Profile extends AppCompatActivity {
                 .getCredential("user@example.com", "password1234");
 
         // Prompt the user to re-provide their sign-in credentials
-        user.reauthenticate(credential)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        user.delete();
-                        Toast.makeText(Profile.this, "DELETED", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        if (user != null) {
+            user.reauthenticate(credential)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            user.delete();
+                            Toast.makeText(Profile.this, "DELETED", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
     }
 }

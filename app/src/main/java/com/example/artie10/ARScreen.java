@@ -89,7 +89,7 @@ public class ARScreen extends AppCompatActivity {
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
             Anchor anchor = hitResult.createAnchor();
             ModelRenderable.builder()
-                    .setSource(this, Uri.parse("1410 Heart.sfb"))
+                    .setSource(this, Uri.parse("Human Heart.sfb"))
                     .build()
                     .thenAccept(modelRenderable -> addModelToScene(anchor, modelRenderable))
                     .exceptionally(throwable -> {
@@ -187,7 +187,7 @@ public class ARScreen extends AppCompatActivity {
         //View screenView = view.getRootView();
         ////screenView.setDrawingCacheEnabled(true);
 
-        View view1 = view.getRootView();
+        View view1 = getWindow().getDecorView().getRootView();
         view1.setDrawingCacheEnabled(true);
 
         int height = view1.getHeight();
