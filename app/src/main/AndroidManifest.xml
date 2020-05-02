@@ -24,6 +24,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
 
+
         <activity
             android:name=".LoginScreen"
             android:theme="@style/AppTheme.CustomTheme"/>
@@ -48,7 +49,8 @@
         <activity
             android:name=".Categories"
             android:theme="@style/AppTheme2" />
-        <activity android:name=".Biology"
+        <activity
+            android:name=".Biology"
             android:theme="@style/AppTheme2"/>
         <activity
             android:name=".MainActivity"

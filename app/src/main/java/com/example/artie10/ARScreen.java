@@ -86,6 +86,7 @@ public class ARScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_a_r_screen);
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
+        assert arFragment != null;
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
             Anchor anchor = hitResult.createAnchor();
             ModelRenderable.builder()
@@ -200,12 +201,12 @@ public class ARScreen extends AppCompatActivity {
         ////screenView.setDrawingCacheEnabled(false);
         Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
-        Drawable bgDrawable = view.getBackground();
+        Drawable bgDrawable = view1.getBackground();
         if (bgDrawable != null)
             bgDrawable.draw(canvas);
         else
             canvas.drawColor(Color.WHITE);
-        view.draw(canvas);
+        view1  .draw(canvas);
 
         //create file
         String filePath = Environment.getExternalStorageDirectory()+"/Download/"+ Calendar.getInstance().getTime().toString() + ".jpg";
@@ -253,6 +254,7 @@ public class ARScreen extends AppCompatActivity {
     private void stopRecordScreen() {
         if(virtualDisplay == null)
             return;
+
         virtualDisplay.release();
         destroyMediaProjection();
     }
