@@ -11,7 +11,7 @@
         layout="@layout/appbar"></include>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/logOutButton"
         android:layout_width="129dp"
         android:layout_height="55dp"
         android:layout_marginStart="144dp"
@@ -46,7 +46,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editUsername"
         android:layout_width="213dp"
         android:layout_height="53dp"
         android:layout_marginStart="152dp"
@@ -64,10 +64,11 @@
         android:layout_marginTop="68dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/custom_corners"
         app:srcCompat="@drawable/pp" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/editEmail"
         android:layout_width="221dp"
         android:layout_height="60dp"
         android:layout_marginStart="152dp"

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,11 +19,26 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Profile extends AppCompatActivity {
     private Button delete_button;
+    private FirebaseAuth mFirebaseAuth;
+    private EditText mailText;
+    private Button logOutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        mFirebaseAuth = FirebaseAuth.getInstance();
+
+        //getting the user's credentials and inserting them
+        mailText = findViewById(R.id.editEmail);
+        if( mFirebaseAuth.getCurrentUser().getEmail() != null ) {
+            mailText.setText(mFirebaseAuth.getCurrentUser().getEmail());
+            mailText.setEnabled(false);
+        }
+
+        logOutButton = (Button) findViewById( R.id.logOutButton);
+        logOutButton.setEnabled(false);
 
         delete_button = (Button) findViewById( R.id.delete);
         delete_button.setOnClickListener(new View.OnClickListener() {
