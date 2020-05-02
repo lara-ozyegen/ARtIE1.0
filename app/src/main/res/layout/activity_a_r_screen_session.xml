@@ -46,6 +46,7 @@
         app:layout_constraintTop_toTopOf="@+id/pencil"
         app:srcCompat="@android:drawable/ic_menu_camera" />
 
+
     <ToggleButton
         android:id="@+id/toggleButton"
         android:layout_width="wrap_content"
@@ -54,23 +55,41 @@
         android:textOn="record:on"
         app:layout_constraintBottom_toBottomOf="@+id/arFragment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.978"
+        app:layout_constraintHorizontal_bias="0.904"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.973" />
-
 
     <VideoView
         android:id="@+id/videoView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="invisible"
-        />
+        android:visibility="invisible" />
 
+    <TextView
+        android:id="@+id/session_id"
+        android:layout_width="187dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="196dp"
+        android:background="#40373232"
+        android:text="Session ID: "
+        android:textAlignment="center"
+        android:textColor="#B3FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-
-
-
+    <ImageButton
+        android:id="@+id/info_button"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="40dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_info_details" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

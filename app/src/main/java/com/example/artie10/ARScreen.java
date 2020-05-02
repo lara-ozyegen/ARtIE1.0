@@ -55,6 +55,7 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 public class ARScreen extends AppCompatActivity {
 
+    //properties
     private ArFragment arFragment;
     private ImageView pencil;
     private VideoView videoView;
@@ -81,10 +82,12 @@ public class ARScreen extends AppCompatActivity {
         ORIENTATIONS.append(Surface.ROTATION_180,270);
         ORIENTATIONS.append(Surface.ROTATION_270,180);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_a_r_screen);
+
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
         assert arFragment != null;
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
@@ -236,7 +239,7 @@ public class ARScreen extends AppCompatActivity {
         startActivity(intent);
     }
 
-
+    //Screen recording
     private class MediaProjectionCallBack extends MediaProjection.Callback {
         @Override
         public void onStop() {
@@ -295,16 +298,16 @@ public class ARScreen extends AppCompatActivity {
                     + new StringBuilder("/EDMTRecord_").append(new SimpleDateFormat("dd-MM-yyyy-hh_mm_ss")
             .format(new Date())).append(" .mp4").toString();
 
-            mediaRecorder.setOutputFile(videoURI);
-            mediaRecorder.setVideoSize(DISPLAY_WIDTH, DISPLAY_HEIGHT);
-            mediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
-            mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-            mediaRecorder.setVideoEncodingBitRate(512*1000);
-            mediaRecorder.setVideoFrameRate(30);
+            mediaRecorder.setOutputFile( videoURI);
+            mediaRecorder.setVideoSize( DISPLAY_WIDTH, DISPLAY_HEIGHT);
+            mediaRecorder.setVideoEncoder( MediaRecorder.VideoEncoder.H264);
+            mediaRecorder.setAudioEncoder( MediaRecorder.AudioEncoder.AMR_NB);
+            mediaRecorder.setVideoEncodingBitRate( 512 * 1000);
+            mediaRecorder.setVideoFrameRate( 30);
 
             int rotation = getWindowManager().getDefaultDisplay().getRotation();
-            int orientation = ORIENTATIONS.get(rotation*90);
-            mediaRecorder.setOrientationHint(orientation);
+            int orientation = ORIENTATIONS.get( rotation * 90);
+            mediaRecorder.setOrientationHint( orientation);
             mediaRecorder.prepare();
 
         } catch (IOException e) {

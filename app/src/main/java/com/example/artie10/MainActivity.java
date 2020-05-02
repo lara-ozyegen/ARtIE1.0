@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     private ImageButton imageButton;
     private ImageButton imageButton2;
     private FirebaseAuth mFirebaseAuth;
-
+    private static boolean path;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,16 +72,17 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             }
         });
 
-        sessionButton = (Button)findViewById(R.id.sessionMode);
+        sessionButton = (Button) findViewById(R.id.sessionMode);
         sessionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openLoginScreen();
+                path = false;
             }
         });
 
         mFirebaseAuth = FirebaseAuth.getInstance();
-
+        path = true;
 
 }
     public void showPopup(View v) {
@@ -123,16 +124,22 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         startActivity(intent);
     }
 
-    public void openAboutUs(){
-
+    public void openAboutUs() {
         Intent intent = new Intent(this, AboutUs.class);
         startActivity(intent);
     }
 
-    public void openProfile(){
+    public void openProfile() {
         Intent intent = new Intent(this, Profile.class);
         startActivity(intent);
     }
 
+    /**
+     * Gives information about the path that the user choose.
+     * @return boolean (if freemode is clicked true else false)
+     */
+    public static boolean getPath() {
+        return path;
+    }
 
 }

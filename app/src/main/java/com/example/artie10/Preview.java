@@ -24,11 +24,25 @@ public class Preview extends AppCompatActivity {
         getWindow().setLayout((int) (width*.8), (int) (height*.8));
 
         Button b = (Button) findViewById( R.id.ar_button);
-        b.setOnClickListener(v -> openAR());
+        b.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick( View v) {
+                if ( MainActivity.getPath())
+                    openAR();
+                else
+                    openSessionAR();
+            }
+        });
+
 
     }
     public void openAR(){
         Intent intent = new Intent(this, ARScreen.class);
+        startActivity( intent);
+    }
+
+    public void openSessionAR() {
+        Intent intent = new Intent(this, ARScreenSession.class);
         startActivity( intent);
     }
 

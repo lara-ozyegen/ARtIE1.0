@@ -3,8 +3,6 @@ apply plugin: 'com.google.ar.sceneform.plugin'
 apply plugin: 'com.google.gms.google-services'
 
 
-
-
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -59,6 +57,4 @@ sceneform.asset('sampledata/Human Heart.obj', // 'Source Asset Path' specified d
         'default',                    // 'Material Path' specified during import.
         'sampledata/Human Heart.sfa', // '.sfa Output Path' specified during import.
         'src/main/assets/Human Heart')     // '.sfb Output Path' specified during import
-
-
 
