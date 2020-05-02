@@ -1,10 +1,10 @@
 {
   materials: [
     {
-      name: 'Mat',
+      name: '01_-_Default',
       parameters: [
         {
-          baseColor: '1410 Heart',
+          baseColor: 'HumanHeart-color',
         },
         {
           baseColorTint: [
@@ -15,10 +15,10 @@
           ],
         },
         {
-          metallic: 0,
+          metallic: 1,
         },
         {
-          roughness: 1,
+          roughness: 0.50636999999999999,
         },
         {
           opacity: null,
@@ -34,16 +34,24 @@
       'Orientation',
     ],
     collision: {},
-    file: 'sampledata/1410 Heart.obj',
-    name: '1410 Heart',
+    file: 'sampledata/Human Heart.obj',
+    name: 'Human Heart',
     recenter: 'root',
-    scale: 0.024570999999999999,
+    scale: 0.086945999999999996,
   },
   samplers: [
     {
-      file: 'sampledata\\1410 Heart.png',
-      name: '1410 Heart',
-      pipeline_name: '1410 Heart.png',
+      file: 'sampledata\\HumanHeart-color.jpg',
+      name: 'HumanHeart-color',
+      pipeline_name: 'HumanHeart-color.jpg',
+    },
+    {
+      file: 'sampledata\\HumanHeart-bump.jpg',
+      name: 'HumanHeart-bump',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'HumanHeart-bump.jpg',
     },
   ],
   version: '0.54:2',

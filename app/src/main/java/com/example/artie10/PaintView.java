@@ -13,7 +13,6 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelStoreOwner;
 
 import com.example.artie10.FingerPath;
 
@@ -44,7 +43,7 @@ public class PaintView extends View {
     }
 
     public PaintView(Context context, @Nullable AttributeSet attrs) {
-        super( context, attrs);
+        super(context, attrs);
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setDither(true);
@@ -98,7 +97,7 @@ public class PaintView extends View {
 
     private void touchStart( float x, float y){
         mPath = new Path();
-        FingerPath fp = new FingerPath( currentColor, strokeWidth, mPath);
+        FingerPath fp = new FingerPath(currentColor, strokeWidth, mPath);
         paths.add(fp);
 
         mPath.reset();
@@ -133,12 +132,10 @@ public class PaintView extends View {
                 touchStart(x,y);
                 invalidate();
                 break;
-
             case MotionEvent.ACTION_MOVE:
                 touchMove(x,y);
                 invalidate();
                 break;
-
             case MotionEvent.ACTION_UP:
                 touchUp();
                 invalidate();

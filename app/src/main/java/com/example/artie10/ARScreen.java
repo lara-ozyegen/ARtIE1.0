@@ -34,6 +34,7 @@ public class ARScreen extends AppCompatActivity {
 
     private ArFragment arFragment;
     private ImageView pencil;
+    private PaintView paintView;
 
 
     @Override
@@ -44,7 +45,7 @@ public class ARScreen extends AppCompatActivity {
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
             Anchor anchor = hitResult.createAnchor();
             ModelRenderable.builder()
-                    .setSource(this, Uri.parse("1410 Heart.sfb"))
+                    .setSource(this, Uri.parse("Human Heart.sfb"))
                     .build()
                     .thenAccept(modelRenderable -> addModelToScene(anchor, modelRenderable))
                     .exceptionally(throwable -> {
@@ -59,7 +60,6 @@ public class ARScreen extends AppCompatActivity {
         pencil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openPaint();
             }
         });
 
@@ -135,10 +135,6 @@ public class ARScreen extends AppCompatActivity {
         this.startActivity(intent);
     }
 
-    public void openPaint(){
-        Intent intent = new Intent(this,PaintActivity.class);
-        startActivity(intent);
-    }
 
 
 }
