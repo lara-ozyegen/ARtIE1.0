@@ -117,7 +117,7 @@ We planned
 
 
 ****
-### Meeting ~ (01/05/2020, 11:00 - 17:00)
+### Meeting ~ (01/05/2020, 11:00 - 17:00 & 22:00 - 01:30)
 ****
 **Present:** Öykü, Lara, Sarper, Berk, Yaren, Onur -first one hour-       **Absent:** Onur, Enis
 
@@ -127,4 +127,7 @@ We discussed about the screen sharing feature of our application, did a little r
 **What we did:**
 Lara and Sarper swapped tasks because they were stuck. Yaren worked on the firebase login activity, she also got stuck at one part but we are planning to finish it tonight. Öykü added the toolbar, it works fine but we have to add the search and homepage buttons. Berk added some parts to the main screen and tried to change every page with scroll view. We guess he also faced some problems at that part so we will look at it together later on. Lara and Sarper made some little changes but most of our time spent was on paint and screenshot features but we still couldn't fix it. Paint opens in a new activity, we tried to make it a fragment but we still couldn't fix it. Screenshot takes a blank white screenshot.
 
+Later today I (Sarper) added borders to pop-up screens, and added search and home button to toolbar. Search button works but there is a problem about the look of it I don't know how to describe it. Yaren was able to do the login activity using database, Lara added delete account button to it.
+
 **ToDo**
+!!! Detailed Design Report !!!
