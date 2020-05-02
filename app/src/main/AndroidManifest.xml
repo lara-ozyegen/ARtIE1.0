@@ -23,7 +23,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
-        <activity android:name=".ARScreenSession"></activity>
+        <activity android:name=".ARScreenSession"/>
+        <activity android:name=".AboutUs"
+            android:theme="@style/AppTheme.CustomTheme"/>
         <activity
             android:name=".LoginScreen"
             android:theme="@style/AppTheme.CustomTheme" />

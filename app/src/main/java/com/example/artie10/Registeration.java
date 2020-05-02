@@ -53,7 +53,7 @@ public class Registeration extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if ( task.isSuccessful()){
-                                startActivity( new Intent( Registeration.this, MainActivity.class ) );
+                                startActivity( new Intent( Registeration.this, Categories.class ) );
                             }
                             else{
                                 Toast.makeText( Registeration.this, "Could not create account, please try again.", Toast.LENGTH_SHORT ).show();

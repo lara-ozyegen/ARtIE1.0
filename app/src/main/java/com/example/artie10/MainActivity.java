@@ -76,7 +76,10 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         sessionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openLoginScreen();
+                if( mFirebaseAuth.getCurrentUser() != null)
+                    showPopup(v);
+                else
+                    openLoginScreen();
                 path = false;
             }
         });
@@ -96,10 +99,10 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.newSession:
-                openLoginScreen();
+                openCategories();
                 return true;
             case R.id.joinSession:
-                openLoginScreen();
+                openLogin();
                 return true;
             default:
                 return false;

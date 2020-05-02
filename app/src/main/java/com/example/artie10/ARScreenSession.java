@@ -12,5 +12,5 @@ public class ARScreenSession extends ARScreen {
         setContentView( R.layout.activity_a_r_screen_session);
 
 
-    }
+}
 }
