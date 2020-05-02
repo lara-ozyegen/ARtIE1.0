@@ -28,6 +28,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginScreen extends AppCompatActivity {
 
     private Button signIn;
+
     private EditText password;
     private EditText email;
     private TextView signUpHere;
