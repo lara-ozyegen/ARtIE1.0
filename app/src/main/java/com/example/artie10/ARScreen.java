@@ -109,6 +109,7 @@ public class ARScreen extends AppCompatActivity {
         });
 
 
+
         ActivityCompat.requestPermissions(this, new String[] {
             WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, PERMISSION_GRANTED);
 
