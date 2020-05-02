@@ -55,7 +55,6 @@ dependencies {
 }
 
 
-
 sceneform.asset('sampledata/heartretop9.fbx', // 'Source Asset Path' specified during import.
         'default',                    // 'Material Path' specified during import.
         'sampledata/1410 Heart.sfa', // '.sfa Output Path' specified during import.

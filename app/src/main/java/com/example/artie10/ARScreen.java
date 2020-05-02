@@ -90,7 +90,7 @@ public class ARScreen extends AppCompatActivity {
         //View screenView = view.getRootView();
         ////screenView.setDrawingCacheEnabled(true);
 
-        View view1 = view.getRootView();
+        View view1 = getWindow().getDecorView().getRootView();
         view1.setDrawingCacheEnabled(true);
 
         int height = view1.getHeight();
@@ -108,7 +108,8 @@ public class ARScreen extends AppCompatActivity {
         //if (bgDrawable != null)
             bgDrawable.draw(canvas);
         //else
-            canvas.drawColor(Color.TRANSPARENT);
+           // canvas.drawColor(Color.TRANSPARENT);
+        view1.draw( canvas);
         view1.draw( canvas);
 
         //create file
