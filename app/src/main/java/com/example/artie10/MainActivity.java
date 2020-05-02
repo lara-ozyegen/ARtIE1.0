@@ -42,9 +42,8 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
         imageButton = (ImageButton)findViewById(R.id.help);
         imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-           public void onClick(View v) {
-               openHelp();
+            public void onClick(View v) {
+                openHelp();
             }
         });
 
@@ -52,7 +51,11 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         imageButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openProfile();
+                if( mFirebaseAuth.getCurrentUser() != null)
+                    openProfile();
+                else
+                    openLoginScreen();
+                path = false;
             }
         });
 

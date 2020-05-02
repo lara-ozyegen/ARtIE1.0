@@ -60,7 +60,7 @@
         android:id="@+id/imageView7"
         android:layout_width="124dp"
         android:layout_height="131dp"
-        android:layout_marginStart="148dp"
+        android:layout_marginStart="152dp"
         android:layout_marginTop="68dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
