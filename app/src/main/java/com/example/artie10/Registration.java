@@ -15,7 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Registeration extends AppCompatActivity {
+public class Registration extends AppCompatActivity {
 
     private EditText password;
     private EditText email;
@@ -46,23 +46,23 @@ public class Registeration extends AppCompatActivity {
                     password.requestFocus();
                 }
                 else if ( strEmail.isEmpty() && strPassword.isEmpty() ){
-                    Toast.makeText( Registeration.this, "Fields are empty!", Toast.LENGTH_SHORT ).show();
+                    Toast.makeText( Registration.this, "Fields are empty!", Toast.LENGTH_SHORT ).show();
                 }
                 else if ( !( strEmail.isEmpty() && strPassword.isEmpty() ) ){
-                    mFirebaseAuth.createUserWithEmailAndPassword( strEmail, strPassword ).addOnCompleteListener(Registeration.this, new OnCompleteListener<AuthResult>() {
+                    mFirebaseAuth.createUserWithEmailAndPassword( strEmail, strPassword ).addOnCompleteListener(Registration.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if ( task.isSuccessful()){
-                                startActivity( new Intent( Registeration.this, Categories.class ) );
+                                startActivity( new Intent( Registration.this, Categories.class ) );
                             }
                             else{
-                                Toast.makeText( Registeration.this, "Could not create account, please try again.", Toast.LENGTH_SHORT ).show();
+                                Toast.makeText( Registration.this, "Could not create account, please try again.", Toast.LENGTH_SHORT ).show();
                             }
                         }
                     });
                 }
                 else{
-                    Toast.makeText( Registeration.this, "Nani??! Some error??!", Toast.LENGTH_SHORT ).show();
+                    Toast.makeText( Registration.this, "Nani??! Some error??!", Toast.LENGTH_SHORT ).show();
                 }
             }
         });

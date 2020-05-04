@@ -30,7 +30,7 @@
             android:name=".LoginScreen"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
-            android:name=".Registeration"
+            android:name=".Registration"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".Profile"
@@ -62,9 +62,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.login.JoinPopup"
-            android:theme="@style/AppTheme.CustomTheme" />
 
         <meta-data
             android:name="com.google.ar.core"
