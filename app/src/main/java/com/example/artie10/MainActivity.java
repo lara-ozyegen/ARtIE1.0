@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             @Override
             public void onClick(View v) {
                 openCategories();
+                path = true;
             }
 
         });
@@ -88,7 +89,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         });
 
         mFirebaseAuth = FirebaseAuth.getInstance();
-        path = true;
 
 }
     public void showPopup(View v) {
