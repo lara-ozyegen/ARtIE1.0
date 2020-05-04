@@ -1,11 +1,8 @@
 package com.example.artie10;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,13 +12,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.artie10.ui.login.JoinPopup;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.tabs.TabLayout;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -112,7 +106,7 @@ public class LoginScreen extends AppCompatActivity {
     }
 
     public void openRegisteration() {
-        Intent i = new Intent(LoginScreen.this, Registeration.class );
+        Intent i = new Intent(LoginScreen.this, Registration.class );
         startActivity( i );
     }
 

@@ -16,7 +16,6 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import com.example.artie10.ui.login.JoinPopup;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -105,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 openCategories();
                 return true;
             case R.id.joinSession:
-                openLogin();
+                //openLogin();
                 return true;
             default:
                 return false;
@@ -120,11 +119,12 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         Intent intent = new Intent(this, Categories.class);
         startActivity(intent);
     }
+    /*
     public void openLogin() {
         Intent intent = new Intent(this, JoinPopup.class);
         startActivity(intent);
     }
-
+     */
     public void openLoginScreen() {
         Intent intent = new Intent(this, LoginScreen.class);
         startActivity(intent);
