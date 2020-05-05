@@ -3,6 +3,7 @@ package com.example.artie10;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -37,9 +38,6 @@ public class Profile extends AppCompatActivity {
             mailText.setEnabled(false);
         }
 
-        logOutButton = (Button) findViewById( R.id.logOutButton);
-        logOutButton.setEnabled(false);
-
         delete_button = (Button) findViewById( R.id.delete);
         delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +45,15 @@ public class Profile extends AppCompatActivity {
                 deleteAccount();
             }
         });
+
+        logOutButton = (Button) findViewById( R.id.logOutButton );
+        logOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logOut();
+            }
+        });
+
     }
 
     public void deleteAccount() {
@@ -69,5 +76,18 @@ public class Profile extends AppCompatActivity {
                         }
                     });
         }
+    }
+
+    public void logOut(){
+        mFirebaseAuth.signOut();
+        FirebaseUser user = mFirebaseAuth.getCurrentUser();
+        if( user != null ) {
+            Toast.makeText( Profile.this, "Could not log out. Please try again.", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText( Profile.this, "Logged out successfully.", Toast.LENGTH_SHORT).show();
+        }
+        Intent backToMain = new Intent(Profile.this, MainActivity.class );
+        startActivity( backToMain );
     }
 }

@@ -19,7 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class LoginScreen extends AppCompatActivity {
+public class SignIn extends AppCompatActivity {
 
     private Button signIn;
     private EditText password;
@@ -51,12 +51,12 @@ public class LoginScreen extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = mFirebaseAuth.getCurrentUser();
                 if( user != null ) {
-                    Toast.makeText( LoginScreen.this, "Logged in successfully.", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(LoginScreen.this, MainActivity.class);
+                    Toast.makeText( SignIn.this, "Logged in successfully.", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(SignIn.this, MainActivity.class);
                     startActivity( i );
                 }
                 else{
-                    Toast.makeText( LoginScreen.this, "Please log in.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText( SignIn.this, "Please log in.", Toast.LENGTH_SHORT).show();
                 }
             }
         };
@@ -75,23 +75,23 @@ public class LoginScreen extends AppCompatActivity {
                     password.requestFocus();
                 }
                 else if ( strEmail.isEmpty() && strPassword.isEmpty() ){
-                    Toast.makeText( LoginScreen.this, "Fields are empty!", Toast.LENGTH_SHORT ).show();
+                    Toast.makeText( SignIn.this, "Fields are empty!", Toast.LENGTH_SHORT ).show();
                 }
                 else if ( !(strEmail.isEmpty() && strPassword.isEmpty()) ){
-                    mFirebaseAuth.signInWithEmailAndPassword( strEmail, strPassword ).addOnCompleteListener(LoginScreen.this, new OnCompleteListener<AuthResult>() {
+                    mFirebaseAuth.signInWithEmailAndPassword( strEmail, strPassword ).addOnCompleteListener(SignIn.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if ( !task.isSuccessful()){
-                                Toast.makeText( LoginScreen.this, "Could not sign in, please try again.", Toast.LENGTH_SHORT ).show();
+                                Toast.makeText( SignIn.this, "Could not sign in, please try again.", Toast.LENGTH_SHORT ).show();
                             }
                             else{
-                                startActivity( new Intent( LoginScreen.this, MainActivity.class ) );
+                                startActivity( new Intent( SignIn.this, MainActivity.class ) );
                             }
                         }
                     });
                 }
                 else{
-                    Toast.makeText( LoginScreen.this, "Nani??! Some error??!", Toast.LENGTH_SHORT ).show();
+                    Toast.makeText( SignIn.this, "Nani??! Some error??!", Toast.LENGTH_SHORT ).show();
                 }
             }
         });
@@ -106,7 +106,7 @@ public class LoginScreen extends AppCompatActivity {
     }
 
     public void openRegisteration() {
-        Intent i = new Intent(LoginScreen.this, Registration.class );
+        Intent i = new Intent(SignIn.this, SignUp.class );
         startActivity( i );
     }
 

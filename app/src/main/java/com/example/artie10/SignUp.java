@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Registration extends AppCompatActivity {
+public class SignUp extends AppCompatActivity {
 
     private EditText password;
     private EditText email;
@@ -26,6 +27,14 @@ public class Registration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registeration);
+
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics( dm );
+
+        int width = (int) ( dm.widthPixels * .6 );
+        int height = (int) ( dm.heightPixels * .6 );
+
+        getWindow().setLayout( width, height );
 
         password = findViewById(R.id.password);
         email = findViewById(R.id.email_address);
@@ -46,23 +55,23 @@ public class Registration extends AppCompatActivity {
                     password.requestFocus();
                 }
                 else if ( strEmail.isEmpty() && strPassword.isEmpty() ){
-                    Toast.makeText( Registration.this, "Fields are empty!", Toast.LENGTH_SHORT ).show();
+                    Toast.makeText( SignUp.this, "Fields are empty!", Toast.LENGTH_SHORT ).show();
                 }
                 else if ( !( strEmail.isEmpty() && strPassword.isEmpty() ) ){
-                    mFirebaseAuth.createUserWithEmailAndPassword( strEmail, strPassword ).addOnCompleteListener(Registration.this, new OnCompleteListener<AuthResult>() {
+                    mFirebaseAuth.createUserWithEmailAndPassword( strEmail, strPassword ).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if ( task.isSuccessful()){
-                                startActivity( new Intent( Registration.this, Categories.class ) );
+                            if ( task.isSuccessful() ){
+                                startActivity( new Intent( SignUp.this, Categories.class ) );
                             }
                             else{
-                                Toast.makeText( Registration.this, "Could not create account, please try again.", Toast.LENGTH_SHORT ).show();
+                                Toast.makeText( SignUp.this, "Could not create account, please try again.", Toast.LENGTH_SHORT ).show();
                             }
                         }
                     });
                 }
                 else{
-                    Toast.makeText( Registration.this, "Nani??! Some error??!", Toast.LENGTH_SHORT ).show();
+                    Toast.makeText( SignUp.this, "Nani??! Some error??!", Toast.LENGTH_SHORT ).show();
                 }
             }
         });

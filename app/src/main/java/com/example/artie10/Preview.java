@@ -29,7 +29,7 @@ public class Preview extends AppCompatActivity {
             public void onClick( View v) {
                 if ( MainActivity.getPath())
                     //openAR();
-                    openSessionAR();
+                    openAR();
                 else
                     openSessionAR();
             }

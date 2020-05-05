@@ -30,10 +30,10 @@
             android:name=".AboutUs"
             android:theme="@style/AppTheme.CustomTheme"/>
         <activity
-            android:name=".LoginScreen"
+            android:name=".SignIn"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
-            android:name=".Registration"
+            android:name=".SignUp"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".Profile"
