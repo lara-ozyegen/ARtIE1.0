@@ -24,26 +24,26 @@ public class Profile extends AppCompatActivity {
     private Button logOutButton;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+    protected void onCreate( Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_profile );
 
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         //getting the user's credentials and inserting them
-        mailText = findViewById(R.id.editEmail);
+        mailText = findViewById( R.id.editEmail );
         if( mFirebaseAuth.getCurrentUser().getEmail() != null ) {
-            mailText.setText(mFirebaseAuth.getCurrentUser().getEmail());
-            mailText.setEnabled(false);
+            mailText.setText( mFirebaseAuth.getCurrentUser().getEmail() );
+            mailText.setEnabled( false );
         }
 
-        logOutButton = (Button) findViewById( R.id.logOutButton);
-        logOutButton.setEnabled(false);
+        logOutButton = ( Button ) findViewById( R.id.logOutButton );
+        logOutButton.setEnabled( false );
 
-        delete_button = (Button) findViewById( R.id.delete);
-        delete_button.setOnClickListener(new View.OnClickListener() {
+        delete_button = ( Button ) findViewById( R.id.delete );
+        delete_button.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick( View v ) {
                 deleteAccount();
             }
         });
@@ -56,16 +56,16 @@ public class Profile extends AppCompatActivity {
         // email and password credentials but there are multiple possible providers,
         // such as GoogleAuthProvider or FacebookAuthProvider.
         AuthCredential credential = EmailAuthProvider
-                .getCredential("user@example.com", "password1234");
+                .getCredential( "user@example.com", "password1234" );
 
         // Prompt the user to re-provide their sign-in credentials
-        if (user != null) {
-            user.reauthenticate(credential)
+        if ( user != null ) {
+            user.reauthenticate( credential )
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
-                        public void onComplete(@NonNull Task<Void> task) {
+                        public void onComplete( @NonNull Task<Void> task ) {
                             user.delete();
-                            Toast.makeText(Profile.this, "DELETED", Toast.LENGTH_SHORT).show();
+                            Toast.makeText( Profile.this, "DELETED", Toast.LENGTH_SHORT ).show();
                         }
                     });
         }

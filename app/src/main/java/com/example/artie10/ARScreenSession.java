@@ -16,7 +16,7 @@ public class ARScreenSession extends ARScreen {
     ImageButton b;
     public ARScreenSession() {
         super();
-        b = (ImageButton) findViewById(R.id.info_button);
+        b = ( ImageButton ) findViewById( R.id.info_button );
        // b.setVisibility(View.VISIBLE);
 
     }

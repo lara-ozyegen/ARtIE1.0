@@ -23,26 +23,26 @@ public class Registration extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registeration);
+    protected void onCreate( Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_registeration );
 
-        password = findViewById(R.id.password);
-        email = findViewById(R.id.email_address);
-        signUp = findViewById(R.id.register_button);
+        password = findViewById( R.id.password );
+        email = findViewById( R.id.email_address );
+        signUp = findViewById( R.id.register_button );
         mFirebaseAuth = FirebaseAuth.getInstance();
 
-        signUp.setOnClickListener(new View.OnClickListener() {
+        signUp.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick( View v ) {
                 String strEmail = email.getText().toString();
                 String strPassword = password.getText().toString();
                 if ( strEmail.isEmpty() ) {
-                    email.setError("Please enter a valid e-mail address.");
+                    email.setError( "Please enter a valid e-mail address." );
                     email.requestFocus();
                 }
                 else if ( strPassword.isEmpty() ){
-                    password.setError("Please enter a valid password.");
+                    password.setError( "Please enter a valid password." );
                     password.requestFocus();
                 }
                 else if ( strEmail.isEmpty() && strPassword.isEmpty() ){
@@ -51,8 +51,8 @@ public class Registration extends AppCompatActivity {
                 else if ( !( strEmail.isEmpty() && strPassword.isEmpty() ) ){
                     mFirebaseAuth.createUserWithEmailAndPassword( strEmail, strPassword ).addOnCompleteListener(Registration.this, new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if ( task.isSuccessful()){
+                        public void onComplete(@NonNull Task<AuthResult> task ) {
+                            if ( task.isSuccessful() ){
                                 startActivity( new Intent( Registration.this, Categories.class ) );
                             }
                             else{
