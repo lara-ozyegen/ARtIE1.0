@@ -9,8 +9,9 @@ import android.widget.ImageButton;
 public class HelpScreen extends Activity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_help_screen);
+    protected void onCreate( Bundle savedInstanceState ) {
+
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_help_screen );
     }
 }

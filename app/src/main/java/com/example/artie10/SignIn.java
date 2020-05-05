@@ -29,9 +29,9 @@ public class SignIn extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log_in_screen);
+    protected void onCreate( Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_log_in_screen );
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics( dm );
@@ -41,22 +41,22 @@ public class SignIn extends AppCompatActivity {
 
         getWindow().setLayout( width, height );
 
-        signIn = (Button)findViewById(R.id.sign_in_button);
-        password = findViewById(R.id.password);
-        email = findViewById(R.id.email_address);
-        signUpHere = findViewById(R.id.sign_up_here);
+        signIn = ( Button )findViewById( R.id.sign_in_button );
+        password = findViewById( R.id.password );
+        email = findViewById( R.id.email_address );
+        signUpHere = findViewById( R.id.sign_up_here );
         mFirebaseAuth = FirebaseAuth.getInstance();
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+            public void onAuthStateChanged( @NonNull FirebaseAuth firebaseAuth ) {
                 FirebaseUser user = mFirebaseAuth.getCurrentUser();
                 if( user != null ) {
-                    Toast.makeText( SignIn.this, "Logged in successfully.", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(SignIn.this, MainActivity.class);
+                    Toast.makeText( SignIn.this, "Logged in successfully.", Toast.LENGTH_SHORT ).show();
+                    Intent i = new Intent( SignIn.this, MainActivity.class );
                     startActivity( i );
                 }
                 else{
-                    Toast.makeText( SignIn.this, "Please log in.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText( SignIn.this, "Please log in.", Toast.LENGTH_SHORT ).show();
                 }
             }
         };
@@ -67,21 +67,21 @@ public class SignIn extends AppCompatActivity {
                 String strEmail = email.getText().toString();
                 String strPassword = password.getText().toString();
                 if ( strEmail.isEmpty() ) {
-                    email.setError("Please enter a valid e-mail address.");
+                    email.setError( "Please enter a valid e-mail address." );
                     email.requestFocus();
                 }
                 else if ( strPassword.isEmpty() ){
-                    password.setError("Please enter a valid password.");
+                    password.setError( "Please enter a valid password." );
                     password.requestFocus();
                 }
                 else if ( strEmail.isEmpty() && strPassword.isEmpty() ){
                     Toast.makeText( SignIn.this, "Fields are empty!", Toast.LENGTH_SHORT ).show();
                 }
-                else if ( !(strEmail.isEmpty() && strPassword.isEmpty()) ){
+                else if ( !(strEmail.isEmpty() && strPassword.isEmpty() ) ){
                     mFirebaseAuth.signInWithEmailAndPassword( strEmail, strPassword ).addOnCompleteListener(SignIn.this, new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if ( !task.isSuccessful()){
+                        public void onComplete(@NonNull Task<AuthResult> task ) {
+                            if ( !task.isSuccessful() ){
                                 Toast.makeText( SignIn.this, "Could not sign in, please try again.", Toast.LENGTH_SHORT ).show();
                             }
                             else{
@@ -98,7 +98,7 @@ public class SignIn extends AppCompatActivity {
 
         signUpHere.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick( View v ) {
                 openRegisteration();
             }
         });

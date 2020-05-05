@@ -77,34 +77,34 @@ public class ARScreen extends AppCompatActivity {
     private static final int DISPLAY_HEIGHT = 1280;
 
     static {
-        ORIENTATIONS.append(Surface.ROTATION_0,90);
-        ORIENTATIONS.append(Surface.ROTATION_90,0);
-        ORIENTATIONS.append(Surface.ROTATION_180,270);
-        ORIENTATIONS.append(Surface.ROTATION_270,180);
+        ORIENTATIONS.append( Surface.ROTATION_0,90 );
+        ORIENTATIONS.append( Surface.ROTATION_90,0 );
+        ORIENTATIONS.append( Surface.ROTATION_180,270 );
+        ORIENTATIONS.append( Surface.ROTATION_270,180 );
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState);
-        setContentView( R.layout.activity_a_r_screen);
+    protected void onCreate( Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_a_r_screen );
 
-        arFragment = (ArFragment) getSupportFragmentManager().findFragmentById( R.id.arFragment);
+        arFragment = ( ArFragment ) getSupportFragmentManager().findFragmentById( R.id.arFragment );
         assert arFragment != null;
-        arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
+        arFragment.setOnTapArPlaneListener( ( hitResult, plane, motionEvent ) -> {
             Anchor anchor = hitResult.createAnchor();
             ModelRenderable.builder()
-                    .setSource(this, Uri.parse("Human Heart.sfb"))
+                    .setSource(this, Uri.parse( "Human Heart.sfb" ) )
                     .build()
-                    .thenAccept(modelRenderable -> addModelToScene(anchor, modelRenderable))
-                    .exceptionally(throwable -> {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                        builder.setMessage(throwable.getMessage())
+                    .thenAccept( modelRenderable -> addModelToScene( anchor, modelRenderable ) )
+                    .exceptionally( throwable -> {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(this );
+                        builder.setMessage( throwable.getMessage() )
                                 .show();
                         return null;
                     });
         });
 
-        ImageView pencil = findViewById(R.id.pencil);
+        ImageView pencil = findViewById( R.id.pencil );
         pencil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,44 +115,44 @@ public class ARScreen extends AppCompatActivity {
 
 
         ActivityCompat.requestPermissions(this, new String[] {
-            WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, PERMISSION_GRANTED);
+            WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, PERMISSION_GRANTED );
 
         //otherwise app crashes
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
-        StrictMode.setVmPolicy(builder.build());
+        StrictMode.setVmPolicy( builder.build() );
 
         DisplayMetrics metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        getWindowManager().getDefaultDisplay().getMetrics( metrics );
         mScreenDensity = metrics.densityDpi;
 
         mediaRecorder = new MediaRecorder();
-        mediaProjectionManager = (MediaProjectionManager)getSystemService(Context.MEDIA_PROJECTION_SERVICE);
+        mediaProjectionManager = ( MediaProjectionManager )getSystemService( Context.MEDIA_PROJECTION_SERVICE );
 
         //view
-        videoView = (VideoView)findViewById(R.id.videoView);
-        toggleButton = (ToggleButton)findViewById(R.id.toggleButton);
+        videoView = ( VideoView )findViewById( R.id.videoView );
+        toggleButton = ( ToggleButton )findViewById( R.id.toggleButton );
         //relativeLayout2 = (RelativeLayout)findViewById(R.id.relativeLayout2);
 
         //event
-        toggleButton.setOnClickListener(new View.OnClickListener() {
+        toggleButton.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if(ContextCompat.checkSelfPermission(ARScreen.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                        + ContextCompat.checkSelfPermission(ARScreen.this, Manifest.permission.RECORD_AUDIO)
-                != PackageManager.PERMISSION_GRANTED)
+            public void onClick( View v ) {
+                if( ContextCompat.checkSelfPermission(ARScreen.this, Manifest.permission.WRITE_EXTERNAL_STORAGE )
+                        + ContextCompat.checkSelfPermission( ARScreen.this, Manifest.permission.RECORD_AUDIO )
+                != PackageManager.PERMISSION_GRANTED )
                 {
-                    if(ActivityCompat.shouldShowRequestPermissionRationale(ARScreen.this, WRITE_EXTERNAL_STORAGE) ||
-                            ActivityCompat.shouldShowRequestPermissionRationale(ARScreen.this, Manifest.permission.RECORD_AUDIO))
+                    if( ActivityCompat.shouldShowRequestPermissionRationale(ARScreen.this, WRITE_EXTERNAL_STORAGE ) ||
+                            ActivityCompat.shouldShowRequestPermissionRationale(ARScreen.this, Manifest.permission.RECORD_AUDIO ) )
                     {
-                        toggleButton.setChecked(false);
-                        Snackbar.make(relativeLayout2, "Permissions", Snackbar.LENGTH_INDEFINITE)
-                                .setAction("ENABLE", new View.OnClickListener() {
+                        toggleButton.setChecked( false );
+                        Snackbar.make( relativeLayout2, "Permissions", Snackbar.LENGTH_INDEFINITE )
+                                .setAction( "ENABLE", new View.OnClickListener() {
                        @Override
-                       public void onClick(View v) {
+                       public void onClick( View v ) {
                         ActivityCompat.requestPermissions(ARScreen.this,
                                 new String[]{
-                                        WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO},
-                                REQUEST_PERMISSION);
+                                        WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO },
+                                REQUEST_PERMISSION );
                        }
 
                     }).show();
@@ -161,29 +161,30 @@ public class ARScreen extends AppCompatActivity {
                          else{
                                  ActivityCompat.requestPermissions(ARScreen.this,
                                     new String[]{
-                                            WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO},
-                                    REQUEST_PERMISSION);
+                                            WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO },
+                                    REQUEST_PERMISSION );
                             }
                 }
                 else{
-                    toggleScreenShare(v);
+                    toggleScreenShare( v );
                 }
              }
 
         });
     }//end of onCreate
 
-    private void addModelToScene(Anchor anchor, ModelRenderable modelRenderable) {
-        AnchorNode anchorNode = new AnchorNode(anchor);
-        TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem());
-        transformableNode.setParent(anchorNode);
-        transformableNode.setRenderable(modelRenderable);
-        arFragment.getArSceneView().getScene().addChild(anchorNode);
+    private void addModelToScene( Anchor anchor, ModelRenderable modelRenderable ) {
+
+        AnchorNode anchorNode = new AnchorNode( anchor );
+        TransformableNode transformableNode = new TransformableNode( arFragment.getTransformationSystem() );
+        transformableNode.setParent( anchorNode );
+        transformableNode.setRenderable( modelRenderable );
+        arFragment.getArSceneView().getScene().addChild( anchorNode );
         transformableNode.select();
     }
 
 
-    public void ScreenshotButton( View view) {
+    public void ScreenshotButton( View view ) {
         //take screenshot
 
         //View rootView = getWindow().getDecorView().findViewById(android.R.id.content);
@@ -192,34 +193,35 @@ public class ARScreen extends AppCompatActivity {
         ////screenView.setDrawingCacheEnabled(true);
 
         View view1 = getWindow().getDecorView().getRootView();
-        view1.setDrawingCacheEnabled(true);
+        view1.setDrawingCacheEnabled( true );
 
         int height = view1.getHeight();
         int width = view1.getWidth();
-        view1.layout(0,0,width,height);
-        view1.buildDrawingCache(true);
+
+        view1.layout( 0,0,width,height );
+        view1.buildDrawingCache( true );
 
         //create bitmap to draw the screenshot
         ////Bitmap bitmap = Bitmap.createBitmap(screenView.getDrawingCache());
         ////screenView.setDrawingCacheEnabled(false);
-        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
+        Bitmap bitmap = Bitmap.createBitmap( width, height, Bitmap.Config.ARGB_8888 );
+        Canvas canvas = new Canvas( bitmap );
         Drawable bgDrawable = view1.getBackground();
-        if (bgDrawable != null)
-            bgDrawable.draw(canvas);
+        if ( bgDrawable != null )
+            bgDrawable.draw( canvas );
         else
-            canvas.drawColor(Color.WHITE);
-        view1  .draw(canvas);
+            canvas.drawColor( Color.WHITE );
+        view1  .draw( canvas );
 
         //create file
         String filePath = Environment.getExternalStorageDirectory()+"/Download/"+ Calendar.getInstance().getTime().toString() + ".jpg";
-        File fileScreenshot = new File(filePath);
+        File fileScreenshot = new File( filePath );
 
         FileOutputStream fileOutputStream = null;
 
         try {
-            fileOutputStream = new FileOutputStream(fileScreenshot);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
+            fileOutputStream = new FileOutputStream( fileScreenshot );
+            bitmap.compress( Bitmap.CompressFormat.JPEG, 100, fileOutputStream );
             fileOutputStream.flush();
             fileOutputStream.close();
 
@@ -227,24 +229,24 @@ public class ARScreen extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        Uri uri = Uri.fromFile(fileScreenshot);
-        intent.setDataAndType(uri,"image/.jpeg");
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        this.startActivity(intent);
+        Intent intent = new Intent( Intent.ACTION_VIEW );
+        Uri uri = Uri.fromFile( fileScreenshot );
+        intent.setDataAndType( uri,"image/.jpeg" );
+        intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK );
+        this.startActivity( intent );
     }
 
     public void openPaint(){
-        Intent intent = new Intent(this,PaintActivity.class);
-        startActivity(intent);
+        Intent intent = new Intent( this,PaintActivity.class );
+        startActivity( intent );
     }
 
     //Screen recording
     private class MediaProjectionCallBack extends MediaProjection.Callback {
         @Override
         public void onStop() {
-            if(toggleButton.isChecked()){
-                toggleButton.setChecked(false);
+            if( toggleButton.isChecked() ){
+                toggleButton.setChecked( false );
                 mediaRecorder.stop();
                 mediaRecorder.reset();
             }
@@ -255,7 +257,7 @@ public class ARScreen extends AppCompatActivity {
     }
 
     private void stopRecordScreen() {
-        if(virtualDisplay == null)
+        if( virtualDisplay == null )
             return;
 
         virtualDisplay.release();
@@ -263,16 +265,16 @@ public class ARScreen extends AppCompatActivity {
     }
 
     private void destroyMediaProjection() {
-        if(mediaProjection != null){
-            mediaProjection.unregisterCallback(mediaProjectionCallBack);
+        if( mediaProjection != null ){
+            mediaProjection.unregisterCallback( mediaProjectionCallBack );
             mediaProjection.stop();
             mediaProjection = null;
         }
 
     }
 
-    private void toggleScreenShare(View v){
-        if(((ToggleButton)v).isChecked())
+    private void toggleScreenShare( View v ){
+        if( ( (ToggleButton) v ).isChecked() )
         {
             initRecorder();
             recordScreen();
@@ -282,35 +284,35 @@ public class ARScreen extends AppCompatActivity {
             mediaRecorder.reset();
             stopRecordScreen();
 
-            videoView.setVisibility(View.VISIBLE);
-            videoView.setVideoURI(Uri.parse(videoURI));
+            videoView.setVisibility( View.VISIBLE );
+            videoView.setVideoURI( Uri.parse(videoURI ) );
             videoView.start();
         }
     }
 
     private void initRecorder(){
         try{
-            mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-            mediaRecorder.setVideoSource(MediaRecorder.VideoSource.SURFACE);
-            mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+            mediaRecorder.setAudioSource( MediaRecorder.AudioSource.MIC );
+            mediaRecorder.setVideoSource( MediaRecorder.VideoSource.SURFACE );
+            mediaRecorder.setOutputFormat( MediaRecorder.OutputFormat.THREE_GPP );
 
-            videoURI = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-                    + new StringBuilder("/EDMTRecord_").append(new SimpleDateFormat("dd-MM-yyyy-hh_mm_ss")
-            .format(new Date())).append(" .mp4").toString();
+            videoURI = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_DOWNLOADS )
+                    + new StringBuilder( "/EDMTRecord_" ).append( new SimpleDateFormat("dd-MM-yyyy-hh_mm_ss" )
+            .format(new Date())).append( " .mp4" ).toString();
 
-            mediaRecorder.setOutputFile( videoURI);
-            mediaRecorder.setVideoSize( DISPLAY_WIDTH, DISPLAY_HEIGHT);
-            mediaRecorder.setVideoEncoder( MediaRecorder.VideoEncoder.H264);
-            mediaRecorder.setAudioEncoder( MediaRecorder.AudioEncoder.AMR_NB);
-            mediaRecorder.setVideoEncodingBitRate( 512 * 1000);
-            mediaRecorder.setVideoFrameRate( 30);
+            mediaRecorder.setOutputFile( videoURI );
+            mediaRecorder.setVideoSize( DISPLAY_WIDTH, DISPLAY_HEIGHT );
+            mediaRecorder.setVideoEncoder( MediaRecorder.VideoEncoder.H264 );
+            mediaRecorder.setAudioEncoder( MediaRecorder.AudioEncoder.AMR_NB );
+            mediaRecorder.setVideoEncodingBitRate( 512 * 1000 );
+            mediaRecorder.setVideoFrameRate( 30 );
 
             int rotation = getWindowManager().getDefaultDisplay().getRotation();
-            int orientation = ORIENTATIONS.get( rotation * 90);
-            mediaRecorder.setOrientationHint( orientation);
+            int orientation = ORIENTATIONS.get( rotation * 90 );
+            mediaRecorder.setOrientationHint( orientation );
             mediaRecorder.prepare();
 
-        } catch (IOException e) {
+        } catch ( IOException e ) {
             e.printStackTrace();
         }
 
@@ -318,9 +320,9 @@ public class ARScreen extends AppCompatActivity {
 
     private void recordScreen(){
 
-        if(mediaProjection == null){
+        if( mediaProjection == null ){
 
-            startActivityForResult(mediaProjectionManager.createScreenCaptureIntent(), REQUEST_CODE);
+            startActivityForResult( mediaProjectionManager.createScreenCaptureIntent(), REQUEST_CODE );
             return;
         }
         virtualDisplay = createVirtualDisplay();
@@ -329,54 +331,54 @@ public class ARScreen extends AppCompatActivity {
     }
 
     private VirtualDisplay createVirtualDisplay() {
-        return mediaProjection.createVirtualDisplay("ARScreen", DISPLAY_WIDTH, DISPLAY_HEIGHT, mScreenDensity,
+        return mediaProjection.createVirtualDisplay( "ARScreen", DISPLAY_WIDTH, DISPLAY_HEIGHT, mScreenDensity,
                 DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
-                mediaRecorder.getSurface(), null, null);
+                mediaRecorder.getSurface(), null, null );
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if( requestCode!= REQUEST_CODE){
-            Toast.makeText(this, "Unk error", Toast.LENGTH_SHORT).show();
+    protected void onActivityResult( int requestCode, int resultCode, @Nullable Intent data ) {
+        super.onActivityResult( requestCode, resultCode, data );
+        if( requestCode!= REQUEST_CODE ){
+            Toast.makeText( this, "Unk error", Toast.LENGTH_SHORT ).show();
             return;
         }
 
-        if( resultCode != RESULT_OK){
-            Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
-            toggleButton.setChecked(false);
+        if( resultCode != RESULT_OK ){
+            Toast.makeText( this, "Permission denied", Toast.LENGTH_SHORT ).show();
+            toggleButton.setChecked( false );
             return;
         }
 
         mediaProjectionCallBack = new MediaProjectionCallBack();
-        mediaProjection = mediaProjectionManager.getMediaProjection(resultCode, data);
-        mediaProjection.registerCallback(mediaProjectionCallBack, null);
+        mediaProjection = mediaProjectionManager.getMediaProjection( resultCode, data );
+        mediaProjection.registerCallback( mediaProjectionCallBack, null );
         virtualDisplay = createVirtualDisplay();
         mediaRecorder.start();
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode){
+    public void onRequestPermissionsResult( int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults ) {
+        super.onRequestPermissionsResult( requestCode, permissions, grantResults );
+        switch ( requestCode ){
             case REQUEST_PERMISSION:
             {
-                if((grantResults.length > 0) && (grantResults[0] + grantResults[1] == PERMISSION_GRANTED)){
-                    toggleScreenShare(toggleButton);
+                if( ( grantResults.length > 0) && (grantResults[0] + grantResults[1] == PERMISSION_GRANTED ) ){
+                    toggleScreenShare( toggleButton );
                 }
                 else{
-                    toggleButton.setChecked(false);
-                    Snackbar.make(relativeLayout2, "Permissions", Snackbar.LENGTH_INDEFINITE)
-                            .setAction("ENABLE", new View.OnClickListener() {
+                    toggleButton.setChecked( false );
+                    Snackbar.make( relativeLayout2, "Permissions", Snackbar.LENGTH_INDEFINITE )
+                            .setAction( "ENABLE", new View.OnClickListener() {
                                 @Override
-                                public void onClick(View v) {
+                                public void onClick( View v ) {
                                     ActivityCompat.requestPermissions(ARScreen.this,
                                             new String[]{
-                                                    WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO},
-                                            REQUEST_PERMISSION);
+                                                    WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO },
+                                            REQUEST_PERMISSION );
                                 }
 
-                            }).show();
+                            } ).show();
                 }
                 return;
             }

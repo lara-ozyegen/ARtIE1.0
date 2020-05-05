@@ -12,22 +12,22 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Preview extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_preview);
+    protected void onCreate( Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_preview );
 
         DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        getWindowManager().getDefaultDisplay().getMetrics( dm );
 
         int width = dm. widthPixels;
         int height = dm.heightPixels;
-        getWindow().setLayout((int) (width*.8), (int) (height*.8));
+        getWindow().setLayout( ( int ) ( width * .8 ), ( int ) ( height * .8 ) );
 
-        Button b = (Button) findViewById( R.id.ar_button);
+        Button b = ( Button ) findViewById( R.id.ar_button );
         b.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick( View v) {
-                if ( MainActivity.getPath())
+            public void onClick( View v ) {
+                if ( MainActivity.getPath() )
                     //openAR();
                     openAR();
                 else
@@ -38,13 +38,13 @@ public class Preview extends AppCompatActivity {
 
     }
     public void openAR(){
-        Intent intent = new Intent(this, ARScreen.class);
-        startActivity( intent);
+        Intent intent = new Intent(this, ARScreen.class );
+        startActivity( intent );
     }
 
     public void openSessionAR() {
-        Intent intent = new Intent(this, ARScreenSession.class);
-        startActivity( intent);
+        Intent intent = new Intent(this, ARScreenSession.class );
+        startActivity( intent );
     }
 
 
