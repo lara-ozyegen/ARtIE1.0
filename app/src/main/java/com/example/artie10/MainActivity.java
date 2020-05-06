@@ -25,7 +25,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
-
+    //properties
     private Button button;
     private Button button2;
     private Button sessionButton;
@@ -39,21 +39,21 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
 
-        imageButton = ( ImageButton )findViewById( R.id.help );
+        imageButton = ( ImageButton ) findViewById( R.id.help );
         imageButton.setOnClickListener( new View.OnClickListener() {
             public void onClick( View v ) {
                 openHelp();
             }
         });
 
-        imageButton2 = ( ImageButton )findViewById( R.id.imageView6 );
+        imageButton2 = ( ImageButton ) findViewById( R.id.profileIcon );
         imageButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
                 if( mFirebaseAuth.getCurrentUser() != null )
                     openProfile();
                 else
-                    openLoginScreen();
+                    openSignIn();
                 path = false;
             }
         });
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 if( mFirebaseAuth.getCurrentUser() != null )
                     showPopup( v );
                 else
-                    openLoginScreen();
+                    openSignIn();
                 path = false;
             }
         });
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 openCategories();
                 return true;
             case R.id.joinSession:
-                //openLogin();
+                openJoinSession();
                 return true;
             default:
                 return false;
@@ -119,13 +119,13 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         Intent intent = new Intent(this, Categories.class );
         startActivity( intent );
     }
-    /*
-    public void openLogin() {
-        Intent intent = new Intent(this, JoinPopup.class);
-        startActivity(intent);
+
+    public void openJoinSession() {
+        Intent intent = new Intent(this, JoinSession.class);
+        startActivity( intent );
     }
-     */
-    public void openLoginScreen() {
+
+    public void openSignIn() {
         Intent intent = new Intent( this, SignIn.class );
         startActivity( intent );
     }

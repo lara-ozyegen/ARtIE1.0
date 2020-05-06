@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUp extends AppCompatActivity {
 
+    //properties
     private EditText password;
     private EditText email;
     private Button signUp;
@@ -26,7 +27,7 @@ public class SignUp extends AppCompatActivity {
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_registeration );
+        setContentView( R.layout.activity_sign_up);
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics( dm );
@@ -38,7 +39,7 @@ public class SignUp extends AppCompatActivity {
 
         password = findViewById( R.id.password );
         email = findViewById( R.id.email_address );
-        signUp = findViewById( R.id.register_button );
+        signUp = (Button) findViewById( R.id.signUpButton );
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         signUp.setOnClickListener( new View.OnClickListener() {
@@ -62,7 +63,7 @@ public class SignUp extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task ) {
                             if ( task.isSuccessful() ){
-                                startActivity( new Intent( SignUp.this, Categories.class ) );
+                                startActivity( new Intent( SignUp.this, MainActivity.class ) );
                             }
                             else{
                                 Toast.makeText( SignUp.this, "Could not create account, please try again.", Toast.LENGTH_SHORT ).show();

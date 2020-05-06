@@ -31,6 +31,7 @@ import java.util.List;
 
 public class Categories extends AppCompatActivity {
 
+    //properties
     private static final int REQUEST_CODE = 45;
 
     private Button bio;
@@ -40,11 +41,11 @@ public class Categories extends AppCompatActivity {
     private Button space;
     private Button chem;
 
-    Toolbar appbar;
+    private Toolbar appbar;
 
-    ArrayAdapter<String> arrayAdapter;
-    List<String> myList;
-    ListView listView;
+    private ArrayAdapter<String> arrayAdapter;
+    private List<String> myList;
+    private ListView listView;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {

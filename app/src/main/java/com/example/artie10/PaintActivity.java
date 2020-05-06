@@ -10,6 +10,7 @@ package com.example.artie10;
 
 public class PaintActivity extends AppCompatActivity {
 
+    //proeprties
     private PaintView paintView;
 
     @Override

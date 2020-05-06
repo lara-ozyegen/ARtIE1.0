@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SignIn extends AppCompatActivity {
 
+    //properties
     private Button signIn;
     private EditText password;
     private EditText email;
@@ -99,13 +100,13 @@ public class SignIn extends AppCompatActivity {
         signUpHere.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
-                openRegisteration();
+                toSignUp();
             }
         });
 
     }
 
-    public void openRegisteration() {
+    public void toSignUp() {
         Intent i = new Intent(SignIn.this, SignUp.class );
         startActivity( i );
     }

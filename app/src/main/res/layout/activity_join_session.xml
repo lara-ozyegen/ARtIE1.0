@@ -10,46 +10,27 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:background="@drawable/custom_border"
-    tools:context=".ui.login.JoinPopup">
+    tools:context=".JoinSession">
 
     <EditText
-        android:id="@+id/password"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-
-        android:hint="Password"
-        android:inputType="textPassword|numberPassword"
-        android:selectAllOnFocus="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_address"
-        app:layout_constraintVertical_bias="0.056" />
-
-    <EditText
-        android:id="@+id/email_address"
+        android:id="@+id/sessionID"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="112dp"
-        android:hint="E-mail Address"
-        android:imeActionLabel="@string/action_sign_in_short"
-        android:imeOptions="actionDone"
-        android:inputType="textEmailAddress"
+        android:hint="Session ID"
+        android:inputType="number"
         android:maxLength="30"
         android:selectAllOnFocus="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.435" />
+        app:layout_constraintVertical_bias="0.488" />
 
     <Button
-        android:id="@+id/register_button"
+        android:id="@+id/joinSession"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
@@ -57,29 +38,28 @@
         android:layout_marginEnd="48dp"
         android:background="@drawable/custom_corners"
         android:enabled="true"
-        android:text="Sıgn up"
+        android:text="Joın Sessıon"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.063" />
+        app:layout_constraintTop_toBottomOf="@+id/sessionID"
+        app:layout_constraintVertical_bias="0.098" />
 
-    <ProgressBar
-        android:id="@+id/loading"
+    <TextView
+        android:id="@+id/info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="64dp"
-        android:visibility="gone"
+        android:text="You need a valid session ID to join a session. If you don't know the ID, please confer with your instructor."
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/session_id"
-        app:layout_constraintStart_toStartOf="@+id/session_id"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/joinSession"
+        app:layout_constraintVertical_bias="0.133"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

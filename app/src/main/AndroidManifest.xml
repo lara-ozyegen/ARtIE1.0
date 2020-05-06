@@ -23,12 +23,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
+        <activity android:name=".JoinSession"></activity>
+        <activity android:name=".JoinSession" />
         <activity
             android:name=".ARScreenSession"
-            android:theme="@style/AppTheme.CustomTheme"/>
+            android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".AboutUs"
-            android:theme="@style/AppTheme.CustomTheme"/>
+            android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".SignIn"
             android:theme="@style/AppTheme.CustomTheme" />

@@ -3,6 +3,8 @@ package com.example.artie10;
 import android.graphics.Path;
 
 public class FingerPath {
+
+    //properties
     public int color;
     public int strokeWidth;
     public Path path;

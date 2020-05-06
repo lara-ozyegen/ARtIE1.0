@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 public class AboutUs extends AppCompatActivity {
 
+    //properties
     Toolbar appbar;
 
     @Override

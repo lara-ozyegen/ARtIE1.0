@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 public class PaintView extends View {
 
+    //properties
     public static final int BRUSH_SIZE = 10;
     public static final int DEFAULT_COLOR = Color.RED;
     public static final int DEFAULT_BG_COLOR = Color.TRANSPARENT;

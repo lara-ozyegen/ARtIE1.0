@@ -23,6 +23,7 @@ import android.util.DisplayMetrics;
 import android.util.SparseIntArray;
 import android.view.Surface;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -62,6 +63,7 @@ public class ARScreen extends AppCompatActivity {
     private ToggleButton toggleButton;
     private RelativeLayout relativeLayout2;
     private String videoURI = "";
+    private ImageButton infoButton;
     private static final int REQUEST_CODE = 1000;
     private static final int REQUEST_PERMISSION = 1001;
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
@@ -112,6 +114,8 @@ public class ARScreen extends AppCompatActivity {
             }
         });
 
+        infoButton = ( ImageButton ) findViewById( R.id.info_button );
+        infoButtonSettings( false, false );
 
 
         ActivityCompat.requestPermissions(this, new String[] {
@@ -382,6 +386,20 @@ public class ARScreen extends AppCompatActivity {
                 }
                 return;
             }
+        }
+    }
+
+    public void infoButtonSettings( boolean enableDisable, boolean visibility ){
+
+        //setting the button as enabled or disabled
+        infoButton.setEnabled( enableDisable );
+
+        //setting the button as visible or invisible
+        if( visibility == true ) {
+            infoButton.setVisibility(View.VISIBLE );
+        }
+        else{
+            infoButton.setVisibility( View.GONE );
         }
     }
 
