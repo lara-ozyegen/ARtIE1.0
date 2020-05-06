@@ -131,3 +131,21 @@ Later today I (Sarper) added borders to pop-up screens, and added search and hom
 
 **ToDo**
 !!! Detailed Design Report !!!
+
+
+****
+### Meeting ~ (04/05/2020)
+****
+**Present:** Öykü, Lara, Sarper, Berk, Yaren, Enis
+
+**Discussion:**
+We discussed with our TA about the design of our project, it seemed like our project's design was not the best and not coherent with MVC. We decided to change our project a little bit and shared works.
+
+**ToDo**
+Yaren, Lara -- MVC structure for the model "User"
+
+Sarper, Enis -- MVC structure for the model "ARScreenModels"
+
+Berk, Öykü -- MVC structure for the model "Session" 
+
+fyi: We couldn't share the works as model as one group, view as one group etc. because our views are almost done and the model-controller part is where we all struggle, so we thought this would be easier/more informative for all of us.
