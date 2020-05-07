@@ -302,6 +302,7 @@ public class ARScreen extends AppCompatActivity {
            // videoView.start();
             Intent intent = new Intent (ARScreen.this, HelpScreen.class);
             startActivity(intent);
+
         }
 
     }
