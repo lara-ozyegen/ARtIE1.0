@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -43,7 +44,7 @@ public class Categories extends AppCompatActivity {
 
     private Toolbar appbar;
 
-    private ArrayAdapter<String> arrayAdapter;
+    public ArrayAdapter<String> arrayAdapter;
     private List<String> myList;
     private ListView listView;
 
@@ -87,9 +88,6 @@ public class Categories extends AppCompatActivity {
         myList.add( ( String ) math.getText() ); myList.add( ( String ) space.getText() );
         myList.add( ( String ) chem.getText() ); myList.add( ( String ) myModels.getText() );
 
-        //Did the following code on a method so it would only open if we pressed the help
-        //arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,myList);
-        //listView.setAdapter(arrayAdapter);
     }
 
     public void openBiology(){
@@ -138,7 +136,7 @@ public class Categories extends AppCompatActivity {
         MenuItem menuItem = menu.findItem( R.id.search );
         SearchView searchView = ( SearchView ) menuItem.getActionView();
         searchView.setQueryHint( "Search in categories" );
-
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
         searchView.setOnQueryTextListener( new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit( String query ) {

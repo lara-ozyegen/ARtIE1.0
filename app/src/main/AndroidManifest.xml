@@ -23,7 +23,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
-        <activity android:name=".JoinSession"></activity>
+        <activity android:name=".UploadVideo"></activity>
         <activity android:name=".JoinSession" />
         <activity
             android:name=".ARScreenSession"
