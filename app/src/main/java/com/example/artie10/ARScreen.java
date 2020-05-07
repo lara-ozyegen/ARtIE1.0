@@ -26,6 +26,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.widget.VideoView;
@@ -64,6 +65,8 @@ public class ARScreen extends AppCompatActivity {
     private RelativeLayout relativeLayout2;
     private String videoURI = "";
     private ImageButton infoButton;
+    private TextView sessionID;
+
     private static final int REQUEST_CODE = 1000;
     private static final int REQUEST_PERMISSION = 1001;
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
@@ -114,9 +117,11 @@ public class ARScreen extends AppCompatActivity {
             }
         });
 
-        infoButton = ( ImageButton ) findViewById( R.id.info_button );
+        infoButton = ( ImageButton ) findViewById( R.id.infoButton );
         infoButtonSettings( false, false );
 
+        sessionID = (TextView) findViewById(R.id.session_id);
+        sessionID.setText( " Session ID: 1234");
 
         ActivityCompat.requestPermissions(this, new String[] {
             WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, PERMISSION_GRANTED );
@@ -397,6 +402,8 @@ public class ARScreen extends AppCompatActivity {
         //setting the button as visible or invisible
         if( visibility == true ) {
             infoButton.setVisibility(View.VISIBLE );
+            sessionID.setVisibility(View.VISIBLE);
+
         }
         else{
             infoButton.setVisibility( View.GONE );

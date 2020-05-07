@@ -7,34 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".ARScreen">
 
-    <TextView
-        android:id="@+id/session_id"
-        android:layout_width="187dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="196dp"
-        android:background="#40373232"
-        android:text="Session ID: "
-        android:textAlignment="center"
-        android:textColor="#B3FFFFFF"
-        android:textSize="30sp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/info_button"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="40dp"
-        android:background="#00FFFFFF"
-        android:scaleType="fitXY"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_info_details" />
-
     <fragment
         android:id="@+id/arFragment"
         android:name="com.google.ar.sceneform.ux.ArFragment"
@@ -93,7 +65,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="invisible"
-        />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-37dp" />
+
+    <ImageButton
+        android:id="@+id/infoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.87"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.049"
+        app:srcCompat="@android:drawable/ic_menu_info_details" />
+
+    <TextView
+        android:id="@+id/session_id"
+        android:layout_width="98dp"
+        android:layout_height="32dp"
+        android:text="1234"
+        app:layout_constraintBottom_toBottomOf="@+id/arFragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.046" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

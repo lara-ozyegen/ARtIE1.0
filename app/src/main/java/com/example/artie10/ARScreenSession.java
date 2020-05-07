@@ -13,10 +13,15 @@ import android.widget.TextView;
 
 public class ARScreenSession extends ARScreen {
 
-    public ARScreenSession() {
-        super();
+    //public ARScreenSession() {
+        // super();
+        // infoButtonSettings( true, true );
+
+    //}
+    @Override
+    protected void onCreate( Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
         infoButtonSettings( true, true );
     }
-
 
 }
