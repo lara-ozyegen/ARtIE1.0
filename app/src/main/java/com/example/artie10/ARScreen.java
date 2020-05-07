@@ -19,6 +19,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
+import android.text.BoringLayout;
 import android.util.DisplayMetrics;
 import android.util.SparseIntArray;
 import android.view.Surface;
@@ -78,8 +79,8 @@ public class ARScreen extends AppCompatActivity {
 
     private VirtualDisplay virtualDisplay;
     private int mScreenDensity;
-    private static final int DISPLAY_WIDTH = 720;
-    private static final int DISPLAY_HEIGHT = 1280;
+    private static  int DISPLAY_WIDTH = 720;
+    private static  int DISPLAY_HEIGHT = 1280;
 
     static {
         ORIENTATIONS.append( Surface.ROTATION_0,90 );
@@ -133,6 +134,9 @@ public class ARScreen extends AppCompatActivity {
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics( metrics );
         mScreenDensity = metrics.densityDpi;
+
+        DISPLAY_HEIGHT = metrics.heightPixels;
+        DISPLAY_WIDTH = metrics.widthPixels;
 
         mediaRecorder = new MediaRecorder();
         mediaProjectionManager = ( MediaProjectionManager )getSystemService( Context.MEDIA_PROJECTION_SERVICE );
@@ -293,10 +297,13 @@ public class ARScreen extends AppCompatActivity {
             mediaRecorder.reset();
             stopRecordScreen();
 
-            videoView.setVisibility( View.VISIBLE );
-            videoView.setVideoURI( Uri.parse(videoURI ) );
-            videoView.start();
+            //videoView.setVisibility( View.VISIBLE );
+           // videoView.setVideoURI( Uri.parse(videoURI ) );
+           // videoView.start();
+            Intent intent = new Intent (ARScreen.this, HelpScreen.class);
+            startActivity(intent);
         }
+
     }
 
     private void initRecorder(){
@@ -317,7 +324,7 @@ public class ARScreen extends AppCompatActivity {
             mediaRecorder.setVideoFrameRate( 30 );
 
             int rotation = getWindowManager().getDefaultDisplay().getRotation();
-            int orientation = ORIENTATIONS.get( rotation * 90 );
+            int orientation = ORIENTATIONS.get( rotation * 90);
             mediaRecorder.setOrientationHint( orientation );
             mediaRecorder.prepare();
 
@@ -341,8 +348,8 @@ public class ARScreen extends AppCompatActivity {
 
     private VirtualDisplay createVirtualDisplay() {
         return mediaProjection.createVirtualDisplay( "ARScreen", DISPLAY_WIDTH, DISPLAY_HEIGHT, mScreenDensity,
-                DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
-                mediaRecorder.getSurface(), null, null );
+               DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
+              mediaRecorder.getSurface(), null, null );
     }
 
     @Override
