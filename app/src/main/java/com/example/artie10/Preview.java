@@ -25,34 +25,8 @@ public class Preview extends AppCompatActivity {
 
         int width = dm. widthPixels;
         int height = dm.heightPixels;
-        getWindow().setLayout( ( int ) ( width * .8 ), ( int ) ( height * .8 ) );
-
-        arButton = ( Button ) findViewById( R.id.ar_button );
-        Intent i = getIntent();
-        text = i.getStringExtra("TextOfButton");
-        arButton.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick( View v ) {
-                if ( MainActivity.getPath() )
-                    //openAR();
-                    openAR();
-                else
-                    openSessionAR();
-            }
-        });
+        getWindow().setLayout( ( int ) ( width * .5 ), ( int ) ( height * .5 ) );
 
 
     }
-    public void openAR(){
-        Intent intent = new Intent(this, ARScreen.class );
-        intent.putExtra("ButtonText", text);
-        startActivity( intent );
-    }
-
-    public void openSessionAR(){
-        Intent intent = new Intent(this, ARScreenSession.class );
-        startActivity( intent );
-    }
-
-
 }

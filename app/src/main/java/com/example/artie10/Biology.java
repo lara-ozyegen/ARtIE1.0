@@ -46,7 +46,7 @@ public class Biology extends AppCompatActivity {
         b.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick( View v ) {
-                openPreview();
+                openAR();
             }
         } );
 
@@ -62,8 +62,8 @@ public class Biology extends AppCompatActivity {
         myList.add(( String) b.getText());
     }
 
-    public void openPreview() {
-        Intent intent = new Intent( this , Preview.class  );
+    public void openAR() {
+        Intent intent = new Intent( this , ARScreen.class  );
         intent.putExtra("TextOfButton", text);
         startActivity( intent );
     }
