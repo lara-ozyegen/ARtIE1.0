@@ -324,8 +324,8 @@ public class ARScreen extends AppCompatActivity {
             //videoView.setVisibility( View.VISIBLE );
            // videoView.setVideoURI( Uri.parse(videoURI ) );
            // videoView.start();
-            Intent intent = new Intent (ARScreen.this, UploadVideo.class);
-            startActivity(intent);
+            Intent intent = new Intent (ARScreen.this, UploadVideo.class );
+            startActivity( intent );
 
         }
 
@@ -339,7 +339,6 @@ public class ARScreen extends AppCompatActivity {
             mediaRecorder.setAudioSource( MediaRecorder.AudioSource.MIC );
             mediaRecorder.setVideoSource( MediaRecorder.VideoSource.SURFACE );
             mediaRecorder.setOutputFormat( MediaRecorder.OutputFormat.THREE_GPP );
-
             videoURI = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_DOWNLOADS )
                     + new StringBuilder( "/EDMTRecord_" ).append( new SimpleDateFormat("dd-MM-yyyy-hh_mm_ss" )
             .format(new Date())).append( " .mp4" ).toString();
@@ -455,6 +454,10 @@ public class ARScreen extends AppCompatActivity {
         else{
             infoButton.setVisibility( View.GONE );
         }
+    }
+
+    public String returnVideoURI(  ){
+        return videoURI;
     }
 
 
