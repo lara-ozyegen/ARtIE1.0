@@ -109,7 +109,7 @@ public class ARScreen extends AppCompatActivity {
 
         //getting the text of the button from the previous activity
         Intent i = getIntent();
-        text = i.getStringExtra("ButtonText");
+        text = i.getStringExtra("TextOfButton");
         models = new ARModels(this, arFragment,text);
 
         //Initializing firebase and downloading model from firebase
@@ -128,9 +128,13 @@ public class ARScreen extends AppCompatActivity {
             }
         });
 
-        //info and session id buttons, they are not visible because this is the code of free mode
         infoButton = ( ImageButton ) findViewById( R.id.infoButton );
-        infoButtonSettings( false, false );
+        infoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openPreview();
+            }
+        });
 
         sessionID = (TextView) findViewById(R.id.session_id);
         sessionID.setText( " Session ID: 1234");
@@ -197,6 +201,10 @@ public class ARScreen extends AppCompatActivity {
         });
     }//end of onCreate
 
+    public void openPreview(){
+        Intent intent = new Intent( this , Preview.class  );
+        startActivity( intent );
+    }
 
     public void ScreenshotButton( View view ) {
         //take screenshot
