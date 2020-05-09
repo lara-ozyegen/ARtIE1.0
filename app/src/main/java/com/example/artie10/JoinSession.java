@@ -12,11 +12,15 @@ public class JoinSession extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join_session );
 
+        makeItPopUp();
+    }
+
+    public void makeItPopUp(){
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics( dm );
 
-        int width = (int) ( dm.widthPixels * .6 );
-        int height = (int) ( dm.heightPixels * .6 );
+        int width = ( int ) ( dm.widthPixels * .6 );
+        int height = ( int ) ( dm.heightPixels * .6 );
 
         getWindow().setLayout( width, height );
     }

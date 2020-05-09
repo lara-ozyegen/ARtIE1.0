@@ -26,7 +26,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:usesCleartextTraffic="true"
         android:supportsRtl="true">
-        <activity android:name=".UploadVideo"></activity>
         <activity android:name=".JoinSession" />
         <activity
             android:name=".ARScreenSession"
@@ -56,6 +55,9 @@
             android:name=".HelpScreen"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
+            android:name=".UploadVideo"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity
             android:name=".Categories"
             android:theme="@style/AppTheme2" />
         <activity
@@ -66,7 +68,6 @@
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

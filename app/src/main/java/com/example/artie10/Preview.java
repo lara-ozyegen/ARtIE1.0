@@ -49,7 +49,7 @@ public class Preview extends AppCompatActivity {
         startActivity( intent );
     }
 
-    public void openSessionAR() {
+    public void openSessionAR(){
         Intent intent = new Intent(this, ARScreenSession.class );
         startActivity( intent );
     }

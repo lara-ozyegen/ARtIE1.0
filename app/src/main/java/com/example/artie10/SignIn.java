@@ -34,13 +34,7 @@ public class SignIn extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_log_in_screen );
 
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics( dm );
-
-        int width = (int) ( dm.widthPixels * .6 );
-        int height = (int) ( dm.heightPixels * .6 );
-
-        getWindow().setLayout( width, height );
+        makeItPopUp();
 
         signIn = ( Button )findViewById( R.id.sign_in_button );
         password = findViewById( R.id.password );
@@ -50,50 +44,14 @@ public class SignIn extends AppCompatActivity {
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged( @NonNull FirebaseAuth firebaseAuth ) {
-                FirebaseUser user = mFirebaseAuth.getCurrentUser();
-                if( user != null ) {
-                    Toast.makeText( SignIn.this, "Logged in successfully.", Toast.LENGTH_SHORT ).show();
-                    Intent i = new Intent( SignIn.this, MainActivity.class );
-                    startActivity( i );
-                }
-                else{
-                    Toast.makeText( SignIn.this, "Please log in.", Toast.LENGTH_SHORT ).show();
-                }
+                signedInOrNot();
             }
         };
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String strEmail = email.getText().toString();
-                String strPassword = password.getText().toString();
-                if ( strEmail.isEmpty() ) {
-                    email.setError( "Please enter a valid e-mail address." );
-                    email.requestFocus();
-                }
-                else if ( strPassword.isEmpty() ){
-                    password.setError( "Please enter a valid password." );
-                    password.requestFocus();
-                }
-                else if ( strEmail.isEmpty() && strPassword.isEmpty() ){
-                    Toast.makeText( SignIn.this, "Fields are empty!", Toast.LENGTH_SHORT ).show();
-                }
-                else if ( !(strEmail.isEmpty() && strPassword.isEmpty() ) ){
-                    mFirebaseAuth.signInWithEmailAndPassword( strEmail, strPassword ).addOnCompleteListener(SignIn.this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task ) {
-                            if ( !task.isSuccessful() ){
-                                Toast.makeText( SignIn.this, "Could not sign in, please try again.", Toast.LENGTH_SHORT ).show();
-                            }
-                            else{
-                                startActivity( new Intent( SignIn.this, MainActivity.class ) );
-                            }
-                        }
-                    });
-                }
-                else{
-                    Toast.makeText( SignIn.this, "Nani??! Some error??!", Toast.LENGTH_SHORT ).show();
-                }
+                signIn();
             }
         });
 
@@ -106,9 +64,82 @@ public class SignIn extends AppCompatActivity {
 
     }
 
+    /**
+     * a method which allows user to sign in.
+     */
+    public void signIn(){
+        String strEmail = email.getText().toString();
+        String strPassword = password.getText().toString();
+        if ( strEmail.isEmpty() ) {
+            email.setError( "Please enter a valid e-mail address." );
+            email.requestFocus();
+        }
+        else if ( strPassword.isEmpty() ){
+            password.setError( "Please enter a valid password." );
+            password.requestFocus();
+        }
+        else if ( strEmail.isEmpty() && strPassword.isEmpty() ){
+            Toast.makeText( SignIn.this, "Fields are empty!", Toast.LENGTH_SHORT ).show();
+        }
+        else if ( !(strEmail.isEmpty() && strPassword.isEmpty() ) ){
+            mFirebaseAuth.signInWithEmailAndPassword( strEmail, strPassword ).addOnCompleteListener(SignIn.this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task ) {
+                    if ( !task.isSuccessful() ){
+                        Toast.makeText( SignIn.this, "Could not sign in, please try again.", Toast.LENGTH_SHORT ).show();
+                    }
+                    else{
+                        startActivity( new Intent( SignIn.this, MainActivity.class ) );
+                    }
+                }
+            });
+        }
+        else{
+            Toast.makeText( SignIn.this, "Nani??! Some error??!", Toast.LENGTH_SHORT ).show();
+        }
+    }
+
+    /**
+     * a method which checks the user's status to see if signed in or not.
+     */
+    public void signedInOrNot(){
+        FirebaseUser user = mFirebaseAuth.getCurrentUser();
+        if( user != null ) {
+            Toast.makeText( SignIn.this, "Signed in successfully.", Toast.LENGTH_SHORT ).show();
+            backToMain();
+        }
+        else{
+            Toast.makeText( SignIn.this, "Please sign in.", Toast.LENGTH_SHORT ).show();
+        }
+    }
+
+    /**
+     * a method which makes the related window a pop-up.
+     */
+    public void makeItPopUp(){
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics( dm );
+
+        int width = ( int ) ( dm.widthPixels * .6 );
+        int height = ( int ) ( dm.heightPixels * .6 );
+
+        getWindow().setLayout( width, height );
+    }
+
+    /**
+     * a method which changes the window to sign up window.
+     */
     public void toSignUp() {
         Intent i = new Intent(SignIn.this, SignUp.class );
         startActivity( i );
+    }
+
+    /**
+     * a method which changes the window to main screen.
+     */
+    public void backToMain(){
+        Intent backToMain = new Intent(SignIn.this, MainActivity.class );
+        startActivity( backToMain );
     }
 
     @Override
