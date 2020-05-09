@@ -1,13 +1,16 @@
 package com.example.artie10;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.hardware.Camera;
 import android.hardware.display.DisplayManager;
 import android.hardware.display.VirtualDisplay;
 import android.media.MediaRecorder;
@@ -16,11 +19,17 @@ import android.media.projection.MediaProjectionManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.StrictMode;
 import android.util.DisplayMetrics;
 import android.util.SparseIntArray;
+import android.view.PixelCopy;
 import android.view.Surface;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -34,17 +43,25 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 
 import com.example.artie10.Model.ARModels;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.ar.sceneform.ArSceneView;
 import com.google.ar.sceneform.ux.ArFragment;
+import com.google.ar.sceneform.ux.BaseArFragment;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
@@ -61,7 +78,6 @@ public class ARScreen extends AppCompatActivity {
     private ImageButton infoButton;
     private TextView sessionID;
     private String text;
-    private RelativeLayout relativeLayout2;
 
     private ARModels models;
 
@@ -73,11 +89,13 @@ public class ARScreen extends AppCompatActivity {
     private MediaProjection mediaProjection;
     private MediaProjectionCallBack mediaProjectionCallBack;
     private MediaRecorder mediaRecorder;
+    private RelativeLayout relativeLayout2;
 
     private VirtualDisplay virtualDisplay;
     private int mScreenDensity;
     private static  int DISPLAY_WIDTH = 720;
     private static  int DISPLAY_HEIGHT = 1280;
+
 
     static {
         ORIENTATIONS.append( Surface.ROTATION_0,0 );
@@ -86,27 +104,34 @@ public class ARScreen extends AppCompatActivity {
         ORIENTATIONS.append( Surface.ROTATION_270,270 );
     }
 
+
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_a_r_screen );
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_a_r_screen);
 
-        arFragment = ( ArFragment ) getSupportFragmentManager().findFragmentById( R.id.arFragment );
+        arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
 
         //getting the text of the button from the previous activity
         Intent i = getIntent();
         text = i.getStringExtra("TextOfButton");
-        models = new ARModels(this, arFragment,text);
+        models = new ARModels(this, arFragment, text);
 
         //Initializing firebase and downloading model from firebase
         models.DownloadModel();
 
         //inserting the model
-        arFragment.setOnTapArPlaneListener( ( hitResult, plane, motionEvent ) -> {
+        arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
             models.InsertModel(hitResult);
         });
-
-        ImageView pencil = findViewById( R.id.pencil );
+        ImageView cam = findViewById(R.id.screenshot);
+        cam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                takePhoto();
+            }
+        });
+        ImageView pencil = findViewById(R.id.pencil);
         pencil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,7 +139,7 @@ public class ARScreen extends AppCompatActivity {
             }
         });
 
-        infoButton = ( ImageButton ) findViewById( R.id.infoButton );
+        infoButton = (ImageButton) findViewById(R.id.infoButton);
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,69 +148,64 @@ public class ARScreen extends AppCompatActivity {
         });
 
         sessionID = (TextView) findViewById(R.id.session_id);
-        sessionID.setText( " Session ID: 1234");
+        sessionID.setText(" Session ID: 1234");
 
-        ActivityCompat.requestPermissions(this, new String[] {
-            WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, PERMISSION_GRANTED );
+        ActivityCompat.requestPermissions(this, new String[]{
+                WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, PERMISSION_GRANTED);
 
         //otherwise app crashes
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
-        StrictMode.setVmPolicy( builder.build() );
+        StrictMode.setVmPolicy(builder.build());
 
         DisplayMetrics metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics( metrics );
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
         mScreenDensity = metrics.densityDpi;
 
         DISPLAY_HEIGHT = metrics.heightPixels;
         DISPLAY_WIDTH = metrics.widthPixels;
 
         mediaRecorder = new MediaRecorder();
-        mediaProjectionManager = ( MediaProjectionManager )getSystemService( Context.MEDIA_PROJECTION_SERVICE );
+        mediaProjectionManager = (MediaProjectionManager) getSystemService(Context.MEDIA_PROJECTION_SERVICE);
 
         //view
-        videoView = ( VideoView )findViewById( R.id.videoView );
-        toggleButton = ( ToggleButton )findViewById( R.id.toggleButton );
-        //relativeLayout2 = (RelativeLayout)findViewById(R.id.relativeLayout2);
+        videoView = (VideoView) findViewById(R.id.videoView);
+        toggleButton = (ToggleButton) findViewById(R.id.toggleButton);
 
         //video
-        toggleButton.setOnClickListener( new View.OnClickListener() {
+        toggleButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick( View v ) {
-                if( ContextCompat.checkSelfPermission(ARScreen.this, Manifest.permission.WRITE_EXTERNAL_STORAGE )
-                        + ContextCompat.checkSelfPermission( ARScreen.this, Manifest.permission.RECORD_AUDIO )
-                != PackageManager.PERMISSION_GRANTED )
-                {
-                    if( ActivityCompat.shouldShowRequestPermissionRationale(ARScreen.this, WRITE_EXTERNAL_STORAGE ) ||
-                            ActivityCompat.shouldShowRequestPermissionRationale(ARScreen.this, Manifest.permission.RECORD_AUDIO ) )
-                    {
-                        toggleButton.setChecked( false );
-                        Snackbar.make( relativeLayout2, "Permissions", Snackbar.LENGTH_INDEFINITE )
-                                .setAction( "ENABLE", new View.OnClickListener() {
-                       @Override
-                       public void onClick( View v ) {
+            public void onClick(View v) {
+                if (ContextCompat.checkSelfPermission(ARScreen.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        + ContextCompat.checkSelfPermission(ARScreen.this, Manifest.permission.RECORD_AUDIO)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(ARScreen.this, WRITE_EXTERNAL_STORAGE) ||
+                            ActivityCompat.shouldShowRequestPermissionRationale(ARScreen.this, Manifest.permission.RECORD_AUDIO)) {
+                        toggleButton.setChecked(false);
+                        Snackbar.make(relativeLayout2, "Permissions", Snackbar.LENGTH_INDEFINITE)
+                                .setAction("ENABLE", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        ActivityCompat.requestPermissions(ARScreen.this,
+                                                new String[]{
+                                                        WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO},
+                                                REQUEST_PERMISSION);
+                                    }
+
+                                }).show();
+
+                    } else {
                         ActivityCompat.requestPermissions(ARScreen.this,
                                 new String[]{
-                                        WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO },
-                                REQUEST_PERMISSION );
-                       }
-
-                    }).show();
-
-                     }
-                         else{
-                                 ActivityCompat.requestPermissions(ARScreen.this,
-                                    new String[]{
-                                            WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO },
-                                    REQUEST_PERMISSION );
-                            }
+                                        WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO},
+                                REQUEST_PERMISSION);
+                    }
+                } else {
+                    toggleScreenShare(v);
                 }
-                else{
-                    toggleScreenShare( v );
-                }
-             }
+            }
 
         });
-    }//end of onCreate
+    }
 
     public void openPreview(){
         Intent intent = new Intent( this , Preview.class  );
@@ -196,57 +216,41 @@ public class ARScreen extends AppCompatActivity {
      *
      * @param view
      */
-    public void ScreenshotButton( View view ) {
-        //take screenshot
+   // public void ScreenshotButton( View view ) {
+          //  Date now = new Date();
+          //  android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
+            //try {
+                // image naming and path  to include sd card  appending name you choose for file
+              //  String mPath = Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg";
 
-        //View rootView = getWindow().getDecorView().findViewById(android.R.id.content);
-        ////View screenView = findViewById(R.id.relativeLayout2).getRootView();
-        //View screenView = view.getRootView();
-        ////screenView.setDrawingCacheEnabled(true);
+                // create bitmap screen capture
+              //  View v1 = getWindow().getDecorView().getRootView();
+              //  v1.setDrawingCacheEnabled(true);
+             //   Bitmap bitmap = Bitmap.createBitmap(v1.getDrawingCache());
+             //   v1.setDrawingCacheEnabled(false);
 
-        View view1 = getWindow().getDecorView().getRootView();
-        view1.setDrawingCacheEnabled( true );
+              //  File imageFile = new File(mPath);
 
-        int height = view1.getHeight();
-        int width = view1.getWidth();
+               // FileOutputStream outputStream = new FileOutputStream(imageFile);
+              //  int quality = 100;
+              //  bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
+              //  outputStream.flush();
+              //  outputStream.close();
 
-        view1.layout( 0,0,width,height );
-        view1.buildDrawingCache( true );
+                //openScreenshot(imageFile);
+         //   } catch (Throwable e) {
+                // Several error may come out with file handling or DOM
+                //e.printStackTrace();
+           // }
+        //}
 
-        //create bitmap to draw the screenshot
-        ////Bitmap bitmap = Bitmap.createBitmap(screenView.getDrawingCache());
-        ////screenView.setDrawingCacheEnabled(false);
-        Bitmap bitmap = Bitmap.createBitmap( width, height, Bitmap.Config.ARGB_8888 );
-        Canvas canvas = new Canvas( bitmap );
-        Drawable bgDrawable = view1.getBackground();
-        if ( bgDrawable != null )
-            bgDrawable.draw( canvas );
-        else
-            canvas.drawColor( Color.WHITE );
-        view1  .draw( canvas );
-
-        //create file
-        String filePath = Environment.getExternalStorageDirectory()+"/Download/"+ Calendar.getInstance().getTime().toString() + ".jpg";
-        File fileScreenshot = new File( filePath );
-
-        FileOutputStream fileOutputStream = null;
-
-        try {
-            fileOutputStream = new FileOutputStream( fileScreenshot );
-            bitmap.compress( Bitmap.CompressFormat.JPEG, 100, fileOutputStream );
-            fileOutputStream.flush();
-            fileOutputStream.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        Intent intent = new Intent( Intent.ACTION_VIEW );
-        Uri uri = Uri.fromFile( fileScreenshot );
-        intent.setDataAndType( uri,"image/.jpeg" );
-        intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK );
-        this.startActivity( intent );
-    }
+    //private void openScreenshot(File imageFile) {
+      //  Intent intent = new Intent();
+       // intent.setAction(Intent.ACTION_VIEW);
+      //  Uri uri = Uri.fromFile(imageFile);
+       // intent.setDataAndType(uri, "image/*");
+      //  startActivity(intent);
+   // }
 
     /**
      *
@@ -454,5 +458,77 @@ public class ARScreen extends AppCompatActivity {
         return videoURI;
     }
 
+    private  String generateFilename() {
+        Date now = new Date();
+        android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
+        return Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg";
+    }
+
+    private void saveBitmapToDisk(Bitmap bitmap, String filename) throws IOException {
+
+        File out = new File(filename);
+        if (!out.getParentFile().exists()) {
+            out.getParentFile().mkdirs();
+        }
+        try (FileOutputStream outputStream = new FileOutputStream(filename);
+             ByteArrayOutputStream outputData = new ByteArrayOutputStream()) {
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputData);
+            outputData.writeTo(outputStream);
+            outputStream.flush();
+            outputStream.close();
+        } catch (IOException ex) {
+            throw new IOException("Failed to save bitmap to disk", ex);
+        }
+    }
+
+    private void takePhoto() {
+
+
+        final String filename = generateFilename();
+        ArSceneView view = arFragment.getArSceneView();
+
+        // Create a bitmap the size of the scene view.
+        final Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(),
+                Bitmap.Config.ARGB_8888);
+
+        // Create a handler thread to offload the processing of the image.
+        final HandlerThread handlerThread = new HandlerThread("PixelCopier");
+        handlerThread.start();
+        // Make the request to copy.
+        PixelCopy.request(view, bitmap, (copyResult) -> {
+            if (copyResult == PixelCopy.SUCCESS) {
+                try {
+                    saveBitmapToDisk(bitmap, filename);
+                } catch (IOException e) {
+                    Toast toast = Toast.makeText(ARScreen.this, e.toString(),
+                            Toast.LENGTH_LONG);
+                    toast.show();
+                    return;
+                }
+                Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
+                        "Photo saved", Snackbar.LENGTH_LONG);
+                snackbar.setAction("Open in Photos", v -> {
+                    File photoFile = new File(filename);
+
+                    Uri photoURI = Uri.fromFile(photoFile);
+
+                    Intent intent = new Intent(Intent.ACTION_VIEW, photoURI);
+                    intent.setDataAndType(photoURI, "image/*");
+                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    startActivity(intent);
+
+                });
+                snackbar.show();
+
+            } else {
+                Toast toast = Toast.makeText(ARScreen.this,
+                        "Failed to copyPixels: " + copyResult, Toast.LENGTH_LONG);
+                toast.show();
+            }
+            handlerThread.quitSafely();
+        }, new Handler(handlerThread.getLooper()));
+    }
+
 
 }
+
