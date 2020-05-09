@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -63,9 +64,8 @@ public class UploadVideo extends AppCompatActivity {
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-        videoString = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_DOWNLOADS )
-                + new StringBuilder( "/EDMTRecord_" ).append( new SimpleDateFormat("dd-MM-yyyy-hh_mm_ss" )
-                .format(new Date())).append( " .mp4" ).toString();
+        Bundle bundle = getIntent().getExtras();
+        videoString = bundle.getString( "videoURI" );
         videoFile = new File( videoString );
         filePath = Uri.fromFile( videoFile );
     }
