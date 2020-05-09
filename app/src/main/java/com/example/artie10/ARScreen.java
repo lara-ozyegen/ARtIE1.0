@@ -39,6 +39,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.artie10.Model.ARModels;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.ar.core.Anchor;
@@ -78,6 +79,8 @@ public class ARScreen extends AppCompatActivity {
     private ModelRenderable renderable;
     private Button downloadButton;
 
+    private ARModels models;
+
     private static final int REQUEST_CODE = 1000;
     private static final int REQUEST_PERMISSION = 1001;
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
@@ -109,34 +112,14 @@ public class ARScreen extends AppCompatActivity {
         //getting the text of the button from the previous activity
         Intent i = getIntent();
         text = i.getStringExtra("ButtonText");
+        models = new ARModels(this, arFragment,text);
 
         //Initializing firebase and downloading model from firebase
-        FirebaseApp.initializeApp(this);
-
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference modelRef = storage.getReference().child( text + ".glb");
-
-        downloadButton = findViewById(R.id.downloadButton);
-        downloadButton.setOnClickListener(v -> {
-            try {
-                File file = File.createTempFile( text , "glb");
-
-                modelRef.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                        buildModel(file);
-                    }
-                });
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
+        models.DownloadModel();
 
         //inserting the model
         arFragment.setOnTapArPlaneListener( ( hitResult, plane, motionEvent ) -> {
-            AnchorNode anchorNode = new AnchorNode(hitResult.createAnchor());
-            anchorNode.setRenderable(renderable);
-            arFragment.getArSceneView().getScene().addChild(anchorNode);
+            models.InsertModel(hitResult);
         });
 
         ImageView pencil = findViewById( R.id.pencil );
