@@ -9,17 +9,19 @@ import android.view.View;
 import android.widget.Button;
 
 public class UploadVideo extends AppCompatActivity {
+
+    //properties
     private Button yes;
     private Button no;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upload_video);
+    protected void onCreate( Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_upload_video );
 
         makeItPopUp();
 
-        yes =(Button) findViewById( R.id.yesButton );
+        yes = (Button) findViewById( R.id.yesButton );
         yes.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -28,6 +30,7 @@ public class UploadVideo extends AppCompatActivity {
                 finish();
             }
         });
+
         no = (Button) findViewById( R.id.noButton );
         no.setOnClickListener( new View.OnClickListener() {
             @Override

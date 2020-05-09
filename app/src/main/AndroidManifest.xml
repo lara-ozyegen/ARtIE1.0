@@ -23,7 +23,6 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
-        <activity android:name=".UploadVideo"></activity>
         <activity android:name=".JoinSession" />
         <activity
             android:name=".ARScreenSession"
@@ -51,6 +50,9 @@
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".HelpScreen"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity
+            android:name=".UploadVideo"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".Categories"

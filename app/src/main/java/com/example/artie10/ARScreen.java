@@ -186,6 +186,11 @@ public class ARScreen extends AppCompatActivity {
         });
     }//end of onCreate
 
+    /**
+     *
+     * @param anchor
+     * @param modelRenderable
+     */
     private void addModelToScene( Anchor anchor, ModelRenderable modelRenderable ) {
 
         AnchorNode anchorNode = new AnchorNode( anchor );
@@ -196,7 +201,10 @@ public class ARScreen extends AppCompatActivity {
         transformableNode.select();
     }
 
-
+    /**
+     *
+     * @param view
+     */
     public void ScreenshotButton( View view ) {
         //take screenshot
 
@@ -249,11 +257,17 @@ public class ARScreen extends AppCompatActivity {
         this.startActivity( intent );
     }
 
+    /**
+     *
+     */
     public void openPaint(){
         Intent intent = new Intent( this,PaintActivity.class );
         startActivity( intent );
     }
 
+    /**
+     *
+     */
     //Screen recording
     private class MediaProjectionCallBack extends MediaProjection.Callback {
         @Override
@@ -269,6 +283,9 @@ public class ARScreen extends AppCompatActivity {
         }
     }
 
+    /**
+     *
+     */
     private void stopRecordScreen() {
         if( virtualDisplay == null )
             return;
@@ -277,6 +294,9 @@ public class ARScreen extends AppCompatActivity {
         destroyMediaProjection();
     }
 
+    /**
+     *
+     */
     private void destroyMediaProjection() {
         if( mediaProjection != null ){
             mediaProjection.unregisterCallback( mediaProjectionCallBack );
@@ -286,6 +306,10 @@ public class ARScreen extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     * @param v
+     */
     private void toggleScreenShare( View v ){
         if( ( (ToggleButton) v ).isChecked() )
         {
@@ -300,13 +324,16 @@ public class ARScreen extends AppCompatActivity {
             //videoView.setVisibility( View.VISIBLE );
            // videoView.setVideoURI( Uri.parse(videoURI ) );
            // videoView.start();
-            Intent intent = new Intent (ARScreen.this, HelpScreen.class);
+            Intent intent = new Intent (ARScreen.this, UploadVideo.class);
             startActivity(intent);
 
         }
 
     }
 
+    /**
+     *
+     */
     private void initRecorder(){
         try{
             mediaRecorder.setAudioSource( MediaRecorder.AudioSource.MIC );
@@ -335,6 +362,9 @@ public class ARScreen extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     */
     private void recordScreen(){
 
         if( mediaProjection == null ){
@@ -347,6 +377,10 @@ public class ARScreen extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     * @return
+     */
     private VirtualDisplay createVirtualDisplay() {
         return mediaProjection.createVirtualDisplay( "ARScreen", DISPLAY_WIDTH, DISPLAY_HEIGHT, mScreenDensity,
                DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
@@ -402,6 +436,11 @@ public class ARScreen extends AppCompatActivity {
         }
     }
 
+    /**
+     *
+     * @param enableDisable
+     * @param visibility
+     */
     public void infoButtonSettings( boolean enableDisable, boolean visibility ){
 
         //setting the button as enabled or disabled
