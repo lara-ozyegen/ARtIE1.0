@@ -1,8 +1,6 @@
 package com.example.artie10;
 
 import android.Manifest;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -19,12 +17,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
-import android.text.BoringLayout;
 import android.util.DisplayMetrics;
 import android.util.SparseIntArray;
 import android.view.Surface;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -40,18 +36,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.artie10.Model.ARModels;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.ar.core.Anchor;
-import com.google.ar.sceneform.AnchorNode;
-import com.google.ar.sceneform.assets.RenderableSource;
-import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
-import com.google.ar.sceneform.ux.TransformableNode;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.storage.FileDownloadTask;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -322,8 +308,10 @@ public class ARScreen extends AppCompatActivity {
            // videoView.setVideoURI( Uri.parse(videoURI ) );
            // videoView.start();
             Intent intent = new Intent (ARScreen.this, UploadVideo.class );
+            Bundle bundle= new Bundle();
+            bundle.putString("stuff", videoURI);
+            intent.putExtras(bundle);
             startActivity( intent );
-
         }
 
     }

@@ -1,8 +1,5 @@
 package com.example.artie10;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +8,9 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -60,14 +60,14 @@ public class UploadVideo extends AppCompatActivity {
                 finish();
             }
         });
+        Bundle bundle = getIntent().getExtras();
+        String stuff = bundle.getString("stuff");
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-        videoString = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_DOWNLOADS )
-                + new StringBuilder( "/EDMTRecord_" ).append( new SimpleDateFormat("dd-MM-yyyy-hh_mm_ss" )
-                .format(new Date())).append( " .mp4" ).toString();
-        videoFile = new File( videoString );
+        videoFile = new File( stuff );
         filePath = Uri.fromFile( videoFile );
+
     }
 
     /**
