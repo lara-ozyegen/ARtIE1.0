@@ -1,8 +1,6 @@
 package com.example.artie10;
 
 import android.Manifest;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -19,12 +17,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
-import android.text.BoringLayout;
 import android.util.DisplayMetrics;
 import android.util.SparseIntArray;
 import android.view.Surface;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -40,18 +36,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.artie10.Model.ARModels;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.ar.core.Anchor;
-import com.google.ar.sceneform.AnchorNode;
-import com.google.ar.sceneform.assets.RenderableSource;
-import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
-import com.google.ar.sceneform.ux.TransformableNode;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.storage.FileDownloadTask;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -206,6 +192,10 @@ public class ARScreen extends AppCompatActivity {
         startActivity( intent );
     }
 
+    /**
+     *
+     * @param view
+     */
     public void ScreenshotButton( View view ) {
         //take screenshot
 
@@ -258,11 +248,17 @@ public class ARScreen extends AppCompatActivity {
         this.startActivity( intent );
     }
 
+    /**
+     *
+     */
     public void openPaint(){
         Intent intent = new Intent( this,PaintActivity.class );
         startActivity( intent );
     }
 
+    /**
+     *
+     */
     //Screen recording
     private class MediaProjectionCallBack extends MediaProjection.Callback {
         @Override
@@ -278,6 +274,9 @@ public class ARScreen extends AppCompatActivity {
         }
     }
 
+    /**
+     *
+     */
     private void stopRecordScreen() {
         if( virtualDisplay == null )
             return;
@@ -286,6 +285,9 @@ public class ARScreen extends AppCompatActivity {
         destroyMediaProjection();
     }
 
+    /**
+     *
+     */
     private void destroyMediaProjection() {
         if( mediaProjection != null ){
             mediaProjection.unregisterCallback( mediaProjectionCallBack );
@@ -295,6 +297,10 @@ public class ARScreen extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     * @param v
+     */
     private void toggleScreenShare( View v ){
         if( ( (ToggleButton) v ).isChecked() )
         {
@@ -309,13 +315,20 @@ public class ARScreen extends AppCompatActivity {
             //videoView.setVisibility( View.VISIBLE );
            // videoView.setVideoURI( Uri.parse(videoURI ) );
            // videoView.start();
-            Intent intent = new Intent (ARScreen.this, HelpScreen.class);
-            startActivity(intent);
+
+            Intent intent = new Intent (ARScreen.this, UploadVideo.class );
+            Bundle bundle = new Bundle();
+            bundle.putString( "videoURI", videoURI );
+            intent.putExtras( bundle );
+            startActivity( intent );
 
         }
 
     }
 
+    /**
+     *
+     */
     private void initRecorder(){
         try{
             mediaRecorder.setAudioSource( MediaRecorder.AudioSource.MIC );
@@ -344,6 +357,9 @@ public class ARScreen extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     */
     private void recordScreen(){
 
         if( mediaProjection == null ){
@@ -356,6 +372,10 @@ public class ARScreen extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     * @return
+     */
     private VirtualDisplay createVirtualDisplay() {
         return mediaProjection.createVirtualDisplay( "ARScreen", DISPLAY_WIDTH, DISPLAY_HEIGHT, mScreenDensity,
                DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
@@ -411,6 +431,11 @@ public class ARScreen extends AppCompatActivity {
         }
     }
 
+    /**
+     * a method to change the visibility and enabled/disabled status of infoButton.
+     * @param enableDisable
+     * @param visibility
+     */
     public void infoButtonSettings( boolean enableDisable, boolean visibility ){
 
         //setting the button as enabled or disabled
@@ -425,6 +450,10 @@ public class ARScreen extends AppCompatActivity {
         else{
             infoButton.setVisibility( View.GONE );
         }
+    }
+
+    public String returnVideoURI(  ){
+        return videoURI;
     }
 
 
