@@ -59,9 +59,3 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:17.0.0'
 }
 
-
-sceneform.asset('sampledata/Human Heart.obj', // 'Source Asset Path' specified during import.
-        'default',                    // 'Material Path' specified during import.
-        'sampledata/Human Heart.sfa', // '.sfa Output Path' specified during import.
-        'src/main/assets/Human Heart')     // '.sfb Output Path' specified during import
-

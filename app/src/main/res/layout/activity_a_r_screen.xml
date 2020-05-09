@@ -92,17 +92,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.046" />
 
-    <Button
-        android:id="@+id/downloadButton"
-        android:layout_width="124dp"
-        android:layout_height="52dp"
-        android:text="Download Model"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/toggleButton"
-        app:layout_constraintHorizontal_bias="0.56"
-        app:layout_constraintStart_toEndOf="@+id/pencil"
-        app:layout_constraintTop_toTopOf="@+id/arFragment"
-        app:layout_constraintVertical_bias="0.978" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

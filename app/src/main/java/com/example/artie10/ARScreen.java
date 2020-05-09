@@ -76,8 +76,6 @@ public class ARScreen extends AppCompatActivity {
     private TextView sessionID;
     private String text;
     private RelativeLayout relativeLayout2;
-    private ModelRenderable renderable;
-    private Button downloadButton;
 
     private ARModels models;
 
@@ -199,29 +197,6 @@ public class ARScreen extends AppCompatActivity {
         });
     }//end of onCreate
 
-
-    //METHODS
-    /**
-     * Builds the wanted model
-     * @param file is name of the file contains the model
-     */
-    private void buildModel(File file){
-        RenderableSource renderableSource = RenderableSource
-                .builder()
-                .setSource(this, Uri.parse(file.getPath()), RenderableSource.SourceType.GLB)
-                .setRecenterMode(RenderableSource.RecenterMode.ROOT)
-                .build();
-
-        ModelRenderable
-                .builder()
-                .setSource( this, renderableSource)
-                .setRegistryId(file.getPath())
-                .build()
-                .thenAccept(modelRenderable -> {
-                    Toast.makeText(this, "Model Built", Toast.LENGTH_SHORT).show();
-                    renderable = modelRenderable;
-                });
-    }
 
     public void ScreenshotButton( View view ) {
         //take screenshot
