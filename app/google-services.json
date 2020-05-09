@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "598333675695-9o6abadn9p77f0n30mmqqboqajln3klq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.artie10",
+            "certificate_hash": "d6703417773b383e6f3a69b4cff171f936dc98bb"
+          }
+        },
+        {
           "client_id": "598333675695-95d3v5idmk0amfg37r98p3phi67qgjtp.apps.googleusercontent.com",
           "client_type": 3
         }
