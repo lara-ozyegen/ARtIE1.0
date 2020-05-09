@@ -437,7 +437,7 @@ public class ARScreen extends AppCompatActivity {
     }
 
     /**
-     *
+     * a method to change the visibility and enabled/disabled status of infoButton.
      * @param enableDisable
      * @param visibility
      */

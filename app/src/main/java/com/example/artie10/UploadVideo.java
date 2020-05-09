@@ -41,6 +41,9 @@ public class UploadVideo extends AppCompatActivity {
         });
     }
 
+    /**
+     * a method which makes the related window a pop-up.
+     */
     public void makeItPopUp(){
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics( dm );
