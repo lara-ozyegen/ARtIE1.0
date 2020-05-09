@@ -24,6 +24,7 @@ import android.util.DisplayMetrics;
 import android.util.SparseIntArray;
 import android.view.Surface;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -38,12 +39,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.ar.core.Anchor;
 import com.google.ar.sceneform.AnchorNode;
+import com.google.ar.sceneform.assets.RenderableSource;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -63,10 +70,13 @@ public class ARScreen extends AppCompatActivity {
     private ImageView pencil;
     private VideoView videoView;
     private ToggleButton toggleButton;
-    private RelativeLayout relativeLayout2;
     private String videoURI = "";
     private ImageButton infoButton;
     private TextView sessionID;
+    private String text;
+    private RelativeLayout relativeLayout2;
+    private ModelRenderable renderable;
+    private Button downloadButton;
 
     private static final int REQUEST_CODE = 1000;
     private static final int REQUEST_PERMISSION = 1001;
@@ -83,10 +93,10 @@ public class ARScreen extends AppCompatActivity {
     private static  int DISPLAY_HEIGHT = 1280;
 
     static {
-        ORIENTATIONS.append( Surface.ROTATION_0,90 );
-        ORIENTATIONS.append( Surface.ROTATION_90,0 );
-        ORIENTATIONS.append( Surface.ROTATION_180,270 );
-        ORIENTATIONS.append( Surface.ROTATION_270,180 );
+        ORIENTATIONS.append( Surface.ROTATION_0,0 );
+        ORIENTATIONS.append( Surface.ROTATION_90,90 );
+        ORIENTATIONS.append( Surface.ROTATION_180,180 );
+        ORIENTATIONS.append( Surface.ROTATION_270,270 );
     }
 
     @Override
@@ -95,19 +105,38 @@ public class ARScreen extends AppCompatActivity {
         setContentView( R.layout.activity_a_r_screen );
 
         arFragment = ( ArFragment ) getSupportFragmentManager().findFragmentById( R.id.arFragment );
-        assert arFragment != null;
+
+        //getting the text of the button from the previous activity
+        Intent i = getIntent();
+        text = i.getStringExtra("ButtonText");
+
+        //Initializing firebase and downloading model from firebase
+        FirebaseApp.initializeApp(this);
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference modelRef = storage.getReference().child( text + ".glb");
+
+        downloadButton = findViewById(R.id.downloadButton);
+        downloadButton.setOnClickListener(v -> {
+            try {
+                File file = File.createTempFile( text , "glb");
+
+                modelRef.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                        buildModel(file);
+                    }
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        //inserting the model
         arFragment.setOnTapArPlaneListener( ( hitResult, plane, motionEvent ) -> {
-            Anchor anchor = hitResult.createAnchor();
-            ModelRenderable.builder()
-                    .setSource(this, Uri.parse( "Human Heart.sfb" ) )
-                    .build()
-                    .thenAccept( modelRenderable -> addModelToScene( anchor, modelRenderable ) )
-                    .exceptionally( throwable -> {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(this );
-                        builder.setMessage( throwable.getMessage() )
-                                .show();
-                        return null;
-                    });
+            AnchorNode anchorNode = new AnchorNode(hitResult.createAnchor());
+            anchorNode.setRenderable(renderable);
+            arFragment.getArSceneView().getScene().addChild(anchorNode);
         });
 
         ImageView pencil = findViewById( R.id.pencil );
@@ -118,6 +147,7 @@ public class ARScreen extends AppCompatActivity {
             }
         });
 
+        //info and session id buttons, they are not visible because this is the code of free mode
         infoButton = ( ImageButton ) findViewById( R.id.infoButton );
         infoButtonSettings( false, false );
 
@@ -146,7 +176,7 @@ public class ARScreen extends AppCompatActivity {
         toggleButton = ( ToggleButton )findViewById( R.id.toggleButton );
         //relativeLayout2 = (RelativeLayout)findViewById(R.id.relativeLayout2);
 
-        //event
+        //video
         toggleButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
@@ -186,16 +216,29 @@ public class ARScreen extends AppCompatActivity {
         });
     }//end of onCreate
 
-    private void addModelToScene( Anchor anchor, ModelRenderable modelRenderable ) {
 
-        AnchorNode anchorNode = new AnchorNode( anchor );
-        TransformableNode transformableNode = new TransformableNode( arFragment.getTransformationSystem() );
-        transformableNode.setParent( anchorNode );
-        transformableNode.setRenderable( modelRenderable );
-        arFragment.getArSceneView().getScene().addChild( anchorNode );
-        transformableNode.select();
+    //METHODS
+    /**
+     * Builds the wanted model
+     * @param file is name of the file contains the model
+     */
+    private void buildModel(File file){
+        RenderableSource renderableSource = RenderableSource
+                .builder()
+                .setSource(this, Uri.parse(file.getPath()), RenderableSource.SourceType.GLB)
+                .setRecenterMode(RenderableSource.RecenterMode.ROOT)
+                .build();
+
+        ModelRenderable
+                .builder()
+                .setSource( this, renderableSource)
+                .setRegistryId(file.getPath())
+                .build()
+                .thenAccept(modelRenderable -> {
+                    Toast.makeText(this, "Model Built", Toast.LENGTH_SHORT).show();
+                    renderable = modelRenderable;
+                });
     }
-
 
     public void ScreenshotButton( View view ) {
         //take screenshot

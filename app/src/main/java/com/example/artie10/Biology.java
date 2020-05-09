@@ -23,19 +23,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Biology extends AppCompatActivity {
+
+    //CONSTANTS
     private static final int REQUEST_CODE = 45;
 
+    //VARIABLES
     Toolbar appbar;
 
     public ArrayAdapter<String> arrayAdapter;
     private List<String> myList;
     private ListView listView;
 
+    private Button b;
+    private String text;
+
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_biology );
-        Button b = ( Button ) findViewById( R.id.heart_button );
+        b = ( Button ) findViewById( R.id.brain_button );
+        text = b.getText().toString().toLowerCase();
         b.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick( View v ) {
@@ -52,11 +59,12 @@ public class Biology extends AppCompatActivity {
         myList = new ArrayList<>();
         myList.clear();
         //Adapter has to use string so we use text contents of the buttons
-        myList.add( ( String ) b.getText() );
+        myList.add(( String) b.getText());
     }
 
     public void openPreview() {
         Intent intent = new Intent( this , Preview.class  );
+        intent.putExtra("TextOfButton", text);
         startActivity( intent );
     }
 

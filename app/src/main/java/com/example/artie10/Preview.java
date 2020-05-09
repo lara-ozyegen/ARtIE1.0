@@ -11,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Preview extends AppCompatActivity {
 
+    //variables
+    private Button arButton;
+    private String text;
+
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
@@ -23,8 +27,10 @@ public class Preview extends AppCompatActivity {
         int height = dm.heightPixels;
         getWindow().setLayout( ( int ) ( width * .8 ), ( int ) ( height * .8 ) );
 
-        Button b = ( Button ) findViewById( R.id.ar_button );
-        b.setOnClickListener( new View.OnClickListener() {
+        arButton = ( Button ) findViewById( R.id.ar_button );
+        Intent i = getIntent();
+        text = i.getStringExtra("TextOfButton");
+        arButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
                 if ( MainActivity.getPath() )
@@ -39,6 +45,7 @@ public class Preview extends AppCompatActivity {
     }
     public void openAR(){
         Intent intent = new Intent(this, ARScreen.class );
+        intent.putExtra("ButtonText", text);
         startActivity( intent );
     }
 
