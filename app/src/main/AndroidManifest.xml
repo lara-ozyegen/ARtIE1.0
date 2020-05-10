@@ -31,7 +31,7 @@
             android:name=".ARScreenSession"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
-            android:name="View.AboutUs"
+            android:name=".View.AboutUs"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".SignIn"
