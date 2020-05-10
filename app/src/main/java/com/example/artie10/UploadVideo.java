@@ -37,7 +37,6 @@ public class UploadVideo extends AppCompatActivity {
     private Button no;
     private FirebaseStorage storage;
     private StorageReference storageReference;
-    private String videoString;
     private File videoFile;
     private Uri filePath;
     private TextView addVideoName;
@@ -49,7 +48,10 @@ public class UploadVideo extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_upload_video );
 
+        //so upload video will be a pop-up window
         makeItPopUp();
+
+        //initializing properties
         addVideoName = (TextView) findViewById(R.id.addVideoName);
         inputVideoName = (EditText) findViewById(R.id.inputVideoName);
         uploadButton = (Button) findViewById(R.id.uploadButton);
@@ -59,7 +61,8 @@ public class UploadVideo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //close popup screen
+                //changing visibility and enabled status of some properties
+                //because yes is clicked, and they are needed for the next step
                 addVideoName.setVisibility(View.VISIBLE);
                 inputVideoName.setVisibility(View.VISIBLE);
                 uploadButton.setVisibility(View.VISIBLE);
@@ -70,6 +73,7 @@ public class UploadVideo extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         uploadVideo();
+                        //close popup screen
                         finish();
                     }
                 });
@@ -84,12 +88,17 @@ public class UploadVideo extends AppCompatActivity {
                 finish();
             }
         });
-        Bundle bundle = getIntent().getExtras();
-        String stuff = bundle.getString("stuff");
 
+        //this part was necessary to transfer some info from ARScreen class
+        Bundle bundle = getIntent().getExtras();
+        String transferInfo = bundle.getString("transferInfo");
+
+        //getting a storage and its reference from firebase
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-        videoFile = new File( stuff );
+
+        //getting the video info and creating the uri of the file to be uploaded
+        videoFile = new File( transferInfo );
         filePath = Uri.fromFile( videoFile );
 
     }

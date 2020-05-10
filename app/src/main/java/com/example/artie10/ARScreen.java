@@ -296,8 +296,8 @@ public class ARScreen extends AppCompatActivity {
            // videoView.start();
             Intent intent = new Intent (ARScreen.this, UploadVideo.class );
             Bundle bundle= new Bundle();
-            bundle.putString("stuff", videoURI);
-            intent.putExtras(bundle);
+            bundle.putString( "transferInfo", videoURI );
+            intent.putExtras( bundle );
             startActivity( intent );
         }
 
