@@ -10,6 +10,7 @@
         android:id="@+id/appbar"
         layout="@layout/appbar"></include>
 
+
     <Button
         android:id="@+id/logOutButton"
         android:layout_width="129dp"
