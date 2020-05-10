@@ -209,23 +209,28 @@ public class ARScreen extends AppCompatActivity {
         });
     }
 
+    /**
+     * a method which calls preview page for model. might need an update later on.
+     */
     public void openPreview(){
-        Intent intent = new Intent( this , Preview.class  );
+        Intent intent = new Intent( this, Preview.class  );
         startActivity( intent );
     }
 
     /**
-     *
+     * a method which calls paint class.
      */
     public void openPaint(){
-        Intent intent = new Intent( this,PaintActivity.class );
+        Intent intent = new Intent( this, PaintActivity.class );
         startActivity( intent );
     }
+
+
+    //methods for video recording start here
 
     /**
      *
      */
-    //Screen recording
     private class MediaProjectionCallBack extends MediaProjection.Callback {
         @Override
         public void onStop() {
@@ -395,6 +400,8 @@ public class ARScreen extends AppCompatActivity {
         }
     }
 
+    //methods for video recording ends here
+
     /**
      * a method to change the visibility and enabled/disabled status of infoButton.
      * @param enableDisable
@@ -416,16 +423,19 @@ public class ARScreen extends AppCompatActivity {
         }
     }
 
-    public String returnVideoURI(  ){
-        return videoURI;
-    }
-
+    /**
+     *
+     * @return a file name in string form
+     */
     private  String generateFilename() {
         Date now = new Date();
         android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
         return Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg";
     }
 
+    /**
+     *
+     */
     private void saveBitmapToDisk(Bitmap bitmap, String filename) throws IOException {
 
         File out = new File(filename);
@@ -443,6 +453,9 @@ public class ARScreen extends AppCompatActivity {
         }
     }
 
+    /**
+     *
+     */
     private void takePhoto() {
 
 

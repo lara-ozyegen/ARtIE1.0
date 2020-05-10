@@ -34,8 +34,10 @@ public class SignIn extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_log_in_screen );
 
+        //so sign in will be a pop-up window
         makeItPopUp();
 
+        //initializing properties
         signIn = ( Button )findViewById( R.id.sign_in_button );
         password = findViewById( R.id.password );
         email = findViewById( R.id.email_address );
@@ -48,6 +50,7 @@ public class SignIn extends AppCompatActivity {
             }
         };
 
+        //if sign in button is clicked
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +58,7 @@ public class SignIn extends AppCompatActivity {
             }
         });
 
+        //if sign up text is clicked
         signUpHere.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
@@ -70,30 +74,44 @@ public class SignIn extends AppCompatActivity {
     public void signIn(){
         String strEmail = email.getText().toString();
         String strPassword = password.getText().toString();
+
+        //if e-mail field is empty
         if ( strEmail.isEmpty() ) {
             email.setError( "Please enter a valid e-mail address." );
             email.requestFocus();
         }
+
+        //if password field is empty
         else if ( strPassword.isEmpty() ){
             password.setError( "Please enter a valid password." );
             password.requestFocus();
         }
+
+        //if both e-mail and password fields are empty
         else if ( strEmail.isEmpty() && strPassword.isEmpty() ){
             Toast.makeText( SignIn.this, "Fields are empty!", Toast.LENGTH_SHORT ).show();
         }
+
+        //if the fields are filled
         else if ( !(strEmail.isEmpty() && strPassword.isEmpty() ) ){
             mFirebaseAuth.signInWithEmailAndPassword( strEmail, strPassword ).addOnCompleteListener(SignIn.this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task ) {
+
+                    //if sign in is failed
                     if ( !task.isSuccessful() ){
                         Toast.makeText( SignIn.this, "Could not sign in, please try again.", Toast.LENGTH_SHORT ).show();
                     }
+
+                    //if sign in is successful
                     else{
                         startActivity( new Intent( SignIn.this, MainActivity.class ) );
                     }
                 }
             });
         }
+
+        //if some other non-predicted error has occurred
         else{
             Toast.makeText( SignIn.this, "Nani??! Some error??!", Toast.LENGTH_SHORT ).show();
         }
@@ -104,10 +122,14 @@ public class SignIn extends AppCompatActivity {
      */
     public void signedInOrNot(){
         FirebaseUser user = mFirebaseAuth.getCurrentUser();
+
+        //if user is signed in
         if( user != null ) {
             Toast.makeText( SignIn.this, "Signed in successfully.", Toast.LENGTH_SHORT ).show();
             backToMain();
         }
+
+        //if user is not signed in
         else{
             Toast.makeText( SignIn.this, "Please sign in.", Toast.LENGTH_SHORT ).show();
         }

@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class ARModels {
+
     //properties
     private Context context;
     private String text;
@@ -64,12 +65,12 @@ public class ARModels {
         RenderableSource renderableSource = RenderableSource
                 .builder()
                 .setSource(context, Uri.parse(file.getPath()), RenderableSource.SourceType.GLB)
-                .setRecenterMode(RenderableSource.RecenterMode.ROOT)
+                .setRecenterMode( RenderableSource.RecenterMode.ROOT )
                 .build();
 
         ModelRenderable
                 .builder()
-                .setSource( context, renderableSource)
+                .setSource( context, renderableSource )
                 .setRegistryId(file.getPath())
                 .build()
                 .thenAccept(modelRenderable -> {
