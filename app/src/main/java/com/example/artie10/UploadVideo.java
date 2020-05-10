@@ -11,6 +11,8 @@ import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,24 +37,46 @@ public class UploadVideo extends AppCompatActivity {
     private Button no;
     private FirebaseStorage storage;
     private StorageReference storageReference;
-    private String videoString;
     private File videoFile;
     private Uri filePath;
+    private TextView addVideoName;
+    private EditText inputVideoName;
+    private Button uploadButton;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_upload_video );
 
+        //so upload video will be a pop-up window
         makeItPopUp();
+
+        //initializing properties
+        addVideoName = (TextView) findViewById(R.id.addVideoName);
+        inputVideoName = (EditText) findViewById(R.id.inputVideoName);
+        uploadButton = (Button) findViewById(R.id.uploadButton);
 
         yes = (Button) findViewById( R.id.yesButton );
         yes.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uploadVideo();
-                //close popup screen
-                finish();
+
+                //changing visibility and enabled status of some properties
+                //because yes is clicked, and they are needed for the next step
+                addVideoName.setVisibility(View.VISIBLE);
+                inputVideoName.setVisibility(View.VISIBLE);
+                uploadButton.setVisibility(View.VISIBLE);
+                inputVideoName.setEnabled(true);
+                uploadButton.setEnabled(true);
+
+                uploadButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        uploadVideo();
+                        //close popup screen
+                        finish();
+                    }
+                });
             }
         });
 
@@ -64,12 +88,17 @@ public class UploadVideo extends AppCompatActivity {
                 finish();
             }
         });
-        Bundle bundle = getIntent().getExtras();
-        String stuff = bundle.getString("stuff");
 
+        //this part was necessary to transfer some info from ARScreen class
+        Bundle bundle = getIntent().getExtras();
+        String transferInfo = bundle.getString("transferInfo");
+
+        //getting a storage and its reference from firebase
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-        videoFile = new File( stuff );
+
+        //getting the video info and creating the uri of the file to be uploaded
+        videoFile = new File( transferInfo );
         filePath = Uri.fromFile( videoFile );
 
     }
@@ -81,8 +110,8 @@ public class UploadVideo extends AppCompatActivity {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics( dm );
 
-        int width = ( int ) ( dm.widthPixels * .6 );
-        int height = ( int ) ( dm.heightPixels * .6 );
+        int width = ( int ) ( dm.widthPixels * .8 );
+        int height = ( int ) ( dm.heightPixels * .8 );
 
         getWindow().setLayout( width, height );
     }
@@ -94,7 +123,7 @@ public class UploadVideo extends AppCompatActivity {
             progressDialog.setTitle( "Uploading..." );
             progressDialog.show();
 
-            StorageReference ref = storageReference.child( "videos/" + UUID.randomUUID().toString() );
+            StorageReference ref = storageReference.child( "videos/" + inputVideoName.getText().toString() );
             ref.putFile( filePath )
                     .addOnSuccessListener( new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -120,4 +149,6 @@ public class UploadVideo extends AppCompatActivity {
                     });
         }
     }
+
+
 }
