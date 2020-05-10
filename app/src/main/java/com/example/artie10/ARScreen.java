@@ -413,7 +413,7 @@ public class ARScreen extends AppCompatActivity {
         infoButton.setEnabled( enableDisable );
 
         //setting the button as visible or invisible
-        if( visibility == true ) {
+        if( visibility) {
             infoButton.setVisibility(View.VISIBLE );
             sessionID.setVisibility(View.VISIBLE);
 

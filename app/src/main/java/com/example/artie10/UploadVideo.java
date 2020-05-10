@@ -11,6 +11,8 @@ import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -38,6 +40,9 @@ public class UploadVideo extends AppCompatActivity {
     private String videoString;
     private File videoFile;
     private Uri filePath;
+    private TextView addVideoName;
+    private EditText inputVideoName;
+    private Button uploadButton;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
@@ -45,14 +50,29 @@ public class UploadVideo extends AppCompatActivity {
         setContentView( R.layout.activity_upload_video );
 
         makeItPopUp();
+        addVideoName = (TextView) findViewById(R.id.addVideoName);
+        inputVideoName = (EditText) findViewById(R.id.inputVideoName);
+        uploadButton = (Button) findViewById(R.id.uploadButton);
 
         yes = (Button) findViewById( R.id.yesButton );
         yes.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uploadVideo();
+
                 //close popup screen
-                finish();
+                addVideoName.setVisibility(View.VISIBLE);
+                inputVideoName.setVisibility(View.VISIBLE);
+                uploadButton.setVisibility(View.VISIBLE);
+                inputVideoName.setEnabled(true);
+                uploadButton.setEnabled(true);
+
+                uploadButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        uploadVideo();
+                        finish();
+                    }
+                });
             }
         });
 
@@ -81,8 +101,8 @@ public class UploadVideo extends AppCompatActivity {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics( dm );
 
-        int width = ( int ) ( dm.widthPixels * .6 );
-        int height = ( int ) ( dm.heightPixels * .6 );
+        int width = ( int ) ( dm.widthPixels * .8 );
+        int height = ( int ) ( dm.heightPixels * .8 );
 
         getWindow().setLayout( width, height );
     }
@@ -94,7 +114,7 @@ public class UploadVideo extends AppCompatActivity {
             progressDialog.setTitle( "Uploading..." );
             progressDialog.show();
 
-            StorageReference ref = storageReference.child( "videos/" + UUID.randomUUID().toString() );
+            StorageReference ref = storageReference.child( "videos/" + inputVideoName.getText().toString() );
             ref.putFile( filePath )
                     .addOnSuccessListener( new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -120,4 +140,6 @@ public class UploadVideo extends AppCompatActivity {
                     });
         }
     }
+
+
 }
