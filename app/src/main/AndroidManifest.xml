@@ -47,10 +47,12 @@
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".PaintActivity"
-            android:theme="@style/AppTheme.CustomTheme" />
+            android:parentActivityName=".ARScreen"
+            android:theme="@style/Transparent" />
         <activity
             android:name=".Preview"
-            android:theme="@style/AppTheme.CustomTheme" />
+            android:theme="@style/AppTheme.CustomTheme"
+            />
         <activity
             android:name=".HelpScreen"
             android:theme="@style/AppTheme.CustomTheme" />
