@@ -124,6 +124,7 @@ public class ARScreen extends AppCompatActivity {
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
             models.InsertModel(hitResult);
         });
+
         ImageView cam = findViewById(R.id.screenshot);
         cam.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +132,7 @@ public class ARScreen extends AppCompatActivity {
                 takePhoto();
             }
         });
+
         ImageView pencil = findViewById(R.id.pencil);
         pencil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -211,46 +213,6 @@ public class ARScreen extends AppCompatActivity {
         Intent intent = new Intent( this , Preview.class  );
         startActivity( intent );
     }
-
-    /**
-     *
-     * @param view
-     */
-   // public void ScreenshotButton( View view ) {
-          //  Date now = new Date();
-          //  android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
-            //try {
-                // image naming and path  to include sd card  appending name you choose for file
-              //  String mPath = Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg";
-
-                // create bitmap screen capture
-              //  View v1 = getWindow().getDecorView().getRootView();
-              //  v1.setDrawingCacheEnabled(true);
-             //   Bitmap bitmap = Bitmap.createBitmap(v1.getDrawingCache());
-             //   v1.setDrawingCacheEnabled(false);
-
-              //  File imageFile = new File(mPath);
-
-               // FileOutputStream outputStream = new FileOutputStream(imageFile);
-              //  int quality = 100;
-              //  bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
-              //  outputStream.flush();
-              //  outputStream.close();
-
-                //openScreenshot(imageFile);
-         //   } catch (Throwable e) {
-                // Several error may come out with file handling or DOM
-                //e.printStackTrace();
-           // }
-        //}
-
-    //private void openScreenshot(File imageFile) {
-      //  Intent intent = new Intent();
-       // intent.setAction(Intent.ACTION_VIEW);
-      //  Uri uri = Uri.fromFile(imageFile);
-       // intent.setDataAndType(uri, "image/*");
-      //  startActivity(intent);
-   // }
 
     /**
      *
