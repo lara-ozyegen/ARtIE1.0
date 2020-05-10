@@ -78,7 +78,7 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 public class ARScreen extends AppCompatActivity {
 
     //properties
-    private ArFragment arFragment;
+    static ArFragment arFragment;
     private ImageView pencil;
     private VideoView videoView;
     private ToggleButton toggleButton;
