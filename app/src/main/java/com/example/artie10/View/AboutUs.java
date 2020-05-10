@@ -3,9 +3,11 @@ package com.example.artie10.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import com.example.artie10.R;
+
 
 public class AboutUs extends AppCompatActivity {
 
