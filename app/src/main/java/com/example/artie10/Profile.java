@@ -29,6 +29,7 @@ public class Profile extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_profile );
 
+        //initializing properties
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         //getting the user's credentials and inserting them
@@ -39,6 +40,7 @@ public class Profile extends AppCompatActivity {
         }
 
         delete_button = ( Button ) findViewById( R.id.delete );
+        //if delete button is clicked
         delete_button.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
@@ -47,6 +49,7 @@ public class Profile extends AppCompatActivity {
         });
 
         logOutButton = ( Button ) findViewById( R.id.logOutButton );
+        //if log out button is clicked
         logOutButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
@@ -56,6 +59,9 @@ public class Profile extends AppCompatActivity {
 
     }
 
+    /**
+     * a method which allows the user to delete the account
+     */
     public void deleteAccount() {
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -72,21 +78,37 @@ public class Profile extends AppCompatActivity {
                         @Override
                         public void onComplete( @NonNull Task<Void> task ) {
                             user.delete();
-                            Toast.makeText( Profile.this, "DELETED", Toast.LENGTH_SHORT ).show();
+                            Toast.makeText( Profile.this, "Your account has been deleted.", Toast.LENGTH_SHORT ).show();
                         }
                     });
         }
     }
 
+    /**
+     * a method which allows the user to log out from the current account
+     */
     public void logOut(){
         mFirebaseAuth.signOut();
         FirebaseUser user = mFirebaseAuth.getCurrentUser();
+
+        //if the user is still logged in
         if( user != null ) {
             Toast.makeText( Profile.this, "Could not log out. Please try again.", Toast.LENGTH_SHORT).show();
         }
+
+        //if the user is no longer logged in
         else{
             Toast.makeText( Profile.this, "Logged out successfully.", Toast.LENGTH_SHORT).show();
         }
+
+        //going back to the main page
+        backToMain();
+    }
+
+    /**
+     * a method which changes the window to main screen.
+     */
+    public void backToMain(){
         Intent backToMain = new Intent(Profile.this, MainActivity.class );
         startActivity( backToMain );
     }
