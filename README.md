@@ -48,7 +48,7 @@ _Include a concise description of your project here. Be sure to include the prop
 
 
 #### Contributions
-- Berk Saltuk Yılmaz:
+- Berk Saltuk Yılmaz: Mostly worked on layouts, views and some features of AR screen such as painting. Added visuals and features to screens, fixed paint feature. Created Help, AboutUs pages. Added some spacing, fixed some indentation and created a logo for our app! Created an transparent activity for painting feature and made it work. 
 
 - Enis Özer:
 
