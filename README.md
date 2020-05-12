@@ -54,7 +54,7 @@ _Include a concise description of your project here. Be sure to include the prop
 
 - Lara Özyeğen:
 
-- Onur Asım İlhan:
+- Onur Asım İlhan: Worked on how to create an AR screen and how to solve the errors that we got. Tried to attend the meetings and tried to help my friends with the errors that they got. However, due to some technical and daily life issues, I could not contribute to the project as much as my friends did.
 
 - Öykü Erhan: Mostly worked on AR Screen features. Worked on capturing screenshots, recording video of paint and ar screen and downloading it to phone. Also worked on uploading videos and getting them from firebase database. Created toolbar and add that to pages. Also worked on creating some layouts.
 
