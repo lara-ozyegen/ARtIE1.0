@@ -35,17 +35,17 @@ _Include a concise description of your project here. Be sure to include the prop
 
 
 #### Current Status of Our Project
-- Our project is not yet finished but we are close to finishing it, we are hoping that it would finish till the end of the week
+- Our project is not yet finished but we are close to finishing it, we hope it will be finished till the end of the week.
 
 #### What has been done
-- We almost finished all the views, we did learn database and we are getting our models from database storage also uploading videos to database (We changed the feature screen sharing a bit that's why we are uploading videos to the database). We were also be able to use database for login.
+- We have almost finished all the views, we have learnt database and we are getting our models from database storage, also uploading videos to database (We have changed the screen sharing feature a bit, that's why we are uploading videos to the database). We were also able to use database to create new accounts and log in or log out functions.
 
-#### What left
-- Some of our features are broken ( search, record etc.) , we are hoping we will fix them.
-- Getting info about models from database
-- A feature to delete the model from the screen
-- Some little bugs ( app crashes when pressed about us etc. )
-- Using an ID to see videos from the host
+#### What is left
+- Some of our features are broken (search, record etc.), we hope we will be able to fix them.
+- Getting info about models from database (adding models to the database with their information as a property).
+- A feature to delete the model from the screen.
+- Some little bugs (app crashes when pressed about us etc.)
+- Using an ID to see videos from the host.
 
 
 #### Contributions
@@ -61,4 +61,4 @@ _Include a concise description of your project here. Be sure to include the prop
 
 - Sarper Turan: Mostly worked on AR screen. MVC structure of AR screen. Worked on mostly storage part of database; getting models from database, getting model info from database. Worked on paint and screenshot features with my friends. Also worked on views/layouts and listeners and stuff.
 
-- Yaren Durgun:
+- Yaren Durgun: Mostly worked on database, authentication features such as creating a new account, logging in, logging off etc. For the storage part, attended to uploading and downloading video features. Worked on identifying and clearing the differences between two AR screen types by using hierarchy. Created and edited layouts&comments.
