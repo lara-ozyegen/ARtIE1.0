@@ -11,7 +11,7 @@ Linked my Android Studio to GitHub. Learned the essentials of Android Studio. Ma
 ### ~ 27/04/2020 - 04/05/2020 ~
 This week I helped my friends on adding AR fragments to our project. Trying to learn how to deal with Augmented Reality features and trying to add models to our application. Also added new screens as help screen, about us screen, profile screen. Added Firebase Database to our application and we are trying to create profiles and sessions by using this database. We are also trying to add paint and screenshot features to our AR screen. Our menus are almost completed.
 
-### ~ date ~
-blah, blah, blah...
+### ~ 04/05/2020 - 11/05/2020 ~
+This week I attended all project meetings, thanks to decreased workload. Worked on painting feature and fixed it, I helped my friends and we made a significant progress. Our project is almost complete. I failed at some points, I could not fix the search button. We worked as a team and we dealt with all difficulties. 
 
 ****
