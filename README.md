@@ -48,7 +48,7 @@ _Include a concise description of your project here. Be sure to include the prop
 
 
 #### Contributions
-- Berk Saltuk Yılmaz: Mostly worked on layouts, views and some features of AR screen such as painting. Added visuals and features to screens, fixed paint feature. Created Help, AboutUs pages. Added some spacing, fixed some indentation and created a logo for our app! Created an transparent activity for painting feature and made it work. 
+- Berk Saltuk Yılmaz: Mostly worked on layouts, views and some features of AR screen such as painting. Added visuals and features to screens, fixed paint feature. Created Help, AboutUs pages. Added some spacing, fixed some indentation and created a logo for our app! Created an transparent activity for painting feature and made it work. Also tried to help my friends about their parts since we are new to Android projects.
 
 - Enis Özer:
 
@@ -56,7 +56,7 @@ _Include a concise description of your project here. Be sure to include the prop
 
 - Onur Asım İlhan:
 
-- Öykü Erhan: Mostly worked on AR Screen features. Worked on capturing screenshots, recording video of paint and ar screen and downloading it to phone. Also worked on uploading videos and getting them from firebase database. Created toolbar and add that to pages. Also worked on creating some layouts. Also tried to help my friends about their parts since we are new to Android projects.
+- Öykü Erhan: Mostly worked on AR Screen features. Worked on capturing screenshots, recording video of paint and ar screen and downloading it to phone. Also worked on uploading videos and getting them from firebase database. Created toolbar and add that to pages. Also worked on creating some layouts.
 
 - Sarper Turan: Mostly worked on AR screen. MVC structure of AR screen. Worked on mostly storage part of database; getting models from database, getting model info from database. Worked on paint and screenshot features with my friends. Also worked on views/layouts and listeners and stuff.
 
