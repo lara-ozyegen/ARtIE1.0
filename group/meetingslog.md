@@ -136,7 +136,7 @@ Later today I (Sarper) added borders to pop-up screens, and added search and hom
 ****
 ### Meeting ~ (04/05/2020)
 ****
-**Present:** Öykü, Lara, Sarper, Berk, Yaren, Enis   **Absent:** Onur
+**Present:** Öykü, Lara, Sarper, Berk, Yaren, Enis
 
 **Discussion:**
 We discussed with our TA about the design of our project, it seemed like our project's design was not the best and not coherent with MVC. We decided to change our project a little bit and shared works.
@@ -154,7 +154,7 @@ fyi: We couldn't share the works as model as one group, view as one group etc. b
 ****
 ### Meeting ~ (09/05/2020)
 ****
-**Present:** Öykü, Lara, Sarper, Berk, Yaren, Enis     **Absent:** Onur
+**Present:** Öykü, Lara, Sarper, Berk, Yaren, Enis
 
 **Discussion:**
 We discussed what left from our project and shared tasks and talked about what we've done till today.
@@ -167,4 +167,12 @@ Enis --- Delete Model
 Lara, Yaren, Öykü --- Uploading a video to database, session stuff etc.
 
 Berk Saltuk Yılmaz --- Paint
+
+****
+### Meeting ~ (12/05/2020, 3 hour)
+****
+**Present:** Onur,Öykü, Lara, Sarper, Berk, Yaren, Enis     
+
+**Discussion:** 
+We editted the detailed design and we discussed what left from our project.
 
