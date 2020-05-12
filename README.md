@@ -15,7 +15,7 @@ _Include a concise description of your project here. Be sure to include the prop
 + **Group/project Selection:** completed (date)
 + **Requirements:** completed (date)
 + **UI Design:** completed (date)
-+ **Detailed Design:** in progress
++ **Detailed Design:** completed
 + **Implementation:** in progress
 + **Reflections:** not yet!
 
