@@ -24,7 +24,7 @@ PROJECT DESCRIPTION: Our project, ARtIE, is based on displaying 3D models in rea
 
 - Lara Özyeğen:
 
-- Onur Asım İlhan:
+- Onur Asım İlhan:Worked on how to create an AR screen and how to solve the errors that we got. Tried to attend the meetings and tried to help my friends with the errors that they got. However, due to some technical and daily life issues, I could not contribute to the project as much as my friends did.
 
 - Öykü Erhan:
 
