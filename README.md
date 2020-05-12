@@ -41,10 +41,9 @@ _Include a concise description of your project here. Be sure to include the prop
 - We have almost finished all the views, we have learnt database and we are getting our models from database storage, also uploading videos to database (We have changed the screen sharing feature a bit, that's why we are uploading videos to the database). We were also able to use database to create new accounts and log in or log out functions.
 
 #### What is left
-- Some of our features are broken (search, record etc.), we hope we will be able to fix them.
+- Some of our features are broken (search, capture paint screen etc.), we hope we will be able to fix them.
 - Getting info about models from database (adding models to the database with their information as a property).
 - A feature to delete the model from the screen.
-- Some little bugs (app crashes when pressed about us etc.)
 - Using an ID to see videos from the host.
 
 
