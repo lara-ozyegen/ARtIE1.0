@@ -50,9 +50,9 @@ _Include a concise description of your project here. Be sure to include the prop
 #### Contributions
 - Berk Saltuk Yılmaz: Mostly worked on layouts, views and some features of AR screen such as painting. Added visuals and features to screens, fixed paint feature. Created Help, AboutUs pages. Added some spacing, fixed some indentation and created a logo for our app! Created an transparent activity for painting feature and made it work. Also tried to help my friends about their parts since we are new to Android projects.
 
-- Enis Özer: I have worked on creating a session mode class by using the existing free mode class, helped on layouts and removing an AR object from the environment. I have also tried to help my friends on fixing and adding some features on paint class. 
+- Enis Özer:
 
-- Lara Özyeğen:
+- Lara Özyeğen: Mostly worked on the ARScreen and its features like screenshot. In terms of database: I linked firebase with android studio, added methods for account and uploading video to storage. To render our code more understandable I worked on MVC and applied inheritance to the ARScreens. Also I made several views and layouts in the app.
 
 - Onur Asım İlhan: Worked on how to create an AR screen and how to solve the errors that we got. Tried to attend the meetings and tried to help my friends with the errors that they got. However, due to some technical and daily life issues, I could not contribute to the project as much as my friends did.
 
