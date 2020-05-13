@@ -23,11 +23,11 @@
         android:imeOptions="actionDone"
         android:maxLength="30"
         android:selectAllOnFocus="true"
-        app:layout_constraintBottom_toTopOf="@+id/email_address"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.927" />
+        app:layout_constraintVertical_bias="0.332" />
 
     <EditText
         android:id="@+id/password"
@@ -36,6 +36,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
 
+        android:layout_marginBottom="264dp"
         android:hint="Password"
         android:inputType="textPassword|numberPassword"
         android:selectAllOnFocus="true"
@@ -46,23 +47,22 @@
         app:layout_constraintVertical_bias="0.056" />
 
     <EditText
-        android:id="@+id/email_address"
+        android:id="@+id/videoName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="112dp"
         android:hint="E-mail Address"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionDone"
         android:inputType="textEmailAddress"
         android:maxLength="30"
         android:selectAllOnFocus="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.565" />
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        app:layout_constraintVertical_bias="0.473" />
 
     <Button
         android:id="@+id/signUpButton"
@@ -80,7 +80,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.063" />
+        app:layout_constraintVertical_bias="0.077" />
 
     <ProgressBar
         android:id="@+id/loading"
