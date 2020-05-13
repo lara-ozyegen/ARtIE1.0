@@ -22,6 +22,7 @@ public class Profile extends AppCompatActivity {
     private Button delete_button;
     private FirebaseAuth mFirebaseAuth;
     private EditText mailText;
+    private EditText usernameText;
     private Button logOutButton;
 
     @Override
@@ -37,6 +38,12 @@ public class Profile extends AppCompatActivity {
         if( mFirebaseAuth.getCurrentUser().getEmail() != null ) {
             mailText.setText( mFirebaseAuth.getCurrentUser().getEmail() );
             mailText.setEnabled( false );
+        }
+
+        usernameText = findViewById( R.id.editUsername );
+        if ( mFirebaseAuth.getCurrentUser().getDisplayName() != null ){
+            usernameText.setText( mFirebaseAuth.getCurrentUser().getDisplayName() );
+            usernameText.setEnabled( false );
         }
 
         delete_button = ( Button ) findViewById( R.id.delete );

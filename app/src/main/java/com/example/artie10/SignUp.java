@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,12 +16,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class SignUp extends AppCompatActivity {
 
     //properties
     private EditText password;
     private EditText email;
+    private EditText username;
     private Button signUp;
     private FirebaseAuth mFirebaseAuth;
 
@@ -35,6 +39,7 @@ public class SignUp extends AppCompatActivity {
         //initializing properties
         password = findViewById( R.id.password );
         email = findViewById( R.id.email_address );
+        username = findViewById( R.id.username);
         signUp = (Button) findViewById( R.id.signUpButton );
         mFirebaseAuth = FirebaseAuth.getInstance();
 
@@ -66,6 +71,7 @@ public class SignUp extends AppCompatActivity {
     public void signUp(){
         String strEmail = email.getText().toString();
         String strPassword = password.getText().toString();
+        String strUsername = username.getText().toString().trim();
 
         //if e-mail field is empty
         if ( strEmail.isEmpty() ) {
@@ -79,19 +85,30 @@ public class SignUp extends AppCompatActivity {
             password.requestFocus();
         }
 
-        //if both e-mail and password fields are empty
-        else if ( strEmail.isEmpty() && strPassword.isEmpty() ){
-            Toast.makeText( SignUp.this, "Fields are empty!", Toast.LENGTH_SHORT ).show();
+        //if username field is empty
+        else if ( strUsername.isEmpty() ){
+            username.setError( "Please enter a valid username." );
+            username.requestFocus();
         }
 
         //if the fields are filled
-        else if ( !( strEmail.isEmpty() && strPassword.isEmpty() ) ){
+        else if ( !( strEmail.isEmpty() && strPassword.isEmpty() && strUsername.isEmpty() ) ){
             mFirebaseAuth.createUserWithEmailAndPassword( strEmail, strPassword ).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task ) {
 
                     //if sign up is successful
                     if ( task.isSuccessful() ){
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().setDisplayName( strUsername ).build();
+                        user.updateProfile( profileUpdates ).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    //Log.d(TAG, "User profile updated.");
+                                }
+                            }
+                        });
                         startActivity( new Intent( SignUp.this, MainActivity.class ) );
                     }
 
