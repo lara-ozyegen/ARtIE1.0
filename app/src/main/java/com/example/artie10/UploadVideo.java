@@ -116,6 +116,9 @@ public class UploadVideo extends AppCompatActivity {
         getWindow().setLayout( width, height );
     }
 
+    /**
+     * a method which uploads the recorded video to firebase
+     */
     public void uploadVideo(){
         if( filePath != null )
         {
@@ -123,6 +126,8 @@ public class UploadVideo extends AppCompatActivity {
             progressDialog.setTitle( "Uploading..." );
             progressDialog.show();
 
+            //this reference is where the video will be put in the firebase storage
+            //the name of the video is taken from the user
             StorageReference ref = storageReference.child( "videos/" + inputVideoName.getText().toString() );
             ref.putFile( filePath )
                     .addOnSuccessListener( new OnSuccessListener<UploadTask.TaskSnapshot>() {

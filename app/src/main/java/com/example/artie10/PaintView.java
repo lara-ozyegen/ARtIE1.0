@@ -10,11 +10,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
-
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
-import com.example.artie10.FingerPath;
 
 import java.util.ArrayList;
 

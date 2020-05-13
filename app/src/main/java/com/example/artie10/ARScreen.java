@@ -292,11 +292,17 @@ public class ARScreen extends AppCompatActivity {
             stopRecordScreen();
 
             //videoView.setVisibility( View.VISIBLE );
-           // videoView.setVideoURI( Uri.parse(videoURI ) );
-           // videoView.start();
+            // videoView.setVideoURI( Uri.parse(videoURI ) );
+            // videoView.start();
+
+            //after recording process is stopped, navigate the user to UploadVideo page
             Intent intent = new Intent (ARScreen.this, UploadVideo.class );
+
+            //creating a bundle to transfer information to UploadVideo
             Bundle bundle= new Bundle();
+            //to upload the video to firebase, we need the video URI in string form
             bundle.putString( "transferInfo", videoURI );
+            //inserting the bundle into intent to be sent to UploadVideo
             intent.putExtras( bundle );
             startActivity( intent );
         }
@@ -432,10 +438,9 @@ public class ARScreen extends AppCompatActivity {
     }
 
     /**
-     *
      * @return a file name in string form
      */
-    private  String generateFilename() {
+    private  String generateFileName() {
         Date now = new Date();
         android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
         return Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg";
@@ -467,7 +472,7 @@ public class ARScreen extends AppCompatActivity {
     private void takePhoto() {
 
 
-        final String filename = generateFilename();
+        final String filename = generateFileName();
         ArSceneView view = arFragment.getArSceneView();
 
         // Create a bitmap the size of the scene view.

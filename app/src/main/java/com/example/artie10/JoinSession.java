@@ -12,9 +12,13 @@ public class JoinSession extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join_session );
 
+        //so join session will be a pop-up window
         makeItPopUp();
     }
 
+    /**
+     * a method which makes the related window a pop-up.
+     */
     public void makeItPopUp(){
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics( dm );
