@@ -25,7 +25,7 @@ _Include a concise description of your project here. Be sure to include the prop
 - [Sarper Turan](group/Turan_Sarper_log.md)
 - [Öykü Erhan](group/member3_log.md)
 - [Berk Saltuk Yılmaz](group/member4_log.md)
-- [Yaren Durgun](group/member5_log.md)
+- [Yaren Durgun](group/Durgun_Yaren_log.md)
 - [Enis Özer](group/member6_log.md)
 - [Onur Asım İlhan](group/member7_log.md)
 
