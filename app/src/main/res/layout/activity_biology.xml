@@ -33,7 +33,7 @@
         android:layout_marginBottom="470dp"
         android:src="@drawable/heart_icon"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button7"
+        app:layout_constraintStart_toEndOf="@+id/covidButton"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -51,7 +51,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button7"
+        app:layout_constraintTop_toBottomOf="@+id/covidButton"
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
@@ -101,14 +101,14 @@
         app:layout_constraintVertical_bias="0.913" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/covidButton"
         android:layout_width="73dp"
         android:layout_height="31dp"
         android:layout_marginStart="92dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="437dp"
         android:background="@drawable/custom_corners"
-        android:text="COVID-19"
+        android:text="Covid"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -125,7 +125,7 @@
         android:text="HEART"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button7"
+        app:layout_constraintStart_toEndOf="@+id/covidButton"
         app:layout_constraintTop_toBottomOf="@+id/heart"
         app:layout_constraintVertical_bias="0.777" />
 
