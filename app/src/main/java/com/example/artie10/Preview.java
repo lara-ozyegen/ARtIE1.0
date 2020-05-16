@@ -25,7 +25,7 @@ public class Preview extends AppCompatActivity {
 
         int width = dm. widthPixels;
         int height = dm.heightPixels;
-        getWindow().setLayout( ( int ) ( width * .9 ), ( int ) ( height * .9 ) );
+        getWindow().setLayout( ( int ) ( width * .9 ), ( int ) ( height * .6 ) );
 
         Intent i = getIntent();
         text = i.getStringExtra("PreviewOfModel");
