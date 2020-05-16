@@ -69,7 +69,7 @@ public class SignUp extends AppCompatActivity {
      * a method which allows the user to create an account
      */
     public void signUp(){
-        String strEmail = email.getText().toString();
+         String strEmail = email.getText().toString();
         String strPassword = password.getText().toString();
         String strUsername = username.getText().toString().trim();
 
@@ -121,7 +121,7 @@ public class SignUp extends AppCompatActivity {
         }
 
         //if some other non-predicted error has occurred
-        else{
+        else {
             Toast.makeText( SignUp.this, "Nani??! Some error??!", Toast.LENGTH_SHORT ).show();
         }
     }
