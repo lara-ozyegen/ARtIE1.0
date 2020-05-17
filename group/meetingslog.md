@@ -176,3 +176,33 @@ Berk Saltuk Yılmaz --- Paint
 **Discussion:** 
 We editted the detailed design and we discussed what left from our project.
 
+
+****
+### Meeting ~ (16/05/2020, 14:15 - 18:30 )
+****
+**Present:** Everyone     **Absent:**  
+
+**Discussion:** We discussed what left in our project.
+
+
+**ToDo**
+Enis, Onur - Add Model
+
+Yaren, Öykü, Lara - Uploading and retrieving the video
+
+Sarper - Getting preview text from realtime database
+
+
+****
+### Meeting ~ (17/05/2020 14:00 - )
+****
+**Present:** Everyone      **Absent:**  
+
+**Discussion:** We discussed the difference of free mode and session mode, and argued about what to do in Add Model.
+
+
+**ToDo**
+Onur, Enis - Add Model
+
+Yaren, Lara, Berk, Sarper, Öykü -- Retrieve Model and little bug fixes in our application
+

@@ -86,7 +86,6 @@ public class Profile extends AppCompatActivity {
                         public void onComplete( @NonNull Task<Void> task ) {
                             user.delete();
                             Toast.makeText( Profile.this, "Your account has been deleted.", Toast.LENGTH_SHORT ).show();
-                            backToMain();
                         }
                     });
         }
