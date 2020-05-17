@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 public class PlayVideo extends AppCompatActivity {
@@ -45,5 +46,7 @@ public class PlayVideo extends AppCompatActivity {
         videoView.setVideoURI( videoUri );
         videoView.requestFocus();
         videoView.start();
+
+        Toast.makeText(PlayVideo.this, transferInfo, Toast.LENGTH_SHORT).show();
     }
 }

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -70,7 +71,12 @@ public class RetrieveVideo extends AppCompatActivity {
         //creating a bundle to transfer information to PlayVideo
         Bundle bundle= new Bundle();
         //to play a video from firebase, we need the reference to storage in string form
-        bundle.putString( "transferInfo", videoRef.getDownloadUrl() + "" );
+        videoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        bundle.putString( "transferInfo", uri.toString() );
+                    }
+                });
         //inserting the bundle into intent to be sent to PlayVideo
         intent.putExtras( bundle );
         startActivity( intent );
