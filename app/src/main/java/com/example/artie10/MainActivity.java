@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 openCategories();
                 return true;
             case R.id.joinSession:
-                openJoinSession();
+                openRetrieveVideo();
                 return true;
             default:
                 return false;
@@ -127,6 +127,11 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     public void openProfile() {
         Intent intent = new Intent(this, Profile.class );
+        startActivity( intent );
+    }
+
+    public void openRetrieveVideo(){
+        Intent intent = new Intent(this, RetrieveVideo.class );
         startActivity( intent );
     }
 
