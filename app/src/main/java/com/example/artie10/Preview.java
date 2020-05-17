@@ -20,6 +20,7 @@ public class Preview extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_preview );
 
+        //Making it a pop-up
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics( dm );
 
@@ -27,6 +28,7 @@ public class Preview extends AppCompatActivity {
         int height = dm.heightPixels;
         getWindow().setLayout( ( int ) ( width * .9 ), ( int ) ( height * .6 ) );
 
+        //Getting the text value from ARModels class which gets it from realtime database
         Intent i = getIntent();
         text = i.getStringExtra("PreviewOfModel");
 

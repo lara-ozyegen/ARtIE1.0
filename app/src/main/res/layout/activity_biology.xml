@@ -11,6 +11,17 @@
         android:id="@+id/appbar"
         layout="@layout/appbar"></include>
 
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="602dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar"/>
+
     <ImageView
         android:id="@+id/covid"
         android:layout_width="111dp"

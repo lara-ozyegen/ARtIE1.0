@@ -144,6 +144,9 @@ public class Biology extends AppCompatActivity {
             case R.id.home:
                 openHome();
                 return true;
+            case R.id.search:
+                openSearch();
+                return true;
             default:
                 return super.onOptionsItemSelected( item );
         }

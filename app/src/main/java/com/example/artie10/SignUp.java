@@ -60,7 +60,7 @@ public class SignUp extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics( dm );
 
         int width = ( int ) ( dm.widthPixels * .6 );
-        int height = ( int ) ( dm.heightPixels * .6 );
+        int height = ( int ) ( dm.heightPixels * .7 );
 
         getWindow().setLayout( width, height );
     }

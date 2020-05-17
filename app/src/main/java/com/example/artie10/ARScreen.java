@@ -78,7 +78,7 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 public class ARScreen extends AppCompatActivity {
 
     //properties
-    static ArFragment arFragment;
+    private ArFragment arFragment;
     private ImageView pencil;
     private VideoView videoView;
     private ToggleButton toggleButton;
@@ -133,22 +133,15 @@ public class ARScreen extends AppCompatActivity {
             models.InsertModel(hitResult);
         });
 
+        //adding onClickListeners to our buttons
         ImageView cam = findViewById(R.id.screenshot);
-        cam.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                takePhoto();
-            }
-        });
+        cam.setOnClickListener(v -> takePhoto());
 
         ImageView pencil = findViewById(R.id.pencil);
         pencil.setOnClickListener(v -> openPaint());
 
         infoButton = (ImageButton) findViewById(R.id.infoButton);
         infoButton.setOnClickListener(v -> openPreview());
-
-        sessionID = (TextView) findViewById(R.id.session_id);
-        sessionID.setText(" Session ID: 1234");
 
         ActivityCompat.requestPermissions(this, new String[]{
                 WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, PERMISSION_GRANTED);
@@ -197,7 +190,7 @@ public class ARScreen extends AppCompatActivity {
     }
 
     /**
-     * a method which calls preview page for model. might need an update later on.
+     * a method which opens the info pop-up for the model
      */
     public void openPreview(){
         models.openPreviewWithText();
