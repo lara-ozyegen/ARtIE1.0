@@ -133,6 +133,7 @@ public class ARScreen extends AppCompatActivity {
             models.InsertModel(hitResult);
         });
 
+        //take screenshot
         ImageView cam = findViewById(R.id.screenshot);
         cam.setOnClickListener(new View.OnClickListener() {
             @Override

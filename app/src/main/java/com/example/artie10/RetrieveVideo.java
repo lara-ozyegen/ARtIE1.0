@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,6 +27,7 @@ public class RetrieveVideo extends AppCompatActivity {
     private Button watchVideo;
     private EditText videoName;
     private StorageReference videoRef;
+    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public class RetrieveVideo extends AppCompatActivity {
         videoName = (EditText) findViewById(R.id.videoName);
 
         watchVideo.setOnClickListener(new View.OnClickListener() {
-            public void onClick( View v ) {
+            public void onClick(View v) {
                 try {
                     downloadFile();
                 } catch (IOException e) {
@@ -48,16 +50,16 @@ public class RetrieveVideo extends AppCompatActivity {
 
     private void downloadFile() throws IOException {
 
-        File localFile = File.createTempFile(  "videos", "mp4");
+        File localFile = File.createTempFile("videos", "mp4");
         FirebaseStorage storage = FirebaseStorage.getInstance();
 
-        videoRef = storage.getReference().child( "videos/" + videoName.getText().toString());
+        videoRef = storage.getReference().child("videos/" + videoName.getText().toString());
 
-        videoRef.getFile( localFile)
+        videoRef.getFile(localFile)
                 .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                     @Override
-                    public void onSuccess( FileDownloadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(RetrieveVideo.this, "yasssss", Toast.LENGTH_SHORT).show();
+                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                       // Toast.makeText(RetrieveVideo.this, "yasssss", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -67,16 +69,49 @@ public class RetrieveVideo extends AppCompatActivity {
         });
 
         //after retrieving  the video, navigate the user to UploadVideo page
-        Intent intent = new Intent (RetrieveVideo.this, PlayVideo.class );
+        Intent intent = new Intent(RetrieveVideo.this, PlayVideo.class);
         //creating a bundle to transfer information to PlayVideo
-        Bundle bundle= new Bundle();
+        Bundle bundle = new Bundle();
         //to play a video from firebase, we need the reference to storage in string form
+
         videoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                url = uri.toString(); // Got the download URL for 'users/me/profile.png'
+                Toast.makeText(RetrieveVideo.this, uri + "aaaa", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });
+
+        bundle.putString( "transferInfo", url );
+
+
+        //inserting the bundle into intent to be sent to PlayVideo
+        intent.putExtras( bundle );
+        startActivity( intent );
+
+        /*
+        uploadtask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                videoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        bundle.putString( "transferInfo", uri.toString() );
+                        url = uri.toString();
+
+                        //Do what you need to do with url
                     }
                 });
+            }
+        });
+
+        bundle.putString( "transferInfo", url );
+
+
         //inserting the bundle into intent to be sent to PlayVideo
         intent.putExtras( bundle );
         startActivity( intent );
@@ -109,6 +144,7 @@ public class RetrieveVideo extends AppCompatActivity {
 
          */
     }
+}
 
 
 

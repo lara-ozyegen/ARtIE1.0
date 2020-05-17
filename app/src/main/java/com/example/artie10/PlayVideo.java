@@ -37,16 +37,21 @@ public class PlayVideo extends AppCompatActivity {
     public void playVideo(){
         //this part was necessary to transfer some info from RetrieveVideo class
         Bundle bundle = getIntent().getExtras();
+        assert bundle != null;
         String transferInfo = bundle.getString("transferInfo");
 
+        Toast.makeText(PlayVideo.this, transferInfo + "f", Toast.LENGTH_SHORT).show();
+
         //transferInfo is download URL of the video in string form
-        videoUri = Uri.parse( transferInfo );
+        if( transferInfo != null) {
+            videoUri = Uri.parse( transferInfo);
 
-        videoView.setVisibility( View.VISIBLE );
-        videoView.setVideoURI( videoUri );
-        videoView.requestFocus();
-        videoView.start();
+            videoView.setVisibility(View.VISIBLE);
+            videoView.setVideoURI(videoUri);
+            videoView.requestFocus();
+            videoView.start();
 
-        Toast.makeText(PlayVideo.this, transferInfo, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(PlayVideo.this, "lalaallllala", Toast.LENGTH_SHORT).show();
+        }
     }
 }
