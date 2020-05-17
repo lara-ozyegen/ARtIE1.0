@@ -58,22 +58,11 @@ public class PaintView extends View {
         int width = metrics.widthPixels;
 
         mBitMap = Bitmap.createBitmap( width,height,Bitmap.Config.ARGB_8888 );
+        //creating a canvas that we can paint to
         mCanvas = new Canvas( mBitMap);
 
         currentColor = DEFAULT_COLOR;
         strokeWidth = BRUSH_SIZE;
-    }
-
-    public void normal(){
-        emboss = false;
-        blur = false;
-    }
-
-    public void clear(){
-        backgroundColor = DEFAULT_BG_COLOR;
-        paths.clear();
-        normal();
-        invalidate();
     }
 
     @Override

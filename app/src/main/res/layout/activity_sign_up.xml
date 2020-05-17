@@ -16,17 +16,17 @@
         android:id="@+id/username"
         android:layout_width="237dp"
         android:layout_height="57dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
         android:hint="Username"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionDone"
         android:maxLength="30"
         android:selectAllOnFocus="true"
+        app:layout_constraintBottom_toTopOf="@+id/signUpButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.303"
+        app:layout_constraintHorizontal_bias="0.149"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_address" />
+        app:layout_constraintTop_toBottomOf="@+id/email_address"
+        app:layout_constraintVertical_bias="0.112" />
 
     <EditText
         android:id="@+id/password"
@@ -37,26 +37,30 @@
         android:hint="Password"
         android:inputType="textPassword|numberPassword"
         android:selectAllOnFocus="true"
+        app:layout_constraintBottom_toTopOf="@+id/signUpButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.134"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/email_address"
         android:layout_width="238dp"
         android:layout_height="58dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="76dp"
         android:hint="E-mail Address"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionDone"
         android:inputType="textEmailAddress"
         android:maxLength="30"
         android:selectAllOnFocus="true"
+        app:layout_constraintBottom_toTopOf="@+id/loading"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.571" />
 
     <Button
         android:id="@+id/signUpButton"
