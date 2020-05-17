@@ -43,6 +43,7 @@
         android:id="@+id/watchVideo"
         android:layout_width="104dp"
         android:layout_height="45dp"
+        android:layout_marginBottom="188dp"
         android:background="@drawable/custom_corners"
         android:text="Watch Vıdeo"
         android:textColor="@color/colorWhite"

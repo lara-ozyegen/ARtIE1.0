@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     }
 
     public void openJoinSession() {
-        Intent intent = new Intent(this, JoinSession.class);
+        Intent intent = new Intent(this, RetrieveVideo.class);
         startActivity( intent );
     }
 
