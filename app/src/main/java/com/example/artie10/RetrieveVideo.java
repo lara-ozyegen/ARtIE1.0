@@ -75,6 +75,19 @@ public class RetrieveVideo extends AppCompatActivity {
             public void onSuccess(Uri uri) {
                 url = uri.toString(); // Got the download URL for 'users/me/profile.png'
                 Toast.makeText(RetrieveVideo.this, uri + "aaaa", Toast.LENGTH_SHORT).show();
+
+                //after retrieving  the video, navigate the user to UploadVideo page
+                Intent intent = new Intent(RetrieveVideo.this, PlayVideo.class);
+                //creating a bundle to transfer information to PlayVideo
+                Bundle bundle = new Bundle();
+
+                bundle.putString( "transferInfo", url );
+
+
+                //inserting the bundle into intent to be sent to PlayVideo
+                intent.putExtras( bundle );
+                startActivity( intent );
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -84,17 +97,6 @@ public class RetrieveVideo extends AppCompatActivity {
         });
 
 
-        //after retrieving  the video, navigate the user to UploadVideo page
-        Intent intent = new Intent(RetrieveVideo.this, PlayVideo.class);
-        //creating a bundle to transfer information to PlayVideo
-        Bundle bundle = new Bundle();
-
-        bundle.putString( "transferInfo", url );
-
-
-        //inserting the bundle into intent to be sent to PlayVideo
-        intent.putExtras( bundle );
-        startActivity( intent );
 
         /*
         uploadtask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
