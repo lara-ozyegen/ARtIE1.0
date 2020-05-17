@@ -27,7 +27,6 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true">
         <activity android:name=".RetrieveVideo"></activity>
-        <activity android:name=".JoinSession" />
         <activity
             android:name=".ARScreenSession"
             android:theme="@style/AppTheme.CustomTheme" />
