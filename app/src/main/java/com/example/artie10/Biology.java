@@ -36,8 +36,9 @@ public class Biology extends AppCompatActivity {
     private Button brainButton;
     private Button covidButton;
     private Button heartButton;
-    private Button skeletonButton;
+    private Button skullButton;
     private Button antibodyButton;
+    private Button lungsButton;
 
     private String text;
 
@@ -51,6 +52,42 @@ public class Biology extends AppCompatActivity {
             @Override
             public void onClick( View v ) {
                 text = brainButton.getText().toString().toLowerCase();
+                openAR();
+            }
+        } );
+
+        heartButton = (Button) findViewById(R.id.heart_button);
+        heartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                text = heartButton.getText().toString().toLowerCase();
+                openAR();
+            }
+        });
+
+        skullButton = (Button) findViewById(R.id.skullButton);
+        skullButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                text = skullButton.getText().toString().toLowerCase();
+                openAR();
+            }
+        });
+
+        antibodyButton = (Button) findViewById(R.id.antibodyButton);
+        antibodyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                text = antibodyButton.getText().toString().toLowerCase();
+                openAR();
+            }
+        });
+
+        lungsButton = (Button) findViewById(R.id.lungsButton);
+        lungsButton.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick( View v ) {
+                text = lungsButton.getText().toString().toLowerCase();
                 openAR();
             }
         } );
@@ -77,9 +114,15 @@ public class Biology extends AppCompatActivity {
     }
 
     public void openAR() {
-        Intent intent = new Intent( this , ARScreen.class  );
-        intent.putExtra("TextOfButton", text);
-        startActivity( intent );
+        if( MainActivity.getPath()){
+            Intent intent = new Intent( this , ARScreenSession.class  );
+            intent.putExtra("TextOfButton", text);
+            startActivity( intent );
+        }else{
+            Intent intent = new Intent( this , ARScreen.class  );
+            intent.putExtra("TextOfButton", text);
+            startActivity( intent );
+        }
     }
 
     public void openHelp(){

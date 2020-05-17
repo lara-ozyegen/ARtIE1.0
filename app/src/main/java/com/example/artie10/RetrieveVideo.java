@@ -68,10 +68,6 @@ public class RetrieveVideo extends AppCompatActivity {
             }
         });
 
-        //after retrieving  the video, navigate the user to UploadVideo page
-        Intent intent = new Intent(RetrieveVideo.this, PlayVideo.class);
-        //creating a bundle to transfer information to PlayVideo
-        Bundle bundle = new Bundle();
         //to play a video from firebase, we need the reference to storage in string form
 
         videoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -86,6 +82,12 @@ public class RetrieveVideo extends AppCompatActivity {
                 // Handle any errors
             }
         });
+
+
+        //after retrieving  the video, navigate the user to UploadVideo page
+        Intent intent = new Intent(RetrieveVideo.this, PlayVideo.class);
+        //creating a bundle to transfer information to PlayVideo
+        Bundle bundle = new Bundle();
 
         bundle.putString( "transferInfo", url );
 
