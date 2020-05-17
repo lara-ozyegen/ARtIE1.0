@@ -3,6 +3,8 @@ package com.example.artie10;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -21,9 +23,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class RetrieveVideo extends AppCompatActivity {
-    Button watchVideo;
-    EditText videoName;
-    StorageReference videoRef;
+    private Button watchVideo;
+    private EditText videoName;
+    private StorageReference videoRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,21 @@ public class RetrieveVideo extends AppCompatActivity {
                 Toast.makeText(RetrieveVideo.this, "offfff", Toast.LENGTH_SHORT).show();
             }
         });
+
+        //after retrieving  the video, navigate the user to UploadVideo page
+        Intent intent = new Intent (RetrieveVideo.this, PlayVideo.class );
+        //creating a bundle to transfer information to PlayVideo
+        Bundle bundle= new Bundle();
+        //to play a video from firebase, we need the reference to storage in string form
+        videoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        bundle.putString( "transferInfo", uri.toString() );
+                    }
+                });
+        //inserting the bundle into intent to be sent to PlayVideo
+        intent.putExtras( bundle );
+        startActivity( intent );
     }
 
         /*

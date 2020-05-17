@@ -26,6 +26,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true">
+        <activity android:name=".PlayVideo"
+            android:theme="@style/AppTheme.CustomTheme" />
         <activity android:name=".RetrieveVideo"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
