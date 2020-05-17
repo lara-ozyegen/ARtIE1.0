@@ -33,18 +33,33 @@ public class Biology extends AppCompatActivity {
     private List<String> myList;
     private ListView listView;
 
-    private Button b;
+    private Button brainButton;
+    private Button covidButton;
+    private Button heartButton;
+    private Button skeletonButton;
+    private Button antibodyButton;
+
     private String text;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_biology );
-        b = ( Button ) findViewById( R.id.brain_button );
-        text = b.getText().toString().toLowerCase();
-        b.setOnClickListener( new View.OnClickListener(){
+
+        brainButton = ( Button ) findViewById( R.id.brain_button );
+        brainButton.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick( View v ) {
+                text = brainButton.getText().toString().toLowerCase();
+                openAR();
+            }
+        } );
+
+        covidButton = (Button) findViewById(R.id.covidButton);
+        covidButton.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick( View v ) {
+                text = covidButton.getText().toString().toLowerCase();
                 openAR();
             }
         } );
@@ -58,7 +73,7 @@ public class Biology extends AppCompatActivity {
         myList = new ArrayList<>();
         myList.clear();
         //Adapter has to use string so we use text contents of the buttons
-        myList.add(( String) b.getText());
+        myList.add(( String) brainButton.getText());
     }
 
     public void openAR() {

@@ -133,7 +133,7 @@ public class UploadVideo extends AppCompatActivity {
                     .addOnSuccessListener( new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot ) {
-                            progressDialog.dismiss();
+                            //progressDialog.dismiss();
                             Toast.makeText(UploadVideo.this, "Uploaded", Toast.LENGTH_SHORT ).show();
                         }
                     })

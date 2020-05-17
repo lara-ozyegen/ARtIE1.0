@@ -142,20 +142,10 @@ public class ARScreen extends AppCompatActivity {
         });
 
         ImageView pencil = findViewById(R.id.pencil);
-        pencil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openPaint();
-            }
-        });
+        pencil.setOnClickListener(v -> openPaint());
 
         infoButton = (ImageButton) findViewById(R.id.infoButton);
-        infoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openPreview();
-            }
-        });
+        infoButton.setOnClickListener(v -> openPreview());
 
         sessionID = (TextView) findViewById(R.id.session_id);
         sessionID.setText(" Session ID: 1234");
@@ -221,8 +211,9 @@ public class ARScreen extends AppCompatActivity {
      * a method which calls preview page for model. might need an update later on.
      */
     public void openPreview(){
-        Intent intent = new Intent( this, Preview.class  );
-        startActivity( intent );
+        //Intent intent = new Intent( this, Preview.class  );
+        //startActivity( intent );
+        models.openPreviewWithText();
     }
 
     /**
