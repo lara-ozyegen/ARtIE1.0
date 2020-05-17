@@ -181,17 +181,6 @@ public class ARScreen extends AppCompatActivity {
                     if (ActivityCompat.shouldShowRequestPermissionRationale(ARScreen.this, WRITE_EXTERNAL_STORAGE) ||
                             ActivityCompat.shouldShowRequestPermissionRationale(ARScreen.this, Manifest.permission.RECORD_AUDIO)) {
                         toggleButton.setChecked(false);
-                        Snackbar.make(relativeLayout2, "Permissions", Snackbar.LENGTH_INDEFINITE)
-                                .setAction("ENABLE", new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        ActivityCompat.requestPermissions(ARScreen.this,
-                                                new String[]{
-                                                        WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO},
-                                                REQUEST_PERMISSION);
-                                    }
-
-                                }).show();
 
                     } else {
                         ActivityCompat.requestPermissions(ARScreen.this,
@@ -211,8 +200,6 @@ public class ARScreen extends AppCompatActivity {
      * a method which calls preview page for model. might need an update later on.
      */
     public void openPreview(){
-        //Intent intent = new Intent( this, Preview.class  );
-        //startActivity( intent );
         models.openPreviewWithText();
     }
 
@@ -282,10 +269,6 @@ public class ARScreen extends AppCompatActivity {
             mediaRecorder.reset();
             stopRecordScreen();
 
-            //videoView.setVisibility( View.VISIBLE );
-            // videoView.setVideoURI( Uri.parse(videoURI ) );
-            // videoView.start();
-
             //after recording process is stopped, navigate the user to UploadVideo page
             Intent intent = new Intent (ARScreen.this, UploadVideo.class );
 
@@ -351,7 +334,7 @@ public class ARScreen extends AppCompatActivity {
      * @return
      */
     private VirtualDisplay createVirtualDisplay() {
-        return mediaProjection.createVirtualDisplay( "ARScreen", DISPLAY_WIDTH, DISPLAY_HEIGHT, mScreenDensity,
+       return mediaProjection.createVirtualDisplay( "ARScreen", DISPLAY_WIDTH, DISPLAY_HEIGHT, mScreenDensity,
                DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
               mediaRecorder.getSurface(), null, null );
     }
@@ -388,17 +371,6 @@ public class ARScreen extends AppCompatActivity {
                 }
                 else{
                     toggleButton.setChecked( false );
-                    Snackbar.make( relativeLayout2, "Permissions", Snackbar.LENGTH_INDEFINITE )
-                            .setAction( "ENABLE", new View.OnClickListener() {
-                                @Override
-                                public void onClick( View v ) {
-                                    ActivityCompat.requestPermissions(ARScreen.this,
-                                            new String[]{
-                                                    WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO },
-                                            REQUEST_PERMISSION );
-                                }
-
-                            } ).show();
                 }
                 return;
             }
