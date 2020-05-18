@@ -300,6 +300,5 @@ public class PaintActivity extends AppCompatActivity {
             }
         }
     }
-
     //methods for video recording ends here
 }
