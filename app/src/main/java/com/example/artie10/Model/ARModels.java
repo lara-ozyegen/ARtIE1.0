@@ -28,7 +28,12 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.IOException;
-
+/**
+ * @author Lara, Oyku, Sarper, Berk, Enis, Onur, Yaren
+ * @date 25/04/2020
+ * @version 1.0
+ * ARScreen - displays 3D models using google arcore library
+ */
 public class ARModels implements ValueEventListener {
 
     //properties

@@ -75,6 +75,9 @@ import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
+/**
+ *
+ */
 public class ARScreen extends AppCompatActivity {
 
     //properties
@@ -84,7 +87,6 @@ public class ARScreen extends AppCompatActivity {
     private ToggleButton toggleButton;
     private String videoURI = "";
     private ImageButton infoButton;
-    private TextView sessionID;
     private String text;
     private ARModels models;
 
@@ -96,7 +98,6 @@ public class ARScreen extends AppCompatActivity {
     private MediaProjection mediaProjection;
     private MediaProjectionCallBack mediaProjectionCallBack;
     private MediaRecorder mediaRecorder;
-    private RelativeLayout relativeLayout2;
 
     private VirtualDisplay virtualDisplay;
     private int mScreenDensity;
@@ -205,7 +206,6 @@ public class ARScreen extends AppCompatActivity {
 
 
     //methods for video recording start here
-
     /**
      *
      */
@@ -266,8 +266,10 @@ public class ARScreen extends AppCompatActivity {
 
             //creating a bundle to transfer information to UploadVideo
             Bundle bundle= new Bundle();
+
             //to upload the video to firebase, we need the video URI in string form
             bundle.putString( "transferInfo", videoURI );
+
             //inserting the bundle into intent to be sent to UploadVideo
             intent.putExtras( bundle );
             startActivity( intent );
