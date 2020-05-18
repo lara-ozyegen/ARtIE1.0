@@ -19,6 +19,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
+/**
+ * @author Öykü, Lara, Yaren, Sarper, Berk, Onur, Enis
+ * @version 1.0
+ * @date 24/04/2020
+ * This class provides the sign up feature
+ */
 public class SignUp extends AppCompatActivity {
 
     //properties

@@ -18,20 +18,28 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
+/**
+ * @author Öykü, Lara, Yaren, Sarper, Berk, Onur, Enis
+ * @version 1.0
+ * @date 24/04/2020
+ * This class provides the sign in feature
+ */
 public class SignIn extends AppCompatActivity {
 
     //properties
     private Button signIn;
+
     private EditText password;
     private EditText email;
+
     private TextView signUpHere;
+
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
-        super.onCreate( savedInstanceState );
+        super.onCreate( savedInstanceState ); // calling parent constructor
         setContentView( R.layout.activity_log_in_screen );
 
         //so sign in will be a pop-up window

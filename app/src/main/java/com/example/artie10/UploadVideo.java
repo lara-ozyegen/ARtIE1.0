@@ -29,6 +29,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
+/**
+ * @author Öykü, Lara, Yaren, Sarper, Berk, Onur, Enis
+ * @version 1.0
+ * @date 15/05/2020
+ * This class makes uploading video possible
+ */
 public class UploadVideo extends AppCompatActivity {
 
     //properties

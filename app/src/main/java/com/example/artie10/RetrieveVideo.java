@@ -28,8 +28,6 @@ public class RetrieveVideo extends AppCompatActivity {
     private EditText videoName;
     private StorageReference videoRef;
     private String url;
-    private FirebaseStorage storage;
-    private File localFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +36,6 @@ public class RetrieveVideo extends AppCompatActivity {
 
         watchVideo = (Button) findViewById(R.id.watchVideo);
         videoName = (EditText) findViewById(R.id.videoName);
-
 
         watchVideo.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -62,9 +59,14 @@ public class RetrieveVideo extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                       Toast.makeText(RetrieveVideo.this, "Video found and playing", Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(RetrieveVideo.this, "yasssss", Toast.LENGTH_SHORT).show();
                     }
-                }).addOnFailureListener(exception -> Toast.makeText(RetrieveVideo.this, "Video Not Found", Toast.LENGTH_SHORT).show());
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Toast.makeText(RetrieveVideo.this, "offfff", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //to play a video from firebase, we need the reference to storage in string form
 
@@ -72,7 +74,7 @@ public class RetrieveVideo extends AppCompatActivity {
             @Override
             public void onSuccess(Uri uri) {
                 url = uri.toString(); // Got the download URL for 'users/me/profile.png'
-                //Toast.makeText(RetrieveVideo.this, uri + "aaaa", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RetrieveVideo.this, uri + "aaaa", Toast.LENGTH_SHORT).show();
 
                 //after retrieving  the video, navigate the user to UploadVideo page
                 Intent intent = new Intent(RetrieveVideo.this, PlayVideo.class);
@@ -93,6 +95,7 @@ public class RetrieveVideo extends AppCompatActivity {
                 // Handle any errors
             }
         });
+
 
 
         /*
