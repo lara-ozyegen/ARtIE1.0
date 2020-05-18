@@ -85,7 +85,7 @@ public class ARScreen extends AppCompatActivity {
     private String videoURI = "";
     private ImageButton infoButton;
     private TextView sessionID;
-    private String text;
+    public static String text;
 
     private ARModels models;
 
@@ -103,7 +103,7 @@ public class ARScreen extends AppCompatActivity {
     private int mScreenDensity;
     private static  int DISPLAY_WIDTH = 720;
     private static  int DISPLAY_HEIGHT = 1280;
-
+    public static boolean isMyModel = false;
 
     static {
         ORIENTATIONS.append( Surface.ROTATION_0,0 );
@@ -122,12 +122,20 @@ public class ARScreen extends AppCompatActivity {
 
         //getting the text of the button from the previous activity
         Intent i = getIntent();
-        text = i.getStringExtra("TextOfButton");
+        if ( !isMyModel)
+            text = i.getStringExtra("TextOfButton");
         models = new ARModels(this, arFragment, text);
 
         //Initializing firebase and downloading model from firebase
-        models.DownloadModel();
-
+        if ( !isMyModel)
+            models.DownloadModel();
+        else {
+            try {
+                models.BuildModel(File.createTempFile( text , "glb"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         //inserting the model
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
             models.InsertModel(hitResult);
@@ -224,6 +232,9 @@ public class ARScreen extends AppCompatActivity {
         startActivity( intent );
     }
 
+    public void setIsMyModel( boolean b){
+        isMyModel = b;
+    }
 
     //methods for video recording start here
 

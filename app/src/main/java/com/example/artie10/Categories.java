@@ -32,7 +32,7 @@ public class Categories extends AppCompatActivity {
     private Button math;
     private Button space;
     private Button chem;
-
+    private String name = "";
     private Toolbar appbar;
 
     public ArrayAdapter<String> arrayAdapter;
@@ -87,19 +87,23 @@ public class Categories extends AppCompatActivity {
     }
 
     private void addModel(){
+
         Intent intent = new Intent( Intent.ACTION_OPEN_DOCUMENT );
         intent.setType( "*/*" );
         intent.addCategory( Intent.CATEGORY_OPENABLE );
         startActivityForResult( intent, REQUEST_CODE );
+
     }
 
     protected void onActivityResult( int requestCode, int resultCode, Intent data ){
         super.onActivityResult( requestCode, resultCode, data );
         if( requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK ){
             if( data != null ){
-                Uri uri = data.getData();
-                Toast.makeText( this, "Uri :" +uri, Toast.LENGTH_LONG ).show();
-                //Toast.makeText( this, "Path :" + uri.getPath(), Toast.LENGTH_LONG).show();
+                name = data.toString();
+                ARScreen.text = name;
+                ARScreen.isMyModel = true;
+                Intent intentt = new Intent(Categories.this, ARScreen.class );
+                startActivity( intentt );
             }
         }
     }

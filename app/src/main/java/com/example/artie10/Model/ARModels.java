@@ -38,6 +38,7 @@ public class ARModels implements ValueEventListener {
     private DatabaseReference databaseReference;
     private DatabaseReference modelInfo;
     private String modelInfoText;
+    private String s;
 
     //constructors
     public ARModels(Context context, ArFragment fragment, String s){
@@ -53,6 +54,13 @@ public class ARModels implements ValueEventListener {
         databaseReference = firebaseDatabase.getReference();
         modelInfo = databaseReference.child(text);
         modelInfo.addValueEventListener(this);
+    }
+
+    public ARModels( Context context, ArFragment fragment, String s, boolean result){
+        this.s = s;
+        this.context = context;
+        this.fragment = fragment;
+
     }
 
     //methods
@@ -77,7 +85,7 @@ public class ARModels implements ValueEventListener {
         }
     }
 
-    private void BuildModel(File file){
+    public void BuildModel(File file){
         RenderableSource renderableSource = RenderableSource
                 .builder()
                 .setSource(context, Uri.parse(file.getPath()), RenderableSource.SourceType.GLB)
