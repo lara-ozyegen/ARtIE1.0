@@ -50,6 +50,12 @@ import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
+/**
+ * @author Öykü, Lara, Yaren, Sarper, Berk, Onur, Enis
+ * @version 1.0
+ * @date 23/04/2020
+ * This class creates a transparent activity for painting feature
+ */
 public class PaintActivity extends AppCompatActivity {
 
     //properties
