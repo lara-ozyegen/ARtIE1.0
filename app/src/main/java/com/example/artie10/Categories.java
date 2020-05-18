@@ -48,7 +48,7 @@ public class Categories extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_categories3 );
 
-        //Adding onClickListeners for all of the categories
+        //adding onClickListeners for all of the categories
         bio = ( Button ) findViewById( R.id.biologyButton );
         bio.setOnClickListener( new View.OnClickListener() {
             public void onClick( View v ) {

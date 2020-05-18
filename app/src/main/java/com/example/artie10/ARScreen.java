@@ -1,16 +1,10 @@
 package com.example.artie10;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.hardware.Camera;
 import android.hardware.display.DisplayManager;
 import android.hardware.display.VirtualDisplay;
 import android.media.MediaRecorder;
@@ -23,19 +17,12 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.StrictMode;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.SparseIntArray;
-import android.view.MotionEvent;
 import android.view.PixelCopy;
 import android.view.Surface;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.widget.VideoView;
@@ -45,31 +32,18 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
 
 import com.example.artie10.Model.ARModels;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.ArSceneView;
-import com.google.ar.sceneform.HitTestResult;
-import com.google.ar.sceneform.Node;
-import com.google.ar.sceneform.Sun;
 import com.google.ar.sceneform.ux.ArFragment;
-import com.google.ar.sceneform.ux.BaseArFragment;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
-import java.util.Random;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
@@ -128,7 +102,7 @@ public class ARScreen extends AppCompatActivity {
         text = i.getStringExtra("TextOfButton");
         models = new ARModels(this, arFragment, text);
 
-        //Initializing firebase and downloading model from firebase
+        //initializing firebase and downloading model from firebase
         models.DownloadModel();
 
         //inserting the model
@@ -398,6 +372,7 @@ public class ARScreen extends AppCompatActivity {
     }
 
     /**
+     * a method which generates file name for jpg document for screenshot feature
      * @return a file name in string form
      */
     private  String generateFileName() {
@@ -427,7 +402,7 @@ public class ARScreen extends AppCompatActivity {
     }
 
     /**
-     *
+     * a method that does most of the work for screenshot feature
      */
     private void takePhoto() {
 

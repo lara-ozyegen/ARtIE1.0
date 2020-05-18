@@ -119,41 +119,55 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     /**
      * Gives information about the path that the user choose.
-     * @return boolean (if freemode is clicked true else false)
+     * @return boolean (if freemode is clicked- true else false)
      */
     public static boolean getPath() {
         return path;
     }
 
+    /**
+     * This method opens help screen
+     */
     public void openHelp(){
         Intent intent = new Intent(this, HelpScreen.class );
         startActivity( intent );
     }
+
+    /**
+     * This method opens categories page
+     */
     public void openCategories(){
         Intent intent = new Intent(this, Categories.class );
         startActivity( intent );
     }
 
-    public void openJoinSession() {
-        Intent intent = new Intent(this, RetrieveVideo.class);
-        startActivity( intent );
-    }
-
+    /**
+     * This method opens sign in page
+     */
     public void openSignIn() {
         Intent intent = new Intent( this, SignIn.class );
         startActivity( intent );
     }
 
+    /**
+     * This method opens about us page
+     */
     public void openAboutUs() {
         Intent intent = new Intent(this, AboutUs.class );
         startActivity( intent );
     }
 
+    /**
+     * This method opens user profile page
+     */
     public void openProfile() {
         Intent intent = new Intent(this, Profile.class );
         startActivity( intent );
     }
 
+    /**
+     * This method opens watch video page
+     */
     public void openRetrieveVideo(){
         Intent intent = new Intent(this, RetrieveVideo.class );
         startActivity( intent );
