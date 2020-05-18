@@ -76,7 +76,10 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 /**
- *
+ * @author Öykü, Lara, Yaren, Sarper, Berk, Onur, Enis
+ * @version 1.0
+ * @date 15/04/2020
+ * This class shows the 3D models, using AR technology via the device camera
  */
 public class ARScreen extends AppCompatActivity {
 

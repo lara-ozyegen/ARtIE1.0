@@ -90,7 +90,6 @@ public class PlayVideo extends AppCompatActivity {
         //transferInfo is download URL of the video in string form
         if( transferInfo != null) {
             videoUri = Uri.parse( transferInfo);
-
             videoView.setVisibility(View.VISIBLE);
             videoView.setVideoURI(videoUri);
             videoView.requestFocus();
