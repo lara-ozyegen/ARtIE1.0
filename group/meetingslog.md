@@ -2,6 +2,8 @@
 
 Below is a record of our project group meetings. This page will be submitted together with the rest of the repository, in partial fulfillment of the CS102 course requirements.
 
+-Group meetings before the coding part are missing-
+
 ****
 ### Meeting ~ (23/04/2020, duration)
 ****
