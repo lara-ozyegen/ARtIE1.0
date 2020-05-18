@@ -86,7 +86,6 @@ public class ARScreen extends AppCompatActivity {
     private ImageButton infoButton;
     private TextView sessionID;
     private String text;
-
     private ARModels models;
 
     private static final int REQUEST_CODE = 1000;
