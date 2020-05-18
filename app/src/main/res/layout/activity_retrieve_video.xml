@@ -43,6 +43,7 @@
         android:id="@+id/watchVideo"
         android:layout_width="104dp"
         android:layout_height="45dp"
+        android:layout_marginBottom="188dp"
         android:background="@drawable/custom_corners"
         android:text="Watch Vıdeo"
         android:textColor="@color/colorWhite"
@@ -50,7 +51,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_adress"
-        app:layout_constraintVertical_bias="0.059" />
+        app:layout_constraintTop_toBottomOf="@+id/videoName"
+        app:layout_constraintVertical_bias="0.11" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

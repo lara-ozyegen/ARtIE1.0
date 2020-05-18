@@ -75,18 +75,19 @@ import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
+/**
+ *
+ */
 public class ARScreen extends AppCompatActivity {
 
     //properties
-    static ArFragment arFragment;
+    private ArFragment arFragment;
     private ImageView pencil;
     private VideoView videoView;
     private ToggleButton toggleButton;
     private String videoURI = "";
     private ImageButton infoButton;
-    private TextView sessionID;
-    public static String text;
-
+    private String text;
     private ARModels models;
 
     private static final int REQUEST_CODE = 1000;
@@ -97,13 +98,12 @@ public class ARScreen extends AppCompatActivity {
     private MediaProjection mediaProjection;
     private MediaProjectionCallBack mediaProjectionCallBack;
     private MediaRecorder mediaRecorder;
-    private RelativeLayout relativeLayout2;
 
     private VirtualDisplay virtualDisplay;
     private int mScreenDensity;
     private static  int DISPLAY_WIDTH = 720;
     private static  int DISPLAY_HEIGHT = 1280;
-    public static boolean isMyModel = false;
+
 
     static {
         ORIENTATIONS.append( Surface.ROTATION_0,0 );
@@ -122,41 +122,26 @@ public class ARScreen extends AppCompatActivity {
 
         //getting the text of the button from the previous activity
         Intent i = getIntent();
-        if ( !isMyModel)
-            text = i.getStringExtra("TextOfButton");
+        text = i.getStringExtra("TextOfButton");
         models = new ARModels(this, arFragment, text);
 
         //Initializing firebase and downloading model from firebase
-        if ( !isMyModel)
-            models.DownloadModel();
-        else {
-            try {
-                models.BuildModel(File.createTempFile( text , "glb"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        models.DownloadModel();
+
         //inserting the model
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
             models.InsertModel(hitResult);
         });
 
+        //adding onClickListeners to our buttons
         ImageView cam = findViewById(R.id.screenshot);
-        cam.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                takePhoto();
-            }
-        });
+        cam.setOnClickListener(v -> takePhoto());
 
         ImageView pencil = findViewById(R.id.pencil);
         pencil.setOnClickListener(v -> openPaint());
 
         infoButton = (ImageButton) findViewById(R.id.infoButton);
         infoButton.setOnClickListener(v -> openPreview());
-
-        sessionID = (TextView) findViewById(R.id.session_id);
-        sessionID.setText(" Session ID: 1234");
 
         ActivityCompat.requestPermissions(this, new String[]{
                 WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, PERMISSION_GRANTED);
@@ -189,17 +174,6 @@ public class ARScreen extends AppCompatActivity {
                     if (ActivityCompat.shouldShowRequestPermissionRationale(ARScreen.this, WRITE_EXTERNAL_STORAGE) ||
                             ActivityCompat.shouldShowRequestPermissionRationale(ARScreen.this, Manifest.permission.RECORD_AUDIO)) {
                         toggleButton.setChecked(false);
-                        Snackbar.make(relativeLayout2, "Permissions", Snackbar.LENGTH_INDEFINITE)
-                                .setAction("ENABLE", new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        ActivityCompat.requestPermissions(ARScreen.this,
-                                                new String[]{
-                                                        WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO},
-                                                REQUEST_PERMISSION);
-                                    }
-
-                                }).show();
 
                     } else {
                         ActivityCompat.requestPermissions(ARScreen.this,
@@ -216,11 +190,9 @@ public class ARScreen extends AppCompatActivity {
     }
 
     /**
-     * a method which calls preview page for model. might need an update later on.
+     * a method which opens the info pop-up for the model
      */
     public void openPreview(){
-        //Intent intent = new Intent( this, Preview.class  );
-        //startActivity( intent );
         models.openPreviewWithText();
     }
 
@@ -232,12 +204,8 @@ public class ARScreen extends AppCompatActivity {
         startActivity( intent );
     }
 
-    public void setIsMyModel( boolean b){
-        isMyModel = b;
-    }
 
     //methods for video recording start here
-
     /**
      *
      */
@@ -293,17 +261,15 @@ public class ARScreen extends AppCompatActivity {
             mediaRecorder.reset();
             stopRecordScreen();
 
-            //videoView.setVisibility( View.VISIBLE );
-            // videoView.setVideoURI( Uri.parse(videoURI ) );
-            // videoView.start();
-
             //after recording process is stopped, navigate the user to UploadVideo page
             Intent intent = new Intent (ARScreen.this, UploadVideo.class );
 
             //creating a bundle to transfer information to UploadVideo
             Bundle bundle= new Bundle();
+
             //to upload the video to firebase, we need the video URI in string form
             bundle.putString( "transferInfo", videoURI );
+
             //inserting the bundle into intent to be sent to UploadVideo
             intent.putExtras( bundle );
             startActivity( intent );
@@ -362,7 +328,7 @@ public class ARScreen extends AppCompatActivity {
      * @return
      */
     private VirtualDisplay createVirtualDisplay() {
-        return mediaProjection.createVirtualDisplay( "ARScreen", DISPLAY_WIDTH, DISPLAY_HEIGHT, mScreenDensity,
+       return mediaProjection.createVirtualDisplay( "ARScreen", DISPLAY_WIDTH, DISPLAY_HEIGHT, mScreenDensity,
                DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
               mediaRecorder.getSurface(), null, null );
     }
@@ -399,17 +365,6 @@ public class ARScreen extends AppCompatActivity {
                 }
                 else{
                     toggleButton.setChecked( false );
-                    Snackbar.make( relativeLayout2, "Permissions", Snackbar.LENGTH_INDEFINITE )
-                            .setAction( "ENABLE", new View.OnClickListener() {
-                                @Override
-                                public void onClick( View v ) {
-                                    ActivityCompat.requestPermissions(ARScreen.this,
-                                            new String[]{
-                                                    WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO },
-                                            REQUEST_PERMISSION );
-                                }
-
-                            } ).show();
                 }
                 return;
             }
@@ -431,7 +386,7 @@ public class ARScreen extends AppCompatActivity {
         //setting the button as visible or invisible
         if( visibility) {
             infoButton.setVisibility(View.VISIBLE );
-            sessionID.setVisibility(View.VISIBLE);
+            //sessionID.setVisibility(View.VISIBLE);
 
         }
         else{

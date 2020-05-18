@@ -14,6 +14,12 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
+/**
+ * @author Öykü, Lara, Yaren, Sarper, Berk, Onur, Enis
+ * @version 1.0
+ * @date 23/04/2020
+ * This class creates a view for painting activity, and by adding this view to xml we add painting feature
+ */
 public class PaintView extends View {
 
     //properties
@@ -23,25 +29,31 @@ public class PaintView extends View {
     private static final float TOUCH_TOLERANCE = 4;
 
     private float mX, mY;
+
     private Path mPath;
     private Paint mPaint;
+
     private ArrayList<FingerPath> paths = new ArrayList<>();
+
     private int currentColor;
     private int backgroundColor = DEFAULT_BG_COLOR;
     private int strokeWidth;
     private Bitmap mBitMap;
     private Canvas mCanvas;
     private Paint mBitMapPaint = new Paint(Paint.DITHER_FLAG);
+
     public boolean emboss;
     public boolean blur;
 
-
+    // constructors
     public PaintView( Context context ) {
         this( context,null );
     }
 
     public PaintView( Context context, @Nullable AttributeSet attrs ) {
         super( context, attrs );
+
+        // setting features
         mPaint = new Paint();
         mPaint.setAntiAlias( true );
         mPaint.setDither( true );
@@ -53,27 +65,19 @@ public class PaintView extends View {
         mPaint.setAlpha( 0xff );
     }
 
+    /**
+     * a method which initializes lines
+     */
     public void init( DisplayMetrics metrics ){
         int height = metrics.heightPixels;
         int width = metrics.widthPixels;
 
         mBitMap = Bitmap.createBitmap( width,height,Bitmap.Config.ARGB_8888 );
+        //creating a canvas that we can paint to
         mCanvas = new Canvas( mBitMap);
 
         currentColor = DEFAULT_COLOR;
         strokeWidth = BRUSH_SIZE;
-    }
-
-    public void normal(){
-        emboss = false;
-        blur = false;
-    }
-
-    public void clear(){
-        backgroundColor = DEFAULT_BG_COLOR;
-        paths.clear();
-        normal();
-        invalidate();
     }
 
     @Override
@@ -93,6 +97,9 @@ public class PaintView extends View {
         canvas.restore();
     }
 
+    /**
+     * a method which starts drawing when user touch
+     */
     private void touchStart( float x, float y ){
         mPath = new Path();
         FingerPath fp = new FingerPath( currentColor, strokeWidth, mPath );
@@ -105,6 +112,9 @@ public class PaintView extends View {
 
     }
 
+    /**
+     * a method which detects the moves
+     */
     private void touchMove( float x, float y ){
         float dx = Math.abs( x - mX );
         float dy = Math.abs( y - mY );
@@ -116,6 +126,9 @@ public class PaintView extends View {
         }
     }
 
+    /**
+     * a method which adds a line
+     */
     private void touchUp(){
         mPath.lineTo( mX, mY );
     }

@@ -2,6 +2,8 @@
 
 Below is a record of our project group meetings. This page will be submitted together with the rest of the repository, in partial fulfillment of the CS102 course requirements.
 
+-Group meetings before the coding part are missing-
+
 ****
 ### Meeting ~ (23/04/2020, duration)
 ****
@@ -175,4 +177,43 @@ Berk Saltuk Yılmaz --- Paint
 
 **Discussion:** 
 We editted the detailed design and we discussed what left from our project.
+
+
+****
+### Meeting ~ (16/05/2020, 14:15 - 18:30 )
+****
+**Present:** Everyone     **Absent:**  
+
+**Discussion:** We discussed what left in our project.
+
+
+**ToDo**
+Enis, Onur - Add Model
+
+Yaren, Öykü, Lara - Uploading and retrieving the video
+
+Sarper - Getting preview text from realtime database
+
+
+****
+### Meeting ~ (17/05/2020 14:00 - 19:00 )
+****
+**Present:** Everyone      **Absent:**  
+
+**Discussion:** We discussed the difference of free mode and session mode, and argued about what to do in Add Model.
+
+
+**ToDo**
+Onur, Enis - Add Model
+
+Yaren, Lara, Berk, Sarper, Öykü -- Retrieve Model and little bug fixes in our application
+
+****
+### Meeting ~ (18/05/2020 14:00 - 18:00 , 22:00 -  )
+****
+**Present:** Everyone      **Absent:**  
+
+**Discussion:** We added comments, javadocs and some indentation fixes, layout fixes. Berk fixed some issues with playing the video we downloaded. Sarper added play/pause button and duration views to the video. Onur and Enis are still working on the add model feature. Lastly, we discussed who will talk about what in our demo presentation and Lara prepared a slide for our presentation.
+
+
 

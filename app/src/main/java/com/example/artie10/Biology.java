@@ -1,8 +1,6 @@
 package com.example.artie10;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,33 +10,35 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Öykü, Lara, Yaren, Sarper, Berk, Onur, Enis
+ * @version 1.0
+ * @date 15/04/2020
+ * This class shows models of biology
+ */
+
 public class Biology extends AppCompatActivity {
 
-    //CONSTANTS
+    //constant
     private static final int REQUEST_CODE = 45;
 
-    //VARIABLES
+    //variables
     Toolbar appbar;
-
     public ArrayAdapter<String> arrayAdapter;
     private List<String> myList;
     private ListView listView;
-
     private Button brainButton;
     private Button covidButton;
     private Button heartButton;
-    private Button skeletonButton;
+    private Button skullButton;
     private Button antibodyButton;
-
+    private Button lungsButton;
     private String text;
 
     @Override
@@ -51,6 +51,42 @@ public class Biology extends AppCompatActivity {
             @Override
             public void onClick( View v ) {
                 text = brainButton.getText().toString().toLowerCase();
+                openAR();
+            }
+        } );
+
+        heartButton = (Button) findViewById(R.id.heart_button);
+        heartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                text = heartButton.getText().toString().toLowerCase();
+                openAR();
+            }
+        });
+
+        skullButton = (Button) findViewById(R.id.skullButton);
+        skullButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                text = skullButton.getText().toString().toLowerCase();
+                openAR();
+            }
+        });
+
+        antibodyButton = (Button) findViewById(R.id.antibodyButton);
+        antibodyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                text = antibodyButton.getText().toString().toLowerCase();
+                openAR();
+            }
+        });
+
+        lungsButton = (Button) findViewById(R.id.lungsButton);
+        lungsButton.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick( View v ) {
+                text = lungsButton.getText().toString().toLowerCase();
                 openAR();
             }
         } );
@@ -76,33 +112,40 @@ public class Biology extends AppCompatActivity {
         myList.add(( String) brainButton.getText());
     }
 
+    /**
+     * This method opens AR screen
+     */
     public void openAR() {
-        Intent intent = new Intent( this , ARScreen.class  );
-        intent.putExtra("TextOfButton", text);
-        startActivity( intent );
+        if( MainActivity.getPath()){
+            Intent intent = new Intent( this , ARScreenSession.class  );
+            intent.putExtra("TextOfButton", text);
+            startActivity( intent );
+        }else{
+            Intent intent = new Intent( this , ARScreen.class  );
+            intent.putExtra("TextOfButton", text);
+            startActivity( intent );
+        }
     }
 
+    /**
+     * This method opens help screen
+     */
     public void openHelp(){
         Intent intent = new Intent( this, HelpScreen.class );
         startActivity( intent );
     }
 
+    /**
+     * This method returns home page
+     */
     public void openHome(){
         Intent intent = new Intent( this, MainActivity.class );
         startActivity( intent );
     }
 
-    protected void onActivityResult( int requestCode, int resultCode, Intent data ){
-        super.onActivityResult( requestCode, resultCode, data );
-        if( requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK ){
-            if( data != null ){
-                Uri uri = data.getData();
-                Toast.makeText( this, "Uri :" +uri, Toast.LENGTH_LONG ).show();
-                //Toast.makeText( this, "Path :" + uri.getPath(), Toast.LENGTH_LONG).show();
-            }
-        }
-    }
-
+    /**
+     * This method opens search screen
+     */
     public void openSearch(){
         arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,myList );
         listView.setAdapter( arrayAdapter );
@@ -133,7 +176,6 @@ public class Biology extends AppCompatActivity {
         return super.onCreateOptionsMenu( menu );
     }
 
-
     @Override
     public boolean onOptionsItemSelected( MenuItem item ) {
 
@@ -143,6 +185,9 @@ public class Biology extends AppCompatActivity {
                 return true;
             case R.id.home:
                 openHome();
+                return true;
+            case R.id.search:
+                openSearch();
                 return true;
             default:
                 return super.onOptionsItemSelected( item );

@@ -6,7 +6,10 @@ import android.net.Uri;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.example.artie10.Preview;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.ar.core.HitResult;
 import com.google.ar.sceneform.AnchorNode;
@@ -25,7 +28,12 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.IOException;
-
+/**
+ * @author Lara, Oyku, Sarper, Berk, Enis, Onur, Yaren
+ * @date 25/04/2020
+ * @version 1.0
+ * ARScreen - displays 3D models using google arcore library
+ */
 public class ARModels implements ValueEventListener {
 
     //properties
@@ -38,43 +46,46 @@ public class ARModels implements ValueEventListener {
     private DatabaseReference databaseReference;
     private DatabaseReference modelInfo;
     private String modelInfoText;
-    private String s;
 
     //constructors
     public ARModels(Context context, ArFragment fragment, String s){
         text = s;
         this.context = context;
         this.fragment = fragment;
+
         FirebaseApp.initializeApp(context);
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
+
+        //getting the model from database using its name
         modelRef = storage.getReference().child( text + ".glb");
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
+
+        //getting the model info of the model using its name
         modelInfo = databaseReference.child(text);
         modelInfo.addValueEventListener(this);
     }
 
-    public ARModels( Context context, ArFragment fragment, String s, boolean result){
-        this.s = s;
-        this.context = context;
-        this.fragment = fragment;
-
-    }
-
-    //methods
+    //METHODS
+    /**This is a method to insert the model to our fragment
+     * @param hitResult
+     */
     public void InsertModel(HitResult hitResult){
         AnchorNode anchorNode = new AnchorNode(hitResult.createAnchor());
         anchorNode.setRenderable(renderable);
         fragment.getArSceneView().getScene().addChild(anchorNode);
     }
 
+    /** This is a method to download the model from database
+     */
     public void DownloadModel(){
         try {
             File file = File.createTempFile( text , "glb");
 
-            modelRef.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+            modelRef.getFile(file)
+                    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                     BuildModel(file);
@@ -85,7 +96,10 @@ public class ARModels implements ValueEventListener {
         }
     }
 
-    public void BuildModel(File file){
+    /** This is a method to build model to ARscreen
+     * @param file
+     */
+    private void BuildModel(File file){
         RenderableSource renderableSource = RenderableSource
                 .builder()
                 .setSource(context, Uri.parse(file.getPath()), RenderableSource.SourceType.GLB)
@@ -103,6 +117,8 @@ public class ARModels implements ValueEventListener {
                 });
     }
 
+    /** This method opens preview but with sending the modelInfoText we got from
+     */
     public void openPreviewWithText(){
         Intent intent = new Intent( context, Preview.class  );
         intent.putExtra("PreviewOfModel", modelInfoText);
@@ -110,7 +126,7 @@ public class ARModels implements ValueEventListener {
     }
 
     @Override
-    public void onDataChange(DataSnapshot dataSnapshot){
+    public void onDataChange(DataSnapshot dataSnapshot){ //This is a method to change the text if there is a change in realtime database
         if(dataSnapshot.getValue(String.class) != null){
             modelInfoText = dataSnapshot.getValue(String.class);
         }
@@ -120,12 +136,4 @@ public class ARModels implements ValueEventListener {
     public void onCancelled(DatabaseError databaseError){
     }
 
-    /*
-    @Override
-    protected void onStart(){
-        super.onStart();
-        modelInfo.addValueEventListener(this);
-    }
-
-     */
 }

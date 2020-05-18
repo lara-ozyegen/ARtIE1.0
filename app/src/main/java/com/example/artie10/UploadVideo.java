@@ -2,7 +2,6 @@ package com.example.artie10;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -30,6 +29,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
+/**
+ * @author Öykü, Lara, Yaren, Sarper, Berk, Onur, Enis
+ * @version 1.0
+ * @date 15/05/2020
+ * This class makes uploading video possible
+ */
 public class UploadVideo extends AppCompatActivity {
 
     //properties
@@ -133,7 +138,7 @@ public class UploadVideo extends AppCompatActivity {
                     .addOnSuccessListener( new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot ) {
-                            progressDialog.dismiss();
+                            //progressDialog.dismiss();
                             Toast.makeText(UploadVideo.this, "Uploaded", Toast.LENGTH_SHORT ).show();
                         }
                     })

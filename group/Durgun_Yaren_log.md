@@ -17,5 +17,6 @@ At the beginning of the week, I have worked with Lara to implement inheritance f
 ### ~ 11/05/2020 - 18/05/2020 ~
 -kept on organizing the code
 -username feature
+-retrieve video (watch video feature)
 
 ****

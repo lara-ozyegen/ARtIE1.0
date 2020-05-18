@@ -13,28 +13,32 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
-
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * @author Öykü, Lara, Yaren, Sarper, Berk, Onur, Enis
+ * @version 1.0
+ * @date 20/04/2020
+ * This class shows categories of models
+ */
 
 public class Categories extends AppCompatActivity {
 
     //properties
     private static final int REQUEST_CODE = 45;
 
+    //variables
     private Button bio;
     private Button add;
     private Button myModels;
     private Button math;
     private Button space;
     private Button chem;
-    private String name = "";
     private Toolbar appbar;
-
     public ArrayAdapter<String> arrayAdapter;
     private List<String> myList;
     private ListView listView;
@@ -80,44 +84,58 @@ public class Categories extends AppCompatActivity {
         myList.add( ( String ) chem.getText() ); myList.add( ( String ) myModels.getText() );
 
     }
-
+    /**
+     * This method opens category of biology
+     */
     public void openBiology(){
         Intent intent = new Intent(Categories.this, Biology.class );
         startActivity( intent );
     }
 
+    /**
+     * This method orients to downloads from phone
+     */
     private void addModel(){
-
         Intent intent = new Intent( Intent.ACTION_OPEN_DOCUMENT );
         intent.setType( "*/*" );
         intent.addCategory( Intent.CATEGORY_OPENABLE );
         startActivityForResult( intent, REQUEST_CODE );
-
     }
 
+    /**
+     * @param requestCode,resultCode,data
+     * This methods takes uri of selected file
+     */
     protected void onActivityResult( int requestCode, int resultCode, Intent data ){
         super.onActivityResult( requestCode, resultCode, data );
         if( requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK ){
             if( data != null ){
-                name = data.toString();
-                ARScreen.text = name;
-                ARScreen.isMyModel = true;
-                Intent intentt = new Intent(Categories.this, ARScreen.class );
-                startActivity( intentt );
+                Uri uri = data.getData();
+                Toast.makeText( this, "Uri :" +uri, Toast.LENGTH_LONG ).show();
+                //Toast.makeText( this, "Path :" + uri.getPath(), Toast.LENGTH_LONG).show();
             }
         }
     }
 
+    /**
+    * This method opens help screen
+    */
     public void openHelp(){
         Intent intent = new Intent(this, HelpScreen.class );
         startActivity( intent );
     }
 
+    /**
+     * This method returns home page
+     */
     public void openHome(){
         Intent intent = new Intent(this, MainActivity.class );
         startActivity( intent );
     }
 
+    /**
+     * This method opens search screen
+     */
     public void openSearch(){
         arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,myList );
         listView.setAdapter( arrayAdapter );
@@ -166,5 +184,4 @@ public class Categories extends AppCompatActivity {
                 return super.onOptionsItemSelected( item );
         }
     }
-
 }

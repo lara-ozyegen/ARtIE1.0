@@ -18,6 +18,13 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * @author Öykü, Lara, Yaren, Sarper, Berk, Onur, Enis
+ * @version 1.0
+ * @date 23/04/2020
+ * This class provides information about user's profile and includes features log out and delete
+ */
+
 public class Profile extends AppCompatActivity {
     private Button delete_button;
     private FirebaseAuth mFirebaseAuth;
@@ -28,10 +35,10 @@ public class Profile extends AppCompatActivity {
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_profile );
+        setContentView( R.layout.activity_profile ); // linking class with xml
 
         //initializing properties
-        mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseAuth = FirebaseAuth.getInstance(); // getting user info from database
 
         //getting the user's credentials and inserting them
         mailText = findViewById( R.id.editEmail );
@@ -86,10 +93,10 @@ public class Profile extends AppCompatActivity {
                         public void onComplete( @NonNull Task<Void> task ) {
                             user.delete();
                             Toast.makeText( Profile.this, "Your account has been deleted.", Toast.LENGTH_SHORT ).show();
-                            backToMain();
                         }
                     });
         }
+        backToMain();
     }
 
     /**

@@ -26,8 +26,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RetrieveVideo"></activity>
-        <activity android:name=".JoinSession" />
+        <activity android:name=".PlayVideo"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity android:name=".RetrieveVideo"
+            android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".ARScreenSession"
             android:theme="@style/AppTheme.CustomTheme" />
@@ -74,6 +76,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
 
         <meta-data
             android:name="com.google.ar.core"
