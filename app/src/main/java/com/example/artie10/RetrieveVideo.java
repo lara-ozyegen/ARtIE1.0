@@ -28,6 +28,7 @@ public class RetrieveVideo extends AppCompatActivity {
     private EditText videoName;
     private StorageReference videoRef;
     private String url;
+    private File localFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,14 +60,10 @@ public class RetrieveVideo extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                       // Toast.makeText(RetrieveVideo.this, "yasssss", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RetrieveVideo.this, "Video found and playing", Toast.LENGTH_SHORT).show();
                     }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                Toast.makeText(RetrieveVideo.this, "offfff", Toast.LENGTH_SHORT).show();
-            }
-        });
+                }).addOnFailureListener(exception -> Toast.makeText(RetrieveVideo.this, "Video Not Found", Toast.LENGTH_SHORT).show());
+
 
         //to play a video from firebase, we need the reference to storage in string form
 
@@ -74,7 +71,6 @@ public class RetrieveVideo extends AppCompatActivity {
             @Override
             public void onSuccess(Uri uri) {
                 url = uri.toString(); // Got the download URL for 'users/me/profile.png'
-                Toast.makeText(RetrieveVideo.this, uri + "aaaa", Toast.LENGTH_SHORT).show();
 
                 //after retrieving  the video, navigate the user to UploadVideo page
                 Intent intent = new Intent(RetrieveVideo.this, PlayVideo.class);
@@ -96,59 +92,5 @@ public class RetrieveVideo extends AppCompatActivity {
             }
         });
 
-
-
-        /*
-        uploadtask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                videoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        url = uri.toString();
-
-                        //Do what you need to do with url
-                    }
-                });
-            }
-        });
-
-        bundle.putString( "transferInfo", url );
-
-
-        //inserting the bundle into intent to be sent to PlayVideo
-        intent.putExtras( bundle );
-        startActivity( intent );
-    }
-
-        /*
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReferenceFromUrl("<https://console.firebase.google.com/u/0/project/artie-638c3/storage/artie-638c3.appspot.com/files~2Fvideos>");
-        StorageReference islandRef = storageRef.child( videoName.getText().toString() + ".txt");
-
-        File rootPath = new File(Environment.getExternalStorageDirectory(), "file_name");
-        if(!rootPath.exists()) {
-            rootPath.mkdirs();
-        }
-
-        final File localFile = new File(rootPath,"imageName.txt");
-
-        islandRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                Log.e("firebase ",";local tem file created  created " +localFile.toString());
-                //  updateDb(timestamp,localFile.toString(),position);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                Log.e("firebase ",";local tem file not created  created " +exception.toString());
-            }
-        });
-
-         */
     }
 }
-
-
-
