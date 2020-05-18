@@ -194,7 +194,7 @@ Sarper - Getting preview text from realtime database
 
 
 ****
-### Meeting ~ (17/05/2020 14:00 - )
+### Meeting ~ (17/05/2020 14:00 - 19:00 )
 ****
 **Present:** Everyone      **Absent:**  
 
@@ -205,4 +205,13 @@ Sarper - Getting preview text from realtime database
 Onur, Enis - Add Model
 
 Yaren, Lara, Berk, Sarper, Öykü -- Retrieve Model and little bug fixes in our application
+
+****
+### Meeting ~ (18/05/2020 14:00 - 18:00 , 22:00 -  )
+****
+**Present:** Everyone      **Absent:**  
+
+**Discussion:** We added comments, javadocs and some indentation fixes, layout fixes. Berk fixed some issues with playing the video we downloaded. Sarper added play/pause button and duration views to the video. Onur and Enis are still working on the add model feature. Lastly, we discussed who will talk about what in our demo presentation and Lara prepared a slide for our presentation.
+
+
 
