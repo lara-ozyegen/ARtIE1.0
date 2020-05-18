@@ -20,4 +20,5 @@ This week I worked more on the MVC pattern for AR screen and models, even though
 
 ### ~ 11/05/2020 - 18/05/2020 ~
 This week I was able to finish getting model info from database using realtime database. Now we can get the info of the model and the model itself from database with just the name of the wanted model. There is no issue with code-related things but we are struggling a bit with free mode/ session mode difference. I also fixed some little mistakes/crashes in our app. Now we are trying to play the video we retrieved from the storage with Yaren,Lara and Öykü by creating an activity with VideoView, then we will take the VideoView we got from database and place it to the VideoView. After that we will probably fix the little crashes in our app and finish.
+We were able to finish taking video from database and play it, I worked on problems occured during that with my friends, then I added play/pause buttons and timer of the video to the screen, added some models and model info to our database and lastly added some comments. Now we will talk about our presentation and share tasks, then we are done :)
 
