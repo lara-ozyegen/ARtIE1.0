@@ -9,6 +9,7 @@ import android.os.Bundle;
  * @date 23/04/2020
  * This class provides more information about our app
  */
+
 public class HelpScreen extends Activity {
 
     @Override
