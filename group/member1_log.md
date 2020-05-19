@@ -13,5 +13,9 @@ This week I linked firebase to android studio and added screenshot feature. I co
 ### ~ 04/05/2020 - 10/05/2020 ~
 This week I tried inheritance for the second ARscreen to avoid repetition. There are some extras in second AR screen but it is not possible to inherit layout in android studio so I created an invisible button in ARscreen and set invisible and disabled. Then, set it visible and enabled in the second ARscreen. It didn't work at first but it turned out that I should have written the methods to the wrong ARscreen class. Also I wrote controller classes for view model to apply MVC more to our project. I wrote the code for changing the filename in database and created the UI layout for that.
 
+### ~ 11/05/2020 - 17/05/2020 ~
+This weeek I worked on uploading the recorded video to firebase storage by a desired name then downloading it by entering the videoName. Especially downloading was challenging I get nullpointer exception for a long time but it is fixed when we add success listener. I searched adding metadata to files in storage however we are close to deadline so I will do it after the demo presentation. I learned using bundle to transfer information to another class.
+
+
 
 ****
