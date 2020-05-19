@@ -112,6 +112,7 @@ public class ARScreen extends AppCompatActivity {
             try{
                 File file = File.createTempFile( text , "glb");
                 models.BuildModel( file);
+                isMyModel = false;
             }catch(IOException a){
 
             }
