@@ -18,5 +18,6 @@ At the beginning of the week, I have worked with Lara to implement inheritance f
 -kept on organizing the code
 -username feature
 -retrieve video (watch video feature)
+-search (worked on it but couldn't figure it out)
 
 ****

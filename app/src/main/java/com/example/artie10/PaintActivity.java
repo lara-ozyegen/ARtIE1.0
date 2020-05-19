@@ -4,48 +4,28 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.hardware.display.DisplayManager;
 import android.hardware.display.VirtualDisplay;
 import android.media.MediaRecorder;
 import android.media.projection.MediaProjection;
 import android.media.projection.MediaProjectionManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.HandlerThread;
 import android.util.DisplayMetrics;
 import android.util.SparseIntArray;
-import android.view.PixelCopy;
 import android.view.Surface;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
-import android.widget.VideoView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
-import com.example.artie10.Model.ARModels;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.ar.sceneform.ArSceneView;
-import com.google.ar.sceneform.ux.ArFragment;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
@@ -53,33 +33,30 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 /**
  * @author Öykü, Lara, Yaren, Sarper, Berk, Onur, Enis
  * @version 1.0
- * @date 23/04/2020
- * This class creates a transparent activity for painting feature
+ * @date 5/05/2020
+ * This class creates paint screen and option to record that screen
  */
 public class PaintActivity extends AppCompatActivity {
 
-    //properties
+    //variables
     private PaintView paintView;
     ImageButton pencil;
     ToggleButton togglebutton2;
-
     private String videoURI = "";
-    //private VideoView videoView;
-    private static final int REQUEST_CODE = 1000;
-    private static final int REQUEST_PERMISSION = 1001;
-    private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
-
     private MediaProjectionManager mediaProjectionManager;
     private MediaProjection mediaProjection;
     private MediaProjectionCallBack mediaProjectionCallBack;
     private MediaRecorder mediaRecorder;
-    private RelativeLayout relativeLayout3;
-
     private VirtualDisplay virtualDisplay;
     private int mScreenDensity;
+
+    //constants
     private static  int DISPLAY_WIDTH = 720;
     private static  int DISPLAY_HEIGHT = 1280;
+    private static final int REQUEST_CODE = 1000;
+    private static final int REQUEST_PERMISSION = 1001;
 
+    private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
 
     static {
         ORIENTATIONS.append( Surface.ROTATION_0,0 );
@@ -87,7 +64,6 @@ public class PaintActivity extends AppCompatActivity {
         ORIENTATIONS.append( Surface.ROTATION_180,180 );
         ORIENTATIONS.append( Surface.ROTATION_270,270 );
     }
-
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
@@ -101,12 +77,10 @@ public class PaintActivity extends AppCompatActivity {
 
         togglebutton2 = findViewById(R.id.toggleButton2);
 
-
         ActivityCompat.requestPermissions(this, new String[]{
                 WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, PERMISSION_GRANTED);
 
         paintView = ( PaintView ) findViewById( R.id.paintView );
-
         DisplayMetrics metrics2 = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics2);
         mScreenDensity = metrics2.densityDpi;
@@ -117,6 +91,7 @@ public class PaintActivity extends AppCompatActivity {
 
         mediaRecorder = new MediaRecorder();
         mediaProjectionManager = (MediaProjectionManager) getSystemService(Context.MEDIA_PROJECTION_SERVICE);
+
         togglebutton2.setOnClickListener(
                 v -> {
                     if (ContextCompat.checkSelfPermission(PaintActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -136,12 +111,6 @@ public class PaintActivity extends AppCompatActivity {
                         toggleScreenShare(v);
                     }
                 });
-
-        //view
-        //videoView = (VideoView) findViewById(R.id.videoView2);
-
-        //video
-
     }
 
     public void returnAR(){
@@ -150,7 +119,7 @@ public class PaintActivity extends AppCompatActivity {
 
 
     /**
-     *
+     * This method closes the video recording screen
      */
     private class MediaProjectionCallBack extends MediaProjection.Callback {
         @Override
@@ -167,7 +136,7 @@ public class PaintActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * This method stops the recording activity
      */
     private void stopRecordScreen() {
         if( virtualDisplay == null )
@@ -178,7 +147,7 @@ public class PaintActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * This method helps stop recording
      */
     private void destroyMediaProjection() {
         if( mediaProjection != null ){
@@ -190,7 +159,7 @@ public class PaintActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * This method controls the toggle button "record"
      * @param v
      */
     private void toggleScreenShare( View v ){
@@ -214,7 +183,7 @@ public class PaintActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * This method sets the recording video size
      */
     private void initRecorder(){
         try{
@@ -245,7 +214,7 @@ public class PaintActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * This method helps recording the video
      */
     private void recordScreen(){
 
@@ -256,11 +225,10 @@ public class PaintActivity extends AppCompatActivity {
         }
         virtualDisplay = createVirtualDisplay();
         mediaRecorder.start();
-
     }
 
     /**
-     *
+     * This method creates virtual display of video
      * @return
      */
     private VirtualDisplay createVirtualDisplay() {
