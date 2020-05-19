@@ -64,7 +64,8 @@ public class ARScreen extends AppCompatActivity {
     private ToggleButton toggleButton;
     private String videoURI = "";
     private ImageButton infoButton;
-    private String text;
+    public static String text;
+    public static boolean isMyModel = false;
     private ARModels models;
 
     private static final int REQUEST_CODE = 1000;
@@ -99,11 +100,22 @@ public class ARScreen extends AppCompatActivity {
 
         //getting the text of the button from the previous activity
         Intent i = getIntent();
-        text = i.getStringExtra("TextOfButton");
-        models = new ARModels(this, arFragment, text);
+        if( !isMyModel) {
+            text = i.getStringExtra("TextOfButton");
 
-        //initializing firebase and downloading model from firebase
-        models.DownloadModel();
+            models = new ARModels(this, arFragment, text);
+            //Initializing firebase and downloading model from firebase
+            models.DownloadModel();
+        }
+        else {
+            models = new ARModels(this, arFragment,text,true);
+            try{
+                File file = File.createTempFile( text , "glb");
+                models.BuildModel( file);
+            }catch(IOException a){
+
+            }
+        }
 
         //inserting the model
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
@@ -265,7 +277,7 @@ public class ARScreen extends AppCompatActivity {
 
             videoURI = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_DOWNLOADS )
                     + new StringBuilder( "/EDMTRecord_" ).append( new SimpleDateFormat("dd-MM-yyyy-hh_mm_ss" )
-            .format(new Date())).append( " .mp4" ).toString();
+                    .format(new Date())).append( " .mp4" ).toString();
 
             mediaRecorder.setOutputFile( videoURI );
             mediaRecorder.setVideoSize( DISPLAY_WIDTH, DISPLAY_HEIGHT );
@@ -305,9 +317,9 @@ public class ARScreen extends AppCompatActivity {
      * @return
      */
     private VirtualDisplay createVirtualDisplay() {
-       return mediaProjection.createVirtualDisplay( "ARScreen", DISPLAY_WIDTH, DISPLAY_HEIGHT, mScreenDensity,
-               DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
-              mediaRecorder.getSurface(), null, null );
+        return mediaProjection.createVirtualDisplay( "ARScreen", DISPLAY_WIDTH, DISPLAY_HEIGHT, mScreenDensity,
+                DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
+                mediaRecorder.getSurface(), null, null );
     }
 
     @Override

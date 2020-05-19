@@ -148,8 +148,8 @@ public class Categories extends AppCompatActivity {
         return result;
     }
     /**
-    * This method opens help screen
-    */
+     * This method opens help screen
+     */
     public void openHelp(){
         Intent intent = new Intent(this, HelpScreen.class );
         startActivity( intent );
