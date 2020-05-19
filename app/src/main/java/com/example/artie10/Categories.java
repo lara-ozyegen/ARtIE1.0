@@ -2,8 +2,10 @@ package com.example.artie10;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.OpenableColumns;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -111,12 +113,40 @@ public class Categories extends AppCompatActivity {
         if( requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK ){
             if( data != null ){
                 Uri uri = data.getData();
-                Toast.makeText( this, "Uri :" +uri, Toast.LENGTH_LONG ).show();
+                ARScreen.text = getFileName(uri);
+                ARScreen.isMyModel = true;
+
                 //Toast.makeText( this, "Path :" + uri.getPath(), Toast.LENGTH_LONG).show();
+                Toast.makeText( this, "Name :" + getFileName( uri), Toast.LENGTH_LONG ).show();
+
+                Intent intent = new Intent(Categories.this, ARScreen.class );
+                startActivity( intent );
+
             }
         }
     }
-
+    public String getFileName(Uri uri) {
+        String result = null;
+        if (uri.getScheme().equals("content")) {
+            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+            try {
+                if (cursor != null && cursor.moveToFirst()) {
+                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                }
+            } finally {
+                cursor.close();
+            }
+        }
+        if (result == null) {
+            result = uri.getPath();
+            int cut = result.lastIndexOf('/');
+            if (cut != -1) {
+                result = result.substring(cut + 1);
+            }
+        }
+        result = result.substring(0,result.length() - 4 );
+        return result;
+    }
     /**
     * This method opens help screen
     */

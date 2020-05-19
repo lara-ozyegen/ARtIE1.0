@@ -87,9 +87,9 @@ public class ARScreen extends AppCompatActivity {
     private ToggleButton toggleButton;
     private String videoURI = "";
     private ImageButton infoButton;
-    private String text;
+    public static String text;
     private ARModels models;
-
+    public static boolean isMyModel = false;
     private static final int REQUEST_CODE = 1000;
     private static final int REQUEST_PERMISSION = 1001;
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
@@ -122,12 +122,22 @@ public class ARScreen extends AppCompatActivity {
 
         //getting the text of the button from the previous activity
         Intent i = getIntent();
-        text = i.getStringExtra("TextOfButton");
-        models = new ARModels(this, arFragment, text);
+        if( !isMyModel) {
+            text = i.getStringExtra("TextOfButton");
 
-        //Initializing firebase and downloading model from firebase
-        models.DownloadModel();
+            models = new ARModels(this, arFragment, text);
+            //Initializing firebase and downloading model from firebase
+            models.DownloadModel();
+        }
+        else {
+            models = new ARModels(this, arFragment,text,true);
+            try{
+                File file = File.createTempFile( text , "glb");
+                models.BuildModel( file);
+            }catch(IOException a){
 
+            }
+        }
         //inserting the model
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
             models.InsertModel(hitResult);
@@ -471,7 +481,7 @@ public class ARScreen extends AppCompatActivity {
                 toast.show();
             }
             handlerThread.quitSafely();
-        }, new Handler(handlerThread.getLooper()));
+        },new Handler(handlerThread.getLooper()));
     }
 
 

@@ -46,6 +46,7 @@ public class ARModels implements ValueEventListener {
     private DatabaseReference databaseReference;
     private DatabaseReference modelInfo;
     private String modelInfoText;
+    private String s;
 
     //constructors
     public ARModels(Context context, ArFragment fragment, String s){
@@ -68,18 +69,20 @@ public class ARModels implements ValueEventListener {
         modelInfo.addValueEventListener(this);
     }
 
-    //METHODS
-    /**This is a method to insert the model to our fragment
-     * @param hitResult
-     */
+    public ARModels( Context context, ArFragment fragment, String s, boolean result){
+        this.s = s;
+        this.context = context;
+        this.fragment = fragment;
+
+    }
+
+    //methods
     public void InsertModel(HitResult hitResult){
         AnchorNode anchorNode = new AnchorNode(hitResult.createAnchor());
         anchorNode.setRenderable(renderable);
         fragment.getArSceneView().getScene().addChild(anchorNode);
     }
 
-    /** This is a method to download the model from database
-     */
     public void DownloadModel(){
         try {
             File file = File.createTempFile( text , "glb");
@@ -99,7 +102,8 @@ public class ARModels implements ValueEventListener {
     /** This is a method to build model to ARscreen
      * @param file
      */
-    private void BuildModel(File file){
+    public void BuildModel(File file){
+
         RenderableSource renderableSource = RenderableSource
                 .builder()
                 .setSource(context, Uri.parse(file.getPath()), RenderableSource.SourceType.GLB)
