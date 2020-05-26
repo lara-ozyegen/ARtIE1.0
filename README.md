@@ -21,7 +21,7 @@ _Include a concise description of your project here. Be sure to include the prop
 
 [Group Meetings Log](group/meetingslog.md)
 #### Group Members
-- [Lara Özyeğen](group/member1_log.md)    
+- [Lara Özyeğen](group/Ozyegen_Lara_log.md)    
 - [Sarper Turan](group/Turan_Sarper_log.md)
 - [Öykü Erhan](group/member3_log.md)
 - [Berk Saltuk Yılmaz](group/member4_log.md)
