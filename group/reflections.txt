@@ -6,7 +6,6 @@
 
 3. What was the most difficult aspect of it?
 	We had a challenging project idea on creating an Augmented Reality application. We knew nothing about AR and using Android Studio so we had a prejudice on them. Android studio has a different MVC pattern compared to what we have learned in class thus, it was very difficult to apply the MVC. 
- 
 
 4. What would you do differently if you had to start over again?
 	Our project is not so neat because we started in a hurry and didn’t had a proper design beforehand. If we had to start over, we would focus on our detailed design and MVC pattern of our project a lot more because MVC both helps with neat code and both with proper workload for everyone, which we were lacking in our project.
