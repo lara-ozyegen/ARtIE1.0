@@ -216,4 +216,10 @@ Yaren, Lara, Berk, Sarper, Öykü -- Retrieve Model and little bug fixes in our 
 **Discussion:** We added comments, javadocs and some indentation fixes, layout fixes. Berk fixed some issues with playing the video we downloaded. Sarper added play/pause button and duration views to the video. Onur and Enis are still working on the add model feature. Lastly, we discussed who will talk about what in our demo presentation and Lara prepared a slide for our presentation.
 
 
+****
+### Meeting ~ (26/05/2020 21:00-23:00  )
+****
+**Present:** Everyone
+
+**Discussion:** We did the reflection task and some little last things. This is our goodbye... for now though, we are planning to upgrade our application more.
 
