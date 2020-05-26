@@ -5,9 +5,7 @@ Description: Our project, ARtIE, is based on displaying 3D models in real life t
 What has been done?
 
 - We were able to finish our project with a few features missing such as our add model feature. We were able to get our models from database and insert them on the AR screen, get their info from realtime database, and much more features in AR screen like taking a video of the screen and uploading it to the database so you can get the video and watch it in our app.
-	
 - We used Android Studio 3.6.3 , and got help with AR screen methods using Google’s ARCore Library. For our database operations; we used Realtime Database, Storage and Authentication subbranches of the Firebase Database.
-
 - To use our application, you have to either connect your android to your computer or use an emulator. We used Pixel 2 as emulator and we would suggest everyone to do so. After you press play Android Studio does the download/setup for you and opens the app. After the app opens, you can press the buttons and play around with models in free mode, to reach the session mode you have to sign up- sign in and then you are also free to experiment! 
 
 What remains to be done?
