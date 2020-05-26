@@ -4,7 +4,6 @@ The information and code in this repository are submitted in partial fulfillment
 ****
 ## g3F ~~ ARtIE ~~
 ****
-### ~ optional group name ~
 
 ## Project Description
 Our project, ARtIE, is based on displaying 3D models in real life to improve education and provide information with using visualization. Our project is an android app so we are using AndroidStudio.
