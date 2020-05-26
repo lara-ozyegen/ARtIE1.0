@@ -15,8 +15,6 @@ What remains to be done?
 - Our “add model” feature gets the model but can’t download it to AR screen.
 - Our search feature is not working, simply, we want to fix that.
 
-
-
 Contributions
 
 Berk Saltuk Yılmaz: Mostly worked on layouts, views and some features of AR screen such as painting and retrieving video (helped to fix this). Added visuals and features to screens, fixed paint feature. Created Help, AboutUs pages. Added some spacing, fixed some indentation and created a logo for our app! Created an transparent activity for painting feature and made it work. Also tried to help my friends about their parts since we are new to Android projects.
