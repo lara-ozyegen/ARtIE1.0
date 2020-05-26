@@ -1,2 +1,35 @@
-//Please spend a few moments as a group, to reflect on what you have achieved in your project and record your thoughts in a "reflections.txt" file in the "group" folder of your project github repository. Consider, for example, in what ways you found the project a useful learning experience. What did you dislike about project work? What was the most difficult aspect of it? What would you do differently if you had to start over again? How much time did you spend on it? Are you proud of what you have achieved? ...
+1. What ways you found the project a useful learning experience?
+	We found this project useful because we think that it improved us a lot, this project helped us in a way that we’ve all had a chance to experience real-world computer engineering events such as creating an application from zero with a team, which was more realistic than our lab assignments. Other than that, we all learned how to work as a team; we had a chance to learn more about Android Studio, Google’s ARCore Library and databases, this also helped us to improve our research skills; but most importantly, it showed us that nothing is impossible. In addition, due to the covid-19 outbreak we met new online communication tools. We think that zoom made meetings more convenient thus, we are planning to use it even we have chance to meet physically.
+
+2. What did you dislike about project work?
+Working as a team is necessary, especially if one is working on bigger projects where workload distribution is more strict and a lot has to be done by one coder. While we have learnt much about teamwork and the benefits it provides, the hurdles caused by miscommunication and lack of engagement were exhausting to overcome. 
+
+3. What was the most difficult aspect of it?
+We had a challenging project idea on creating an Augmented Reality application. We knew nothing about AR and using Android Studio so we had a prejudice on them. Android studio has a different MVC pattern compared to what we have learned in class thus, it was very difficult to apply the MVC. 
+ 
+4. What would you do differently if you had to start over again?
+	Our project is not so neat because we started in a hurry and didn’t had a proper design beforehand. If we had to start over, we would focus on our detailed design and MVC pattern of our project a lot more because MVC both helps with neat code and both with proper workload for everyone, which we were lacking in our project.
+
+5. How much time did you spend on it?
+  We started right after we decided on our project idea. Before the coding phase we met once in a week and we spent more than three hours in those meetings. Then, we started coding and it was approximately two months ago. We met everyday to code and we spent approximately five hours -sometimes upto eight hours- on those meetings. Therefore, we can say we literally spent days and weeks on our project.1. What ways you found the project a useful learning experience?
+	We found this project useful because we think that it improved us a lot, this project helped us in a way that we’ve all had a chance to experience real-world computer engineering events such as creating an application from zero with a team, which was more realistic than our lab assignments. Other than that, we all learned how to work as a team; we had a chance to learn more about Android Studio, Google’s ARCore Library and databases, this also helped us to improve our research skills; but most importantly, it showed us that nothing is impossible. In addition, due to the covid-19 outbreak we met new online communication tools. We think that zoom made meetings more convenient thus, we are planning to use it even we have chance to meet physically.
+
+2. What did you dislike about project work?
+Working as a team is necessary, especially if one is working on bigger projects where workload distribution is more strict and a lot has to be done by one coder. While we have learnt much about teamwork and the benefits it provides, the hurdles caused by miscommunication and lack of engagement were exhausting to overcome. 
+
+3. What was the most difficult aspect of it?
+We had a challenging project idea on creating an Augmented Reality application. We knew nothing about AR and using Android Studio so we had a prejudice on them. Android studio has a different MVC pattern compared to what we have learned in class thus, it was very difficult to apply the MVC. 
+ 
+4. What would you do differently if you had to start over again?
+	Our project is not so neat because we started in a hurry and didn’t had a proper design beforehand. If we had to start over, we would focus on our detailed design and MVC pattern of our project a lot more because MVC both helps with neat code and both with proper workload for everyone, which we were lacking in our project.
+
+5. How much time did you spend on it?
+  We started right after we decided on our project idea. Before the coding phase we met once in a week and we spent more than three hours in those meetings. Then, we started coding and it was approximately two months ago. We met everyday to code and we spent approximately five hours -sometimes upto eight hours- on those meetings. Therefore, we can say we literally spent days and weeks on our project.
+
+6. Are you proud of what you have achieved?
+  Yes, we are proud of our work. In more or less than two months we managed to finish an Android project as a team. At first sight it might look something easy. However, when we begin we had no clue about Android studio, AR libraries and databases. As a team, in a short period, we learned all we need to learn. Even though our project idea and the things we had to deal with were beyond our knowledge, we have overcome the obstacles we face in the process of creating our project. Moreover, we think that we faced problems which an engineer might face and we found efficient solutions to them. This project gave us a chance to act and think like an engineer and we made our best, and we think these all are enough to be proud!
+
+
+6. Are you proud of what you have achieved?
+  Yes, we are proud of our work. In more or less than two months we managed to finish an Android project as a team. At first sight it might look something easy. However, when we begin we had no clue about Android studio, AR libraries and databases. As a team, in a short period, we learned all we need to learn. Even though our project idea and the things we had to deal with were beyond our knowledge, we have overcome the obstacles we face in the process of creating our project. Moreover, we think that we faced problems which an engineer might face and we found efficient solutions to them. This project gave us a chance to act and think like an engineer and we made our best, and we think these all are enough to be proud!
 
