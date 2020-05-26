@@ -32,8 +32,8 @@ public class RetrieveVideo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrieve_video);
 
-        watchVideo = (Button) findViewById(R.id.watchVideo);
-        videoName = (EditText) findViewById(R.id.videoName);
+        watchVideo = ( Button) findViewById( R.id.watchVideo);
+        videoName = ( EditText) findViewById( R.id.videoName);
 
         watchVideo.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -51,15 +51,15 @@ public class RetrieveVideo extends AppCompatActivity {
         File localFile = File.createTempFile("videos", "mp4");
         FirebaseStorage storage = FirebaseStorage.getInstance();
 
-        videoRef = storage.getReference().child("videos/" + videoName.getText().toString());
+        videoRef = storage.getReference().child( "videos/" + videoName.getText().toString());
 
         videoRef.getFile(localFile)
                 .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(RetrieveVideo.this, "Video found and playing", Toast.LENGTH_SHORT).show();
+                        Toast.makeText( RetrieveVideo.this, "Video found and playing", Toast.LENGTH_SHORT).show();
                     }
-                }).addOnFailureListener(exception -> Toast.makeText(RetrieveVideo.this, "Video Not Found", Toast.LENGTH_SHORT).show());
+                }).addOnFailureListener(exception -> Toast.makeText( RetrieveVideo.this, "Video Not Found", Toast.LENGTH_SHORT).show());
 
 
         //to play a video from firebase, we need the reference to storage in string form
@@ -74,7 +74,7 @@ public class RetrieveVideo extends AppCompatActivity {
                 //creating a bundle to transfer information to PlayVideo
                 Bundle bundle = new Bundle();
 
-                bundle.putString( "transferInfo", url );
+                bundle.putString( "transferInfo", url);
 
 
                 //inserting the bundle into intent to be sent to PlayVideo

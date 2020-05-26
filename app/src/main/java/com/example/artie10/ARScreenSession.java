@@ -20,9 +20,9 @@ import android.widget.TextView;
 public class ARScreenSession extends ARScreen {
 
     @Override
-    protected void onCreate( Bundle savedInstanceState ) {
-        super.onCreate( savedInstanceState );
-        infoButtonSettings( true, true );
+    protected void onCreate( Bundle savedInstanceState) {
+        super.onCreate( savedInstanceState);
+        infoButtonSettings( true, true);
     }
 
 }

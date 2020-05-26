@@ -16,11 +16,11 @@ public class AboutUs extends AppCompatActivity {
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_about_us );
+        super.onCreate( savedInstanceState);
+        setContentView( R.layout.activity_about_us);
 
-        appbar = findViewById( R.id.appbar );
-        setSupportActionBar( appbar );
-        getSupportActionBar().setTitle( "About Us" );
+        appbar = findViewById( R.id.appbar);
+        setSupportActionBar( appbar);
+        getSupportActionBar().setTitle( "About Us");
     }
 }

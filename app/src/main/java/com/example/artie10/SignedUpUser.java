@@ -17,14 +17,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
-
 /**
  * @author Öykü, Lara, Yaren, Sarper, Berk, Onur, Enis
  * @version 1.0
  * @date 24/04/2020
  * This class provides the sign up feature
  */
-public class SignUp extends AppCompatActivity {
+public class SignedUpUser extends AppCompatActivity {
 
     //properties
     private EditText password;
@@ -42,10 +41,10 @@ public class SignUp extends AppCompatActivity {
         makeItPopUp();
 
         //initializing properties
-        password = findViewById( R.id.password );
-        email = findViewById( R.id.email_address );
+        password = findViewById( R.id.password);
+        email = findViewById( R.id.email_address);
         username = findViewById( R.id.username);
-        signUp = (Button) findViewById( R.id.signUpButton );
+        signUp = ( Button ) findViewById( R.id.signUpButton);
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         //if sign up button is clicked
@@ -62,12 +61,12 @@ public class SignUp extends AppCompatActivity {
      */
     public void makeItPopUp(){
         DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics( dm );
+        getWindowManager().getDefaultDisplay().getMetrics( dm);
 
-        int width = ( int ) ( dm.widthPixels * .6 );
-        int height = ( int ) ( dm.heightPixels * .7 );
+        int width = ( int ) ( dm.widthPixels * .8);
+        int height = ( int ) ( dm.heightPixels * .8);
 
-        getWindow().setLayout( width, height );
+        getWindow().setLayout( width, height);
     }
 
     /**
@@ -98,7 +97,7 @@ public class SignUp extends AppCompatActivity {
 
         //if the fields are filled
         else if ( !( strEmail.isEmpty() && strPassword.isEmpty() && strUsername.isEmpty() ) ){
-            mFirebaseAuth.createUserWithEmailAndPassword( strEmail, strPassword ).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
+            mFirebaseAuth.createUserWithEmailAndPassword( strEmail, strPassword ).addOnCompleteListener(SignedUpUser.this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task ) {
 
@@ -114,12 +113,12 @@ public class SignUp extends AppCompatActivity {
                                 }
                             }
                         });
-                        startActivity( new Intent( SignUp.this, MainActivity.class ) );
+                        startActivity( new Intent( SignedUpUser.this, MainActivity.class ));
                     }
 
                     //if sign up is failed
                     else{
-                        Toast.makeText( SignUp.this, "Could not create account, please try again.", Toast.LENGTH_SHORT ).show();
+                        Toast.makeText( SignedUpUser.this, "Could not create account, please try again.", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -127,7 +126,7 @@ public class SignUp extends AppCompatActivity {
 
         //if some other non-predicted error has occurred
         else {
-            Toast.makeText( SignUp.this, "Nani??! Some error??!", Toast.LENGTH_SHORT ).show();
+            Toast.makeText( SignedUpUser.this, "Nani??! Some error??!", Toast.LENGTH_SHORT).show();
         }
     }
 }

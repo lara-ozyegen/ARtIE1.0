@@ -3,13 +3,9 @@ package com.example.artie10.Model;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
-import com.example.artie10.Preview;
-import com.google.android.gms.tasks.OnFailureListener;
+import com.example.artie10.InfoPage;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.ar.core.HitResult;
 import com.google.ar.sceneform.AnchorNode;
@@ -77,13 +73,13 @@ public class ARModels implements ValueEventListener {
     }
 
     //methods
-    public void InsertModel(HitResult hitResult){
+    public void insertModel(HitResult hitResult){
         AnchorNode anchorNode = new AnchorNode(hitResult.createAnchor());
         anchorNode.setRenderable(renderable);
         fragment.getArSceneView().getScene().addChild(anchorNode);
     }
 
-    public void DownloadModel(){
+    public void downloadModel(){
         try {
             File file = File.createTempFile( text , "glb");
 
@@ -91,7 +87,7 @@ public class ARModels implements ValueEventListener {
                     .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    BuildModel(file);
+                    buildModel(file);
                 }
             });
         } catch (IOException e) {
@@ -102,7 +98,7 @@ public class ARModels implements ValueEventListener {
     /** This is a method to build model to ARscreen
      * @param file
      */
-    public void BuildModel(File file){
+    public void buildModel(File file){
 
         RenderableSource renderableSource = RenderableSource
                 .builder()
@@ -123,8 +119,8 @@ public class ARModels implements ValueEventListener {
 
     /** This method opens preview but with sending the modelInfoText we got from
      */
-    public void openPreviewWithText(){
-        Intent intent = new Intent( context, Preview.class  );
+    public void openInfoWithText(){
+        Intent intent = new Intent( context, InfoPage.class  );
         intent.putExtra("PreviewOfModel", modelInfoText);
         context.startActivity( intent );
     }

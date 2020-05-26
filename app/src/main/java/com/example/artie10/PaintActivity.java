@@ -49,10 +49,10 @@ public class PaintActivity extends AppCompatActivity {
     private MediaRecorder mediaRecorder;
     private VirtualDisplay virtualDisplay;
     private int mScreenDensity;
-
-    //constants
     private static  int DISPLAY_WIDTH = 720;
     private static  int DISPLAY_HEIGHT = 1280;
+
+    //constants
     private static final int REQUEST_CODE = 1000;
     private static final int REQUEST_PERMISSION = 1001;
 

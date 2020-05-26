@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
      * This method opens sign in page
      */
     public void openSignIn() {
-        Intent intent = new Intent( this, SignIn.class );
+        Intent intent = new Intent( this, SignInUser.class );
         startActivity( intent );
     }
 

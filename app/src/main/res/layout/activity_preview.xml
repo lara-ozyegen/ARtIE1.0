@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@drawable/custom_border"
     style="@style/TransparentAndTranslucent"
-    tools:context=".Preview">
+    tools:context=".InfoPage">
 
     <TextView
         android:id="@+id/info"

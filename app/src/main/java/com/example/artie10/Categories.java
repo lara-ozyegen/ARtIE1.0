@@ -48,10 +48,10 @@ public class Categories extends AppCompatActivity {
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_categories3 );
+        setContentView( R.layout.activity_categories3);
 
         //adding onClickListeners for all of the categories
-        bio = ( Button ) findViewById( R.id.biologyButton );
+        bio = ( Button ) findViewById( R.id.biologyButton);
         bio.setOnClickListener( new View.OnClickListener() {
             public void onClick( View v ) {
                 openBiology();
@@ -65,15 +65,15 @@ public class Categories extends AppCompatActivity {
             }
         });
 
-        math = ( Button ) findViewById( R.id.mathButton );
-        space = ( Button ) findViewById( R.id.spaceButton );
-        chem = ( Button ) findViewById( R.id.chemButton );
-        myModels = ( Button ) findViewById( R.id.myModelsButton );
+        math = ( Button ) findViewById( R.id.mathButton);
+        space = ( Button ) findViewById( R.id.spaceButton);
+        chem = ( Button ) findViewById( R.id.chemButton);
+        myModels = ( Button ) findViewById( R.id.myModelsButton);
 
         //adding toolbar
         appbar = findViewById( R.id.appbar );
-        setSupportActionBar( appbar );
-        getSupportActionBar().setTitle( "Categories" );
+        setSupportActionBar( appbar);
+        getSupportActionBar().setTitle( "Categories");
 
         //adding a list for the use of search button in toolbar
         listView = findViewById( R.id.listView );
@@ -90,7 +90,7 @@ public class Categories extends AppCompatActivity {
      * This method opens category of biology
      */
     public void openBiology(){
-        Intent intent = new Intent(Categories.this, Biology.class );
+        Intent intent = new Intent(Categories.this, Biology.class);
         startActivity( intent );
     }
 

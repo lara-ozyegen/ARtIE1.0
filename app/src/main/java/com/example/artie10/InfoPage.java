@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * This class shows information and preview about selected models
  */
 
-public class Preview extends AppCompatActivity {
+public class InfoPage extends AppCompatActivity {
 
     //variables
     private String text;
@@ -21,22 +21,22 @@ public class Preview extends AppCompatActivity {
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_preview );
+        super.onCreate( savedInstanceState);
+        setContentView( R.layout.activity_preview);
 
         //Making it a pop-up
         DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics( dm );
+        getWindowManager().getDefaultDisplay().getMetrics( dm);
 
         int width = dm. widthPixels;
         int height = dm.heightPixels;
-        getWindow().setLayout( ( int ) ( width * .9 ), ( int ) ( height * .6 ) );
+        getWindow().setLayout( ( int ) ( width * .9 ), ( int ) ( height * .6 ));
 
         //Getting the text value from ARModels class which gets it from realtime database
         Intent i = getIntent();
         text = i.getStringExtra("PreviewOfModel");
 
-        textView = findViewById(R.id.infoOfModel);
-        textView.setText(text);
+        textView = findViewById( R.id.infoOfModel);
+        textView.setText( text);
     }
 }

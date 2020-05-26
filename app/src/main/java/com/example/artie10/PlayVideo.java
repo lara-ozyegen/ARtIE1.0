@@ -16,7 +16,6 @@ public class PlayVideo extends AppCompatActivity {
 
     private VideoView videoView;
     private ImageView playButton;
-    private ImageView pauseButton;
     private TextView currentTimer;
     private TextView durationTimer;
     private ProgressBar videoProgress;
@@ -28,18 +27,18 @@ public class PlayVideo extends AppCompatActivity {
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_play_video );
-        videoView = (VideoView) findViewById( R.id.videoView );
+        super.onCreate( savedInstanceState);
+        setContentView( R.layout.activity_play_video);
+        videoView = (VideoView) findViewById( R.id.videoView);
 
-        playButton = ( ImageView ) findViewById( R.id.playButton );
-        playButton.setImageResource( R.drawable.pause_button );
+        playButton = ( ImageView ) findViewById( R.id.playButton);
+        playButton.setImageResource( R.drawable.pause_button);
 
-        currentTimer = ( TextView ) findViewById( R.id.currentTimer );
-        durationTimer = ( TextView ) findViewById( R.id.durationTimer );
+        currentTimer = ( TextView ) findViewById( R.id.currentTimer);
+        durationTimer = ( TextView ) findViewById( R.id.durationTimer);
 
-        videoProgress = ( ProgressBar ) findViewById( R.id.videoProgressBar );
-        videoProgress.setMax( 100 );
+        videoProgress = ( ProgressBar ) findViewById( R.id.videoProgressBar);
+        videoProgress.setMax( 100);
 
         isPlaying = true;
         current = 0;
@@ -50,7 +49,7 @@ public class PlayVideo extends AppCompatActivity {
             public void onPrepared( MediaPlayer mp ) {
                 duration = mp.getDuration() / 1000;
                 String durationString = String.format( "%02d:%02d", duration / 60, duration % 60 );
-                durationTimer.setText( durationString );
+                durationTimer.setText( durationString);
             }
         });
 
@@ -62,12 +61,12 @@ public class PlayVideo extends AppCompatActivity {
                 if( isPlaying ){
                     videoView.pause();
                     isPlaying = false;
-                    playButton.setImageResource( R.drawable.play_button );
+                    playButton.setImageResource( R.drawable.play_button);
                 }
                 else{
                     videoView.start();
                     isPlaying = true;
-                    playButton.setImageResource( R.drawable.pause_button );
+                    playButton.setImageResource( R.drawable.pause_button);
                 }
             }
         });
@@ -87,13 +86,14 @@ public class PlayVideo extends AppCompatActivity {
 
         //transferInfo is download URL of the video in string form
         if( transferInfo != null) {
-            videoUri = Uri.parse( transferInfo );
-            videoView.setVisibility( View.VISIBLE );
-            videoView.setVideoURI( videoUri );
+            videoUri = Uri.parse( transferInfo);
+            videoView.setVisibility( View.VISIBLE);
+            videoView.setVideoURI( videoUri);
             videoView.requestFocus();
             videoView.start();
         }
     }
+    @Override
     protected void onStop(){
         super.onStop();
 
@@ -112,7 +112,7 @@ public class PlayVideo extends AppCompatActivity {
                 if(isPlaying) {
 
                     current = videoView.getCurrentPosition() / 1000;
-                    publishProgress( current );
+                    publishProgress( current);
                 }
             } while( videoProgress.getProgress() <= 100 );
             return null;
@@ -120,12 +120,12 @@ public class PlayVideo extends AppCompatActivity {
 
         @Override
         protected void onProgressUpdate( Integer... values ) {
-            super.onProgressUpdate( values );
+            super.onProgressUpdate( values);
             try{
                 int currentPercent = values[0] * 100 / duration;
                 videoProgress.setProgress(currentPercent);
-                String currentString = String.format("%02d:%02d", values[0] / 60, values[0] % 60);
-                currentTimer.setText(currentString);
+                String currentString = String.format( "%02d:%02d", values[0] / 60, values[0] % 60);
+                currentTimer.setText( currentString);
             } catch(Exception e){
             }
         }

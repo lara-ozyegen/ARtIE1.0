@@ -55,14 +55,14 @@ public class PaintView extends View {
 
         // setting features
         mPaint = new Paint();
-        mPaint.setAntiAlias( true );
-        mPaint.setDither( true );
-        mPaint.setColor( DEFAULT_COLOR );
-        mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeJoin( Paint.Join.ROUND );
-        mPaint.setStrokeCap( Paint.Cap.ROUND );
-        mPaint.setXfermode( null );
-        mPaint.setAlpha( 0xff );
+        mPaint.setAntiAlias( true);
+        mPaint.setDither( true);
+        mPaint.setColor( DEFAULT_COLOR);
+        mPaint.setStyle( Paint.Style.STROKE);
+        mPaint.setStrokeJoin( Paint.Join.ROUND);
+        mPaint.setStrokeCap( Paint.Cap.ROUND);
+        mPaint.setXfermode( null);
+        mPaint.setAlpha( 0xff);
     }
 
     /**
@@ -72,7 +72,7 @@ public class PaintView extends View {
         int height = metrics.heightPixels;
         int width = metrics.widthPixels;
 
-        mBitMap = Bitmap.createBitmap( width,height,Bitmap.Config.ARGB_8888 );
+        mBitMap = Bitmap.createBitmap( width,height,Bitmap.Config.ARGB_8888);
         //creating a canvas that we can paint to
         mCanvas = new Canvas( mBitMap);
 
@@ -83,17 +83,17 @@ public class PaintView extends View {
     @Override
     protected void onDraw( Canvas canvas ){
         canvas.save();
-        mCanvas.drawColor( backgroundColor );
+        mCanvas.drawColor( backgroundColor);
 
         for( FingerPath fp : paths ){
-            mPaint.setColor( fp.color );
-            mPaint.setStrokeWidth( fp.strokeWidth );
-            mPaint.setMaskFilter( null );
+            mPaint.setColor( fp.color);
+            mPaint.setStrokeWidth( fp.strokeWidth);
+            mPaint.setMaskFilter( null);
 
-            mCanvas.drawPath( fp.path, mPaint );
+            mCanvas.drawPath( fp.path, mPaint);
         }
 
-        canvas.drawBitmap( mBitMap,0,0,mBitMapPaint );
+        canvas.drawBitmap( mBitMap,0,0,mBitMapPaint);
         canvas.restore();
     }
 
@@ -102,11 +102,11 @@ public class PaintView extends View {
      */
     private void touchStart( float x, float y ){
         mPath = new Path();
-        FingerPath fp = new FingerPath( currentColor, strokeWidth, mPath );
-        paths.add(fp);
+        FingerPath fp = new FingerPath( currentColor, strokeWidth, mPath);
+        paths.add( fp);
 
         mPath.reset();
-        mPath.moveTo( x,y );
+        mPath.moveTo( x,y);
         mX = x;
         mY = y;
 
@@ -116,11 +116,11 @@ public class PaintView extends View {
      * a method which detects the moves
      */
     private void touchMove( float x, float y ){
-        float dx = Math.abs( x - mX );
-        float dy = Math.abs( y - mY );
+        float dx = Math.abs( x - mX);
+        float dy = Math.abs( y - mY);
 
-        if( dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE){
-            mPath.quadTo(mX,mY,( x + mX ) / 2, ( y + mY ) / 2);
+        if( dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE ){
+            mPath.quadTo( mX,mY,( x + mX ) / 2, ( y + mY ) / 2);
             mX = x;
             mY = y;
         }

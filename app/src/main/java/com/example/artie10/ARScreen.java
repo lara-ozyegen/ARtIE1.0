@@ -84,34 +84,34 @@ public class ARScreen extends AppCompatActivity {
 
 
     static {
-        ORIENTATIONS.append( Surface.ROTATION_0,0 );
-        ORIENTATIONS.append( Surface.ROTATION_90,90 );
-        ORIENTATIONS.append( Surface.ROTATION_180,180 );
-        ORIENTATIONS.append( Surface.ROTATION_270,270 );
+        ORIENTATIONS.append( Surface.ROTATION_0,0);
+        ORIENTATIONS.append( Surface.ROTATION_90,90);
+        ORIENTATIONS.append( Surface.ROTATION_180,180);
+        ORIENTATIONS.append( Surface.ROTATION_270,270);
     }
 
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_a_r_screen);
+        super.onCreate( savedInstanceState);
+        setContentView( R.layout.activity_a_r_screen);
 
-        arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
+        arFragment = ( ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
 
         //getting the text of the button from the previous activity
         Intent i = getIntent();
-        if( !isMyModel) {
+        if( !isMyModel ) {
             text = i.getStringExtra("TextOfButton");
 
             models = new ARModels(this, arFragment, text);
             //Initializing firebase and downloading model from firebase
-            models.DownloadModel();
+            models.downloadModel();
         }
         else {
             models = new ARModels(this, arFragment,text,true);
             try{
                 File file = File.createTempFile( text , "glb");
-                models.BuildModel( file);
+                models.buildModel( file);
                 isMyModel = false;
             }catch(IOException a){
 
@@ -120,18 +120,18 @@ public class ARScreen extends AppCompatActivity {
 
         //inserting the model
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
-            models.InsertModel(hitResult);
+            models.insertModel( hitResult);
         });
 
         //adding onClickListeners to our buttons
-        ImageView cam = findViewById(R.id.screenshot);
+        ImageView cam = findViewById( R.id.screenshot);
         cam.setOnClickListener(v -> takePhoto());
 
-        ImageView pencil = findViewById(R.id.pencil);
+        ImageView pencil = findViewById( R.id.pencil);
         pencil.setOnClickListener(v -> openPaint());
 
-        infoButton = (ImageButton) findViewById(R.id.infoButton);
-        infoButton.setOnClickListener(v -> openPreview());
+        infoButton = (ImageButton) findViewById( R.id.infoButton);
+        infoButton.setOnClickListener(v -> openInfo());
 
         ActivityCompat.requestPermissions(this, new String[]{
                 WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, PERMISSION_GRANTED);
@@ -148,11 +148,11 @@ public class ARScreen extends AppCompatActivity {
         DISPLAY_WIDTH = metrics.widthPixels;
 
         mediaRecorder = new MediaRecorder();
-        mediaProjectionManager = (MediaProjectionManager) getSystemService(Context.MEDIA_PROJECTION_SERVICE);
+        mediaProjectionManager = ( MediaProjectionManager) getSystemService( Context.MEDIA_PROJECTION_SERVICE);
 
         //view
-        videoView = (VideoView) findViewById(R.id.videoView);
-        toggleButton = (ToggleButton) findViewById(R.id.toggleButton);
+        videoView = (VideoView) findViewById( R.id.videoView);
+        toggleButton = (ToggleButton) findViewById( R.id.toggleButton);
 
         //video
         toggleButton.setOnClickListener(new View.OnClickListener() {
@@ -182,8 +182,8 @@ public class ARScreen extends AppCompatActivity {
     /**
      * a method which opens the info pop-up for the model
      */
-    public void openPreview(){
-        models.openPreviewWithText();
+    public void openInfo(){
+        models.openInfoWithText();
     }
 
     /**
@@ -191,7 +191,7 @@ public class ARScreen extends AppCompatActivity {
      */
     public void openPaint(){
         Intent intent = new Intent( this, PaintActivity.class );
-        startActivity( intent );
+        startActivity( intent);
     }
 
 
@@ -229,7 +229,7 @@ public class ARScreen extends AppCompatActivity {
      */
     private void destroyMediaProjection() {
         if( mediaProjection != null ){
-            mediaProjection.unregisterCallback( mediaProjectionCallBack );
+            mediaProjection.unregisterCallback( mediaProjectionCallBack);
             mediaProjection.stop();
             mediaProjection = null;
         }
@@ -252,17 +252,17 @@ public class ARScreen extends AppCompatActivity {
             stopRecordScreen();
 
             //after recording process is stopped, navigate the user to UploadVideo page
-            Intent intent = new Intent (ARScreen.this, UploadVideo.class );
+            Intent intent = new Intent (ARScreen.this, UploadVideo.class);
 
             //creating a bundle to transfer information to UploadVideo
-            Bundle bundle= new Bundle();
+            Bundle bundle = new Bundle();
 
             //to upload the video to firebase, we need the video URI in string form
-            bundle.putString( "transferInfo", videoURI );
+            bundle.putString( "transferInfo", videoURI);
 
             //inserting the bundle into intent to be sent to UploadVideo
-            intent.putExtras( bundle );
-            startActivity( intent );
+            intent.putExtras( bundle);
+            startActivity( intent);
         }
 
     }
@@ -280,16 +280,16 @@ public class ARScreen extends AppCompatActivity {
                     + new StringBuilder( "/EDMTRecord_" ).append( new SimpleDateFormat("dd-MM-yyyy-hh_mm_ss" )
                     .format(new Date())).append( " .mp4" ).toString();
 
-            mediaRecorder.setOutputFile( videoURI );
-            mediaRecorder.setVideoSize( DISPLAY_WIDTH, DISPLAY_HEIGHT );
-            mediaRecorder.setVideoEncoder( MediaRecorder.VideoEncoder.H264 );
-            mediaRecorder.setAudioEncoder( MediaRecorder.AudioEncoder.AMR_NB );
-            mediaRecorder.setVideoEncodingBitRate( 512 * 1000 );
-            mediaRecorder.setVideoFrameRate( 30 );
+            mediaRecorder.setOutputFile( videoURI);
+            mediaRecorder.setVideoSize( DISPLAY_WIDTH, DISPLAY_HEIGHT);
+            mediaRecorder.setVideoEncoder( MediaRecorder.VideoEncoder.H264);
+            mediaRecorder.setAudioEncoder( MediaRecorder.AudioEncoder.AMR_NB);
+            mediaRecorder.setVideoEncodingBitRate( 512 * 1000);
+            mediaRecorder.setVideoFrameRate( 30);
 
             int rotation = getWindowManager().getDefaultDisplay().getRotation();
             int orientation = ORIENTATIONS.get( rotation * 90);
-            mediaRecorder.setOrientationHint( orientation );
+            mediaRecorder.setOrientationHint( orientation);
             mediaRecorder.prepare();
 
         } catch ( IOException e ) {
@@ -305,7 +305,7 @@ public class ARScreen extends AppCompatActivity {
 
         if( mediaProjection == null ){
 
-            startActivityForResult( mediaProjectionManager.createScreenCaptureIntent(), REQUEST_CODE );
+            startActivityForResult( mediaProjectionManager.createScreenCaptureIntent(), REQUEST_CODE);
             return;
         }
         virtualDisplay = createVirtualDisplay();

@@ -44,9 +44,9 @@ public class Biology extends AppCompatActivity {
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_biology );
+        setContentView( R.layout.activity_biology);
 
-        brainButton = ( Button ) findViewById( R.id.brain_button );
+        brainButton = ( Button ) findViewById( R.id.brain_button);
         brainButton.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick( View v ) {
@@ -73,7 +73,7 @@ public class Biology extends AppCompatActivity {
             }
         });
 
-        antibodyButton = (Button) findViewById(R.id.antibodyButton);
+        antibodyButton = ( Button) findViewById( R.id.antibodyButton);
         antibodyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +82,7 @@ public class Biology extends AppCompatActivity {
             }
         });
 
-        lungsButton = (Button) findViewById(R.id.lungsButton);
+        lungsButton = ( Button) findViewById( R.id.lungsButton);
         lungsButton.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick( View v ) {
@@ -91,7 +91,7 @@ public class Biology extends AppCompatActivity {
             }
         } );
 
-        covidButton = (Button) findViewById(R.id.covidButton);
+        covidButton = (Button) findViewById( R.id.covidButton);
         covidButton.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick( View v ) {
@@ -100,11 +100,11 @@ public class Biology extends AppCompatActivity {
             }
         } );
 
-        appbar = findViewById( R.id.appbar );
-        setSupportActionBar( appbar );
-        getSupportActionBar().setTitle( "Biology" );
+        appbar = findViewById( R.id.appbar);
+        setSupportActionBar( appbar);
+        getSupportActionBar().setTitle( "Biology");
 
-        listView = findViewById( R.id.listView );
+        listView = findViewById( R.id.listView);
 
         myList = new ArrayList<>();
         myList.clear();
@@ -117,13 +117,13 @@ public class Biology extends AppCompatActivity {
      */
     public void openAR() {
         if( MainActivity.getPath()){
-            Intent intent = new Intent( this , ARScreenSession.class  );
+            Intent intent = new Intent( this , ARScreenSession.class);
             intent.putExtra("TextOfButton", text);
-            startActivity( intent );
+            startActivity( intent);
         }else{
-            Intent intent = new Intent( this , ARScreen.class  );
+            Intent intent = new Intent( this , ARScreen.class);
             intent.putExtra("TextOfButton", text);
-            startActivity( intent );
+            startActivity( intent);
         }
     }
 
@@ -131,16 +131,16 @@ public class Biology extends AppCompatActivity {
      * This method opens help screen
      */
     public void openHelp(){
-        Intent intent = new Intent( this, HelpScreen.class );
-        startActivity( intent );
+        Intent intent = new Intent( this, HelpScreen.class);
+        startActivity( intent);
     }
 
     /**
      * This method returns home page
      */
     public void openHome(){
-        Intent intent = new Intent( this, MainActivity.class );
-        startActivity( intent );
+        Intent intent = new Intent( this, MainActivity.class);
+        startActivity( intent);
     }
 
     /**
@@ -148,18 +148,18 @@ public class Biology extends AppCompatActivity {
      */
     public void openSearch(){
         arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,myList );
-        listView.setAdapter( arrayAdapter );
+        listView.setAdapter( arrayAdapter);
     }
 
     @Override
     public boolean onCreateOptionsMenu( Menu menu ) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate( R.menu.menu, menu );
+        inflater.inflate( R.menu.menu, menu);
 
-        MenuItem menuItem = menu.findItem( R.id.search );
+        MenuItem menuItem = menu.findItem( R.id.search);
         SearchView searchView = ( SearchView ) menuItem.getActionView();
-        searchView.setQueryHint( "Search in biology" );
-        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        searchView.setQueryHint( "Search in biology");
+        searchView.setImeOptions( EditorInfo.IME_ACTION_DONE);
         searchView.setOnQueryTextListener( new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit( String query ) {
@@ -168,12 +168,12 @@ public class Biology extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange( String newText ) {
-                arrayAdapter.getFilter().filter( newText );
+                arrayAdapter.getFilter().filter( newText);
                 return true;
             }
         });
 
-        return super.onCreateOptionsMenu( menu );
+        return super.onCreateOptionsMenu( menu);
     }
 
     @Override
@@ -190,7 +190,7 @@ public class Biology extends AppCompatActivity {
                 openSearch();
                 return true;
             default:
-                return super.onOptionsItemSelected( item );
+                return super.onOptionsItemSelected( item);
         }
     }
 }

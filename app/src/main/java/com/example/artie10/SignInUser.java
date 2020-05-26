@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
  * @date 24/04/2020
  * This class provides the sign in feature
  */
-public class SignIn extends AppCompatActivity {
+public class SignInUser extends AppCompatActivity {
 
     //properties
     private Button signIn;
@@ -95,23 +95,23 @@ public class SignIn extends AppCompatActivity {
 
         //if both e-mail and password fields are empty
         else if ( strEmail.isEmpty() && strPassword.isEmpty() ){
-            Toast.makeText( SignIn.this, "Fields are empty!", Toast.LENGTH_SHORT ).show();
+            Toast.makeText( SignInUser.this, "Fields are empty!", Toast.LENGTH_SHORT ).show();
         }
 
         //if the fields are filled
         else if ( !(strEmail.isEmpty() && strPassword.isEmpty() ) ){
-            mFirebaseAuth.signInWithEmailAndPassword( strEmail, strPassword ).addOnCompleteListener(SignIn.this, new OnCompleteListener<AuthResult>() {
+            mFirebaseAuth.signInWithEmailAndPassword( strEmail, strPassword ).addOnCompleteListener(SignInUser.this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task ) {
 
                     //if sign in is failed
                     if ( !task.isSuccessful() ){
-                        Toast.makeText( SignIn.this, "Could not sign in, please try again.", Toast.LENGTH_SHORT ).show();
+                        Toast.makeText( SignInUser.this, "Could not sign in, please try again.", Toast.LENGTH_SHORT ).show();
                     }
 
                     //if sign in is successful
                     else{
-                        startActivity( new Intent( SignIn.this, MainActivity.class ) );
+                        startActivity( new Intent( SignInUser.this, MainActivity.class ) );
                     }
                 }
             });
@@ -119,7 +119,7 @@ public class SignIn extends AppCompatActivity {
 
         //if some other non-predicted error has occurred
         else{
-            Toast.makeText( SignIn.this, "Nani??! Some error??!", Toast.LENGTH_SHORT ).show();
+            Toast.makeText( SignInUser.this, "Nani??! Some error??!", Toast.LENGTH_SHORT ).show();
         }
     }
 
@@ -131,13 +131,13 @@ public class SignIn extends AppCompatActivity {
 
         //if user is signed in
         if( user != null ) {
-            Toast.makeText( SignIn.this, "Signed in successfully.", Toast.LENGTH_SHORT ).show();
+            Toast.makeText( SignInUser.this, "Signed in successfully.", Toast.LENGTH_SHORT ).show();
             backToMain();
         }
 
         //if user is not signed in
         else{
-            Toast.makeText( SignIn.this, "Please sign in.", Toast.LENGTH_SHORT ).show();
+            Toast.makeText( SignInUser.this, "Please sign in.", Toast.LENGTH_SHORT ).show();
         }
     }
 
@@ -148,8 +148,8 @@ public class SignIn extends AppCompatActivity {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics( dm );
 
-        int width = ( int ) ( dm.widthPixels * .6 );
-        int height = ( int ) ( dm.heightPixels * .6 );
+        int width = ( int ) ( dm.widthPixels * .8 );
+        int height = ( int ) ( dm.heightPixels * .8 );
 
         getWindow().setLayout( width, height );
     }
@@ -158,7 +158,7 @@ public class SignIn extends AppCompatActivity {
      * a method which changes the window to sign up window.
      */
     public void toSignUp() {
-        Intent i = new Intent(SignIn.this, SignUp.class );
+        Intent i = new Intent(SignInUser.this, SignedUpUser.class );
         startActivity( i );
     }
 
@@ -166,7 +166,7 @@ public class SignIn extends AppCompatActivity {
      * a method which changes the window to main screen.
      */
     public void backToMain(){
-        Intent backToMain = new Intent(SignIn.this, MainActivity.class );
+        Intent backToMain = new Intent(SignInUser.this, MainActivity.class );
         startActivity( backToMain );
     }
 
