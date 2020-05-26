@@ -21,10 +21,10 @@ _Include a concise description of your project here. Be sure to include the prop
 
 [Group Meetings Log](group/meetingslog.md)
 #### Group Members
-- [Lara Özyeğen](group/member1_log.md)    
+- [Lara Özyeğen](group/Ozyegen_Lara_log.md)    
 - [Sarper Turan](group/Turan_Sarper_log.md)
 - [Öykü Erhan](group/member3_log.md)
-- [Berk Saltuk Yılmaz](group/member4_log.md)
+- [Berk Saltuk Yılmaz](group/Yılmaz_BerkSaltuk_log.md)
 - [Yaren Durgun](group/Durgun_Yaren_log.md)
 - [Enis Özer](group/member6_log.md)
 - [Onur Asım İlhan](group/member7_log.md)
@@ -48,7 +48,7 @@ _Include a concise description of your project here. Be sure to include the prop
 
 
 #### Contributions
-- Berk Saltuk Yılmaz: Mostly worked on layouts, views and some features of AR screen such as painting. Added visuals and features to screens, fixed paint feature. Created Help, AboutUs pages. Added some spacing, fixed some indentation and created a logo for our app! Created an transparent activity for painting feature and made it work. Also tried to help my friends about their parts since we are new to Android projects.
+- Berk Saltuk Yılmaz: Mostly worked on layouts, views and some features of AR screen such as painting and retrieving video (helped to fix this). Added visuals and features to screens, fixed paint feature. Created Help, AboutUs pages. Added some spacing, fixed some indentation and created a logo for our app! Created an transparent activity for painting feature and made it work. Also tried to help my friends about their parts since we are new to Android projects.
 
 - Enis Özer:I have worked on creating a session mode class by using the existing free mode class, helped on layouts and removing an AR object from the environment. I have also tried to help my friends on fixing and adding some features on paint class. 
 

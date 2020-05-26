@@ -14,4 +14,6 @@ This week I helped my friends on adding AR fragments to our project. Trying to l
 ### ~ 04/05/2020 - 11/05/2020 ~
 This week I attended all project meetings, thanks to decreased workload. Worked on painting feature and fixed it, I helped my friends and we made a significant progress. Our project is almost complete. I failed at some points, I could not fix the search button. We worked as a team and we dealt with all difficulties. 
 
+### ~ 11/05/2020 - 18/05/2020 ~ 
+This week we managed to fix retrieving video class. Now we can upload videos to our database and then we can retrieve the video by typing the name of the video. I attended all project meetings which held this week. Our project is about to be done. We are now concentrating on our demo video. It makes me proud to see we made such a great progress as a team. It was difficult but also fun. We love CS!
 ****
