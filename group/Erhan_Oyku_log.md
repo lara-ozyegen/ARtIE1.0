@@ -4,9 +4,9 @@
 ****
 
 On this page I will keep a weekly record of what I have done for the CS102 group project. This page will be submitted together with the rest of the repository, in partial fulfillment of the CS102 course requirements.
-
+****
 ~ 20/04/2020 - 27/04/2020 ~
-
+****
 This week tried to learn how android studio and github works. Learned how to create activities, activity buttons and layouts to new pages. After, tried to understand AR core and adding models to ar screen. Also at first, I added mathematics category page and layout besides biology but we decide to focus more on biology so I removed it. After I try to do what happens when press to add model button. It opens phone's download page for now but it doesn't pick any file. Learned about pop ups and importance of constraint layouts.
 
 ~ 27/04/2020 - 03/05/2020 ~
