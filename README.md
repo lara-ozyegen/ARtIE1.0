@@ -8,7 +8,6 @@ The information and code in this repository are submitted in partial fulfillment
 ## Project Description
 Our project, ARtIE, is based on displaying 3D models in real life to improve education and provide information with using visualization. Our project is an android app so we are using AndroidStudio.
 
-_Include a concise description of your project here. Be sure to include the proposed users, the architecture (eg. desktop, web, mobile, embedded, etc.) & screenshots when available._
    
 ## Project Status
 + **Group/project Selection:** completed (date)
